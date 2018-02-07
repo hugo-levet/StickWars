@@ -1,7 +1,10 @@
-# StickWars
-Ceci est un projet bien cool !
+StickWars
+=========
 
+Ceci est un projet cool !
+
+  
 Bibliothèques utilisées pour le projet:  
--> Physique et collision: Box2D  
-	Lien: http://box2d-js.sourceforge.net/  
-	Potentielle documentation (la doc est pour du C): http://box2d.org/manual.pdf  
+-\> Physique et collision: Box2D  
+____Lien: http://box2d-js.sourceforge.net/  
+____Potentielle documentation (la doc est pour du 
