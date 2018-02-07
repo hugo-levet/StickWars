@@ -13,23 +13,6 @@ c.height = c.width * background.height / background.width;//*/
 background.onload = function() {    
 
 	// on créer un monde
-	var worldAABB = new b2AABB();
-	worldAABB.minVertex.Set(-1000, -1000);
-	worldAABB.maxVertex.Set(1000, 1000);
-	var gravity = new b2Vec2(0, 300);
-	var doSleep = true;
-	var world = new b2World(worldAABB, gravity, doSleep); 
-	
-	// on créer une boulasse
-	var circleSd = new b2CircleDef();
-	circleSd.density = 1.0;
-	circleSd.radius = 20;
-	circleSd.restitution = 1.0;
-	circleSd.friction = 0;
-	var circleBd = new b2BodyDef();
-	circleBd.AddShape(circleSd);
-	circleBd.position.Set(0,0);
-	var circleBody = world.CreateBody(circleBd);
 	
 	// on lance la boucle principale
 	main();
@@ -37,7 +20,16 @@ background.onload = function() {
 
 // ====
 // la boucle principale
-function main() {	
+function main() {		
 	ctx.drawImage(background, 0, 0, c.width, c.height);   
+	
+	/*ctx.beginPath();
+	ctx.arc(circleBd.position.x, circleBd.position.y, circleBd.radius, 0, 2 * Math.PI, false);
+	ctx.lineWidth = 3;
+	ctx.strokeStyle = '#FF0000';
+	ctx.stroke();	//*/
+	
+	console.log("circleBd.position " + circleBody.position);
+	
 	main();
 }
