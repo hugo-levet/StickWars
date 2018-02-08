@@ -1,7 +1,7 @@
 var width = window.innerWidth * window.devicePixelRatio;
 var height = window.innerHeight * window.devicePixelRatio;
 
-// resolution de base1680x917
+// resolution de base: 1680x917
 var game = new Phaser.Game(width, height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 var player;
 var platforms;
@@ -9,13 +9,17 @@ var cursors;
 
 
 function preload() {
+	//game.load.image("star", "img/star.png");
+	
 	game.load.image("bg", "img/bg.png"); // ici bg signifie le fond d'écran	
 	game.load.image('ground', 'img/platform.png');
-	game.load.image("star", "img/star.png");
+	
 	game.load.spritesheet('dude', 'img/dude.png', 32, 48);	
 }
 
 function create() {
+	
+	game.antialias = false; // on déactive l'antialias pour le pixel art
 	
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 	
@@ -23,19 +27,22 @@ function create() {
 	bg.width = width;
 	bg.height = height;
 	
-	var star = game.add.sprite(0, 0, 'star');
-	star.width = 20;
-	star.height = 20;
-	
 	// ====
 	// on créer les platforms
 	platforms = game.add.group();
     platforms.enableBody = true;
 	
-    var ground = platforms.create(0, game.world.height - 43, 'ground');
+    var ground = platforms.create(0, game.world.height, 'ground');
     ground.width = width;
-	ground.height = 43;
+	ground.height = -43;
     ground.body.immovable = true;
+	ground.alpha = 0.2;
+	
+	var ledge = platforms.create(528, 345, 'ground');
+	ledge.width = 638;
+	ledge.height = 49;
+	ledge.alpha = 0.2;
+	
 	
 	// ====
 	// The player and its settings
@@ -43,7 +50,7 @@ function create() {
 
     game.physics.arcade.enable(player);
 
-    player.body.bounce.y = 0.2;
+    player.body.bounce.y = 0;
     player.body.gravity.y = 300;
     player.body.collideWorldBounds = true;
 
@@ -56,9 +63,9 @@ function create() {
 }
 
 function update() {
+	game.debug.text("Anti-alias: " + game.antialias, 10, 32);
 	var hitPlatform = game.physics.arcade.collide(player, platforms);
-
-	//  Reset the players velocity (movement)
+	
     player.body.velocity.x = 0;
 
     if (cursors.left.isDown)
@@ -73,9 +80,7 @@ function update() {
     }
     else
     {
-        //  Stand still
         player.animations.stop();
-
         player.frame = 4;
     }
 
