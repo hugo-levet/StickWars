@@ -19,6 +19,9 @@ function preload() {
 	game.load.image("bg", "img/bg.png"); // ici bg signifie le fond d'écran	
 	game.load.image('ground', 'img/platform.png');
 	game.load.spritesheet('dude', 'img/dude.png', 32, 48);	
+	
+	//  https://www.codeandweb.com/texturepacker/tutorials/creating-spritesheets-for-phaser-with-texturepacker
+	game.load.atlasJSONHash('player', 'img/player/texture.png', 'img/player/data.json');
 }
 
 function create() {
@@ -50,7 +53,7 @@ function create() {
 	
 	// ====
 	// The player and its settings
-    player = game.add.sprite(128, game.world.height - 150, 'dude');
+    player = game.add.sprite(128, game.world.height - 300, 'player', 'attack/0008.png');
 
     game.physics.arcade.enable(player);
     
@@ -58,8 +61,8 @@ function create() {
     player.body.collideWorldBounds = true;
 
     // Our two animations, walking left and right.
-    player.animations.add('left', [0, 1, 2, 3], 10, true);
-    player.animations.add('right', [5, 6, 7, 8], 10, true);
+    //player.animations.add('attack', Phaser.Animation.generateFrameNames('attack/', 1, 10, '', 4), 10, true, false);
+	player.animations.add('run', Phaser.Animation.generateFrameNames('run/', 1, 6, '.png', 4), 10, true, true);
 	
 	// Our controls.
     zqsd = {
@@ -81,12 +84,12 @@ function update() {
     if (zqsd.left.isDown)
     {
         player.body.velocity.x = -plySpeed;
-        player.animations.play('left');
+        player.animations.play('run');
     }
     else if (zqsd.right.isDown)
     {
         player.body.velocity.x = plySpeed;
-        player.animations.play('right');
+        player.animations.play('run');
     }
     else
     {
