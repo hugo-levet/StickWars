@@ -7,22 +7,25 @@ var player;
 var platforms;
 var cursors;
 
+var jumpsCounts = 0;
+const maxJumps = 3;
+const plySpeed = 250;
 
-function preload() {
-	//game.load.image("star", "img/star.png");
-	
+var flipFlop = false; // NB CHANGER LE NOM -> garde le dernier état de la touche de saut
+var zqsd; // contrôles
+
+
+function preload() {	
 	game.load.image("bg", "img/bg.png"); // ici bg signifie le fond d'écran	
 	game.load.image('ground', 'img/platform.png');
-	
 	game.load.spritesheet('dude', 'img/dude.png', 32, 48);	
 }
 
 function create() {
-	
 	game.antialias = false; // on déactive l'antialias pour le pixel art
 	
 	game.physics.startSystem(Phaser.Physics.ARCADE);
-	
+		
 	var bg = game.add.sprite(0, 0, 'bg');	
 	bg.width = width;
 	bg.height = height;
@@ -38,44 +41,51 @@ function create() {
     ground.body.immovable = true;
 	ground.alpha = 0.2;
 	
-	var ledge = platforms.create(528, 345, 'ground');
-	ledge.width = 638;
-	ledge.height = 49;
-	ledge.alpha = 0.2;
+	var searchBar = platforms.create(528, 345, 'ground');
+	searchBar.width = 638;
+	searchBar.height = 49;
+	searchBar.alpha = 0.2;
+	searchBar.body.immovable = true;
 	
 	
 	// ====
 	// The player and its settings
-    player = game.add.sprite(32, game.world.height - 150, 'dude');
+    player = game.add.sprite(128, game.world.height - 150, 'dude');
 
     game.physics.arcade.enable(player);
-
-    player.body.bounce.y = 0;
+    
     player.body.gravity.y = 300;
     player.body.collideWorldBounds = true;
 
-    //  Our two animations, walking left and right.
+    // Our two animations, walking left and right.
     player.animations.add('left', [0, 1, 2, 3], 10, true);
     player.animations.add('right', [5, 6, 7, 8], 10, true);
 	
-	//  Our controls.
-    cursors = game.input.keyboard.createCursorKeys();
+	// Our controls.
+    zqsd = {
+	  up: game.input.keyboard.addKey(Phaser.Keyboard.Z),
+	  down: game.input.keyboard.addKey(Phaser.Keyboard.S),
+	  left: game.input.keyboard.addKey(Phaser.Keyboard.Q),
+	  right: game.input.keyboard.addKey(Phaser.Keyboard.D),
+	};
 }
 
 function update() {
-	game.debug.text("Anti-alias: " + game.antialias, 10, 32);
+	//game.debug.text("Anti-alias: " + game.antialias, 10, 32);
 	var hitPlatform = game.physics.arcade.collide(player, platforms);
 	
     player.body.velocity.x = 0;
 
-    if (cursors.left.isDown)
+	// ===
+	// Translation
+    if (zqsd.left.isDown)
     {
-        player.body.velocity.x = -150;
+        player.body.velocity.x = -plySpeed;
         player.animations.play('left');
     }
-    else if (cursors.right.isDown)
+    else if (zqsd.right.isDown)
     {
-        player.body.velocity.x = 150;
+        player.body.velocity.x = plySpeed;
         player.animations.play('right');
     }
     else
@@ -84,9 +94,23 @@ function update() {
         player.frame = 4;
     }
 
-    //  Allow the player to jump if they are touching the ground.
-    if (cursors.up.isDown && player.body.touching.down && hitPlatform)
+	// ===
+    // Jump
+	
+	// on reset le double jump si on touche le sol
+	if (player.body.touching.down && hitPlatform)
+		jumpsCounts = 0;	
+	
+    if (zqsd.up.isDown && !flipFlop && jumpsCounts < maxJumps)
     {
-        player.body.velocity.y = -350;
+		flipFlop = true;
+		jumpsCounts++;		
+		player.body.velocity.y = -350;   
+		
+		console.log("Jump! #" + jumpsCounts);
     }
+	 
+	if (zqsd.up.isUp) {
+		flipFlop = false;
+	}
 }
