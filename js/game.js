@@ -10,6 +10,7 @@ var cursors;
 var jumpsCounts = 0;
 const maxJumps = 3;
 const plySpeed = 250;
+const plyGravity = 300;
 
 var flipFlop = false; // NB CHANGER LE NOM -> garde le dernier état de la touche de saut
 var zqsd; // contrôles
@@ -25,8 +26,6 @@ function preload() {
 }
 
 function create() {
-	game.antialias = false; // on déactive l'antialias pour le pixel art
-	
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 		
 	var bg = game.add.sprite(0, 0, 'bg');	
@@ -53,18 +52,21 @@ function create() {
 	
 	// ====
 	// The player and its settings
-    player = game.add.sprite(128, game.world.height - 300, 'player', 'attack/0008.png');
+    player = game.add.sprite(128, game.world.height - 300, 'player');
 
     game.physics.arcade.enable(player);
+	player.anchor.setTo(.5,.5);
     
-    player.body.gravity.y = 300;
+    player.body.gravity.y = plyGravity;
     player.body.collideWorldBounds = true;
 
-    // Our two animations, walking left and right.
-    //player.animations.add('attack', Phaser.Animation.generateFrameNames('attack/', 1, 10, '', 4), 10, true, false);
-	player.animations.add('run', Phaser.Animation.generateFrameNames('run/', 1, 6, '.png', 4), 10, true, true);
+	// on extrait l'animation de l'atlas
+	player.animations.add('run', Phaser.Animation.generateFrameNames('run/', 1, 10, '.png', 4), 10, true);	
+	player.animations.add('idle', Phaser.Animation.generateFrameNames('idle/', 1, 10, '.png', 4), 10, true);
+	player.animations.add('attack', Phaser.Animation.generateFrameNames('attack/', 1, 10, '.png', 4), 10, false);
 	
-	// Our controls.
+	
+	// Our controls
     zqsd = {
 	  up: game.input.keyboard.addKey(Phaser.Keyboard.Z),
 	  down: game.input.keyboard.addKey(Phaser.Keyboard.S),
@@ -84,17 +86,19 @@ function update() {
     if (zqsd.left.isDown)
     {
         player.body.velocity.x = -plySpeed;
-        player.animations.play('run');
+        player.animations.play('run');		
+		player.scale.x = -1;
     }
     else if (zqsd.right.isDown)
     {
         player.body.velocity.x = plySpeed;
-        player.animations.play('run');
+        player.animations.play('run');		
+		player.scale.x = 1;
     }
     else
     {
-        player.animations.stop();
-        player.frame = 4;
+		
+        player.animations.play('idle');	
     }
 
 	// ===
@@ -113,7 +117,6 @@ function update() {
 		console.log("Jump! #" + jumpsCounts);
     }
 	 
-	if (zqsd.up.isUp) {
+	if (zqsd.up.isUp)
 		flipFlop = false;
-	}
 }
