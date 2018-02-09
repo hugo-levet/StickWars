@@ -13,7 +13,7 @@ const plySpeed = 250;
 const plyGravity = 300;
 
 var flipFlop = false; // NB CHANGER LE NOM -> garde le dernier état de la touche de saut
-var zqsd; // contrôles
+var controls;
 
 
 function preload() {	
@@ -67,11 +67,12 @@ function create() {
 	
 	
 	// Our controls
-    zqsd = {
+    controls = {
 	  up: game.input.keyboard.addKey(Phaser.Keyboard.Z),
 	  down: game.input.keyboard.addKey(Phaser.Keyboard.S),
 	  left: game.input.keyboard.addKey(Phaser.Keyboard.Q),
 	  right: game.input.keyboard.addKey(Phaser.Keyboard.D),
+	  attack: game.input.keyboard.addKey(Phaser.Keyboard.E)
 	};
 }
 
@@ -83,21 +84,22 @@ function update() {
 
 	// ===
 	// Translation
-    if (zqsd.left.isDown)
+    if (controls.left.isDown)
     {
-        player.body.velocity.x = -plySpeed;
+        player.body.velocity.x -= plySpeed;
         player.animations.play('run');		
 		player.scale.x = -1;
     }
-    else if (zqsd.right.isDown)
+    else if (controls.right.isDown)
     {
-        player.body.velocity.x = plySpeed;
+        player.body.velocity.x += plySpeed;
         player.animations.play('run');		
 		player.scale.x = 1;
-    }
+    } else if (controls.attack.isDown) {
+		player.animations.play('attack');
+	}
     else
-    {
-		
+    {		
         player.animations.play('idle');	
     }
 
@@ -108,7 +110,7 @@ function update() {
 	if (player.body.touching.down && hitPlatform)
 		jumpsCounts = 0;	
 	
-    if (zqsd.up.isDown && !flipFlop && jumpsCounts < maxJumps)
+    if (controls.up.isDown && !flipFlop && jumpsCounts < maxJumps)
     {
 		flipFlop = true;
 		jumpsCounts++;		
@@ -117,6 +119,6 @@ function update() {
 		console.log("Jump! #" + jumpsCounts);
     }
 	 
-	if (zqsd.up.isUp)
+	if (controls.up.isUp)
 		flipFlop = false;
 }
