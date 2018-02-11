@@ -6,7 +6,8 @@ var game = new Phaser.Game(width, height, Phaser.AUTO, '', { preload: preload, c
 var player;
 var platforms;
 
-var ply;
+var ply1;
+var ply2;
 
 function preload() {	
 	game.load.image("bg", "img/bg.png"); // ici bg signifie le fond d"écran	
@@ -42,7 +43,7 @@ function create() {
 		
 	// ====
 	// The player and its settings
-	var controls = {
+	var controls1 = {
 		up: game.input.keyboard.addKey(Phaser.Keyboard.Z),
 		down: game.input.keyboard.addKey(Phaser.Keyboard.S),
 		left: game.input.keyboard.addKey(Phaser.Keyboard.Q),
@@ -50,9 +51,22 @@ function create() {
 		attack: game.input.keyboard.addKey(Phaser.Keyboard.E)
 	};
 	
-    ply = new Player(controls);	
+    ply1 = new Player(controls1, "ply1");	
+
+    // ====
+	// The player and its settings
+	var controls2 = {
+		up: game.input.keyboard.addKey(Phaser.Keyboard.O),
+		down: game.input.keyboard.addKey(Phaser.Keyboard.L),
+		left: game.input.keyboard.addKey(Phaser.Keyboard.K),
+		right: game.input.keyboard.addKey(Phaser.Keyboard.M),
+		attack: game.input.keyboard.addKey(Phaser.Keyboard.P)
+	};
+	
+    ply2 = new Player(controls2, "ply2");	      
 }
 
 function update() {	
-    ply.update();	
+    ply1.update();	
+    ply2.update();	
 }

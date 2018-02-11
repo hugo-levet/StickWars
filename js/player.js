@@ -2,6 +2,7 @@ const maxJumps = 3;
 const plySpeed = 250;
 const plyGravity = 300;
 const jumpForce = 400;
+const maxHP = 100;
 
 var PlayerState = {  
   RUN: 1,
@@ -17,42 +18,60 @@ var PlayerState = {
 // IL FAUT RAJOUTER .THIS DEVANT CHAQUE VARIABLE PARCONTRE :/
 
 class Player {		
-	constructor(controls) {
+	constructor(controls, name) {
 		
 		// DÉCLARATION DES VARIABLES
 		this.isUpKeyReleased = false; // garde le dernier état de la touche de saut
 		this.freezeState = false; // gèle l'état du joueur pour attendre que l'animation se finisse (saut ou attaque) 
 			
 		this.playerState = PlayerState.IDLE;
-		this.controls;
-		this.jumpsCounts = 0;
-		this.player;
+		this.hp = maxHP;
+        this.jumpsCounts = 0;
+        this.controls = controls;
+        this.name = name;
+        
 		
-		player = game.add.sprite(512, game.world.height - 180, "player");
+		this.player = game.add.sprite(512, game.world.height - 180, "player");
 
-		game.physics.arcade.enable(player);
-		player.anchor.setTo(.5,.5);
+		game.physics.arcade.enable(this.player);
+		this.player.anchor.setTo(.5,.5);
 		
-		player.body.gravity.y = plyGravity;
-		player.body.collideWorldBounds = true;
+		this.player.body.gravity.y = plyGravity;
+		this.player.body.collideWorldBounds = true;
 
 		// on extrait l"animation de l"atlas
-		player.animations.add("run", Phaser.Animation.generateFrameNames("run/", 1, 10, ".png", 4), 10, true);	
-		player.animations.add("idle", Phaser.Animation.generateFrameNames("idle/", 1, 10, ".png", 4), 10, true);
-		player.animations.add("attack", Phaser.Animation.generateFrameNames("attack/", 1, 10, ".png", 4), 20, false);
-		player.animations.add("jump", Phaser.Animation.generateFrameNames("jump/", 1, 10, ".png", 4), 10, false);	
-		
-		// our controls
-		this.controls = controls;
+		this.player.animations.add("run", Phaser.Animation.generateFrameNames("run/", 1, 10, ".png", 4), 15, true);	
+		this.player.animations.add("idle", Phaser.Animation.generateFrameNames("idle/", 1, 10, ".png", 4), 15, true);
+		this.player.animations.add("attack", Phaser.Animation.generateFrameNames("attack/", 1, 10, ".png", 4), 20, false);
+		this.player.animations.add("jump", Phaser.Animation.generateFrameNames("jump/", 1, 10, ".png", 4), 15, false);	
+        
+        var barConfig = {
+            width: 120,
+            height: 15,
+            x: this.player.x,
+            y: this.player.x,
+            bg: {
+              color: '#d8231b'
+            },
+            bar: {
+              color: '#00923b'
+            },
+            animationDuration: 200,
+            flipped: false
+        };
+        
+        this.hpBar = new HealthBar(game, barConfig);
 	}
-	
-	//
+		
 	update() {
-		var hitPlatform = game.physics.arcade.collide(player, platforms);
-		player.body.velocity.x = 0;
+        this.hpBar.setPosition(this.player.x, this.player.y - 75);
+        console.log("name -> " + this.name);
+        
+		var hitPlatform = game.physics.arcade.collide(this.player, platforms);
+		this.player.body.velocity.x = 0;
 		
 		// on reset le double jump si on touche le sol
-		if (player.body.touching.down && hitPlatform)
+		if (this.player.body.touching.down && hitPlatform)
 			this.jumpsCounts = 0;
 		
 		// ===
@@ -65,21 +84,19 @@ class Player {
 			
 			this.isUpKeyReleased = true;
 			this.jumpsCounts++;		
-			player.body.velocity.y = -jumpForce;   
-
-			console.log("JUMP");
+			this.player.body.velocity.y = -jumpForce; 
 		}
-		else if (this.controls.left.isDown && this.playerState != PlayerState.ATTACK) {
+		else if (this.controls.left.isDown && this.playerState != this.playerState.ATTACK) {
 			this.playerState = PlayerState.RUN;
-			player.scale.x = -1;
+			this.player.scale.x = -1;
 				
-			player.body.velocity.x -= plySpeed;
+			this.player.body.velocity.x -= plySpeed;
 		}	
-		else if (this.controls.right.isDown && this.playerState != PlayerState.ATTACK) {
+		else if (this.controls.right.isDown && this.playerState != this.playerState.ATTACK) {
 			this.playerState = PlayerState.RUN;		
-			player.scale.x = 1;
+			this.player.scale.x = 1;
 				
-			player.body.velocity.x += plySpeed; 
+			this.player.body.velocity.x += plySpeed; 
 		}
 		else {
 			this.playerState = PlayerState.IDLE;
@@ -90,29 +107,26 @@ class Player {
 		
 		// ====
 		// ANIMATION
-        console.log("this.playerState -> " + this.playerState);
-        console.log("this.freezeState -> " + this.freezeState);
         
 		if (!this.freezeState) {	
 			switch (this.playerState) {
 				case PlayerState.IDLE:
-                    console.log("idle");
-					player.animations.play("idle");	
+					this.player.animations.play("idle");	
 					break;
 					
 				case PlayerState.RUN:
-					player.animations.play("run");
+					this.player.animations.play("run");
 					break;
 					
 				case PlayerState.ATTACK:
-					var attackAnim = player.animations.play("attack");
+					var attackAnim = this.player.animations.play("attack");
 					
 					this.freezeState = true;
 					attackAnim.onComplete.add(this.stopAnimation, this);
 					break;
 					
 				case PlayerState.JUMP:
-					var jumpAnim = player.animations.play("jump");
+					var jumpAnim = this.player.animations.play("jump");
 					
 					this.freezeState = true;
 					jumpAnim.onComplete.add(this.stopAnimation, this);
