@@ -3,11 +3,8 @@ var height = window.innerHeight * window.devicePixelRatio;
 
 // resolution de base: 1680x917
 var game = new Phaser.Game(width, height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
-var player;
+var player = [];
 var platforms;
-
-var ply1;
-var ply2;
 
 function preload() {	
 	game.load.image("bg", "img/bg.png"); // ici bg signifie le fond d"écran	
@@ -51,7 +48,7 @@ function create() {
 		attack: game.input.keyboard.addKey(Phaser.Keyboard.E)
 	};
 	
-    ply1 = new Player(controls1, "ply1");	
+    player.push(new Player(controls1, "ply1", 0xbbbbff));	
 
     // ====
 	// The player and its settings
@@ -63,10 +60,12 @@ function create() {
 		attack: game.input.keyboard.addKey(Phaser.Keyboard.P)
 	};
 	
-    ply2 = new Player(controls2, "ply2");	      
+    player.push(new Player(controls2, "ply2", 0xffa5a5));      
 }
 
-function update() {	
-    ply1.update();	
-    ply2.update();	
+function update() {
+    for (var i=0; i < player.length; i++) {
+        game.debug.body(player[i].player);
+        player[i].update();
+    }
 }
