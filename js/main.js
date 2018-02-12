@@ -24,5 +24,5 @@ var Main = {
 
 };
 
-game.state.add('Main', Main);
-game.state.start('Main');
+game.state.add('Game', Game);
+game.state.start('Game');
