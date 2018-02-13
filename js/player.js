@@ -1,11 +1,12 @@
-const maxJumps = 3;
+const maxJumps = 2;
 const plySpeed = 250;
+const plySlideSpeed = 50;
 const plyGravity = 500;
 const jumpForce = 600;
 const hpMax = 100;
 
 const attackBoxWidth = 65;
-const attackBoxHeight = 130;
+const attackBoxHeight = 160;
 const sizeBoxAwayFromPlayer = 80;
 
 var PlayerState = {  
@@ -77,6 +78,18 @@ class Player {
 		var hitPlatform = game.physics.arcade.collide(this.player, platforms);
 		this.player.body.velocity.x = 0;
 		
+         // si il y a une collision sur la gauche, on ralentit la chute & on reset les jumps
+        if (this.player.body.blocked.left || this.player.body.blocked.right ||
+            this.player.body.touching.left || this.player.body.touching.right) {
+                
+            this.jumpsCounts = 0;
+            this.player.body.gravity.y = 0;
+            this.player.body.velocity.y = plySlideSpeed;
+        } 
+        else {
+            this.player.body.gravity.y = plyGravity;
+        }          
+        
 		// on reset le double jump si on touche le sol
 		if (this.player.body.touching.down && hitPlatform)
 			this.jumpsCounts = 0;
@@ -116,7 +129,7 @@ class Player {
         // DRAW ATTACK BOX COLLISION
         this.graphics.kill();        
         this.graphics = game.add.graphics(this.player.x - attackBoxWidth/2, this.player.y - attackBoxHeight/2);
-        this.graphics.lineStyle(2, 0x0000FF, 1);
+        this.graphics.lineStyle(2, 0xff0000, 1);
         this.graphics.drawRect(sizeBoxAwayFromPlayer * this.player.scale.x, 0, attackBoxWidth, attackBoxHeight);
                   
 		// ====
@@ -136,7 +149,13 @@ class Player {
 					
 					this.freezeState = true;
 					attackAnim.onComplete.add(this.stopAnimation, this);
-                    this.inflictDamage(this.damage);
+                    
+                    // inflige des dégâts au bout de 500ms
+                    var v_name = this;
+                    
+                    setTimeout(function () {
+                        v_name.inflictDamage();
+                    }, 400);
 					break;
 					
 				case PlayerState.JUMP:
@@ -149,7 +168,7 @@ class Player {
 		}
 	}
     
-    getDamage(damage) {
+    getDamage(damage) {        
         this.hp -= damage;
         
         var hpRelative = this.hp / hpMax * 100;
@@ -163,7 +182,7 @@ class Player {
     }
     
     // inflige des dégâts aux autres joueurs dans la zone d'attaque du joueur
-    inflictDamage(damage) {
+    inflictDamage() {
         var playerRect = {
             x: this.player.x - attackBoxWidth/2 + sizeBoxAwayFromPlayer * this.player.scale.x, 
             y: this.player.y - attackBoxHeight/2, 
@@ -191,6 +210,18 @@ class Player {
                     
                     console.log("Il est dans le box! w/ " + player[i].name);
                     player[i].getDamage(this.damage);
+            }
+        }
+        
+         // on regarde si il y a un joueur dans la box d'attaque
+        for (var i=0; i < interactionsBox.length; i++) {
+
+            if (playerRect.x < interactionsBox[i].rect.x + interactionsBox[i].rect.width &&
+                playerRect.x + playerRect.width > interactionsBox[i].rect.x &&
+                playerRect.y < interactionsBox[i].rect.y + interactionsBox[i].rect.height &&
+                playerRect.height + playerRect.y > interactionsBox[i].rect.y) {
+                    
+                    interactionsBox[i].hitFunction();
             }
         }
     }

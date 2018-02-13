@@ -1,9 +1,11 @@
 var Game = {
 
     preload: function () {
-        game.load.image("bg", "assets/img/bg.png"); // ici bg signifie le fond d"écran	
-        game.load.image("ground", "assets/img/platform.png");               
+        game.load.image("bg", "assets/img/bg.png"); // ici bg signifie le fond d"écran	                   
         game.load.image("recycle_bin", "assets/img/recycle_bin_full.png");   
+        game.load.image("ground", "assets/img/platform.png");   
+        game.load.image("explorer", "assets/img/explorer.png");   
+        game.load.image("explorer_windows", "assets/img/explorer_windows.png");  
         game.load.atlasJSONHash("player", "assets/img/player/texture.png", "assets/img/player/data.json");
     },
 
@@ -13,7 +15,7 @@ var Game = {
         var bg = game.add.sprite(0, 0, "bg");	
         bg.width = width;
         bg.height = height;
-        
+           
         // ====
         // on créer les platforms
         platforms = game.add.group();
@@ -26,9 +28,17 @@ var Game = {
         ground.body.immovable = true;	
         
         var bin = platforms.create(game.world.width - 110, game.world.height - 150, "recycle_bin");        
-        bin.body.immovable = true;	
-        bin.scale.setTo(1, 1);
-            
+        bin.body.immovable = true;	        
+        
+        var fct = function() {
+            console.log("hit");
+           
+            var explorer = platforms.create(300, 200, "explorer_windows");        
+            explorer.body.immovable = true;	            
+       }
+        
+        interactionsBox.push(new InteractionBox(213, game.world.height - 28, 26, 21, "explorer", fct));
+                    
         // ====
         // The player and its settings
         var controls1 = {
@@ -56,7 +66,6 @@ var Game = {
         
     update: function () {
         for (var i=0; i < player.length; i++) {
-            game.debug.body(player[i].player);
             player[i].update();
         }
     },

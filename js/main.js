@@ -5,7 +5,9 @@ var height = window.innerHeight * window.devicePixelRatio;
 // resolution de base: 1680x917
 var game = new Phaser.Game(width, height, Phaser.AUTO, 'game');
 var player = [];
+var interactionsBox = [];
 var platforms;
+
 
 var Main = {
     
