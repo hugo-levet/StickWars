@@ -22,6 +22,6 @@ var Main = {
     
 };
 
-// on charge "Menu"
-game.state.add('Menu', Menu);
-game.state.start('Menu');
+// on charge "game"
+game.state.add('Game', Game);
+game.state.start('Game');

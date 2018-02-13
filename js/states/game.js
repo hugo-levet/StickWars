@@ -3,6 +3,7 @@ var Game = {
     preload: function () {
         game.load.image("bg", "assets/img/bg.png"); // ici bg signifie le fond d"écran	
         game.load.image("ground", "assets/img/platform.png");               
+        game.load.image("recycle_bin", "assets/img/recycle_bin_full.png");   
         game.load.atlasJSONHash("player", "assets/img/player/texture.png", "assets/img/player/data.json");
     },
 
@@ -20,15 +21,13 @@ var Game = {
         
         var ground = platforms.create(0, game.world.height, "ground");
         ground.width = width;
-        ground.height = -43;
-        ground.alpha = 0.2;
+        ground.height = -38;
+        ground.alpha = 0; // alpha, c'est la transparence de 0 à 1
         ground.body.immovable = true;	
         
-        var searchBar = platforms.create(528, 345, "ground");
-        searchBar.width = 638;
-        searchBar.height = 49;
-        searchBar.alpha = 0.2;
-        searchBar.body.immovable = true;
+        var bin = platforms.create(game.world.width - 110, game.world.height - 150, "recycle_bin");        
+        bin.body.immovable = true;	
+        bin.scale.setTo(1, 1);
             
         // ====
         // The player and its settings
