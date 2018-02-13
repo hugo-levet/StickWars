@@ -46,7 +46,7 @@ class Player {
 		this.player.body.gravity.y = plyGravity;
 		this.player.body.collideWorldBounds = true;
 
-		// on extrait l"animation de l"atlas
+		// on extrait l'animation de l'atlas
 		this.player.animations.add("run", Phaser.Animation.generateFrameNames("run/", 1, 10, ".png", 4), 15, true);	
 		this.player.animations.add("idle", Phaser.Animation.generateFrameNames("idle/", 1, 10, ".png", 4), 15, true);
 		this.player.animations.add("attack", Phaser.Animation.generateFrameNames("attack/", 1, 10, ".png", 4), 20, false);
@@ -162,14 +162,14 @@ class Player {
         this.freezeState = false;
     }
     
+    // inflige des dégâts aux autres joueurs dans la zone d'attaque du joueur
     inflictDamage(damage) {
         var playerRect = {
             x: this.player.x - attackBoxWidth/2 + sizeBoxAwayFromPlayer * this.player.scale.x, 
             y: this.player.y - attackBoxHeight/2, 
             width: attackBoxWidth, 
             height: attackBoxHeight
-        };
-       
+        };       
                   
         // on regarde si il y a un joueur dans la box d'attaque
         for (var i=0; i < player.length; i++) {

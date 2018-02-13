@@ -1,11 +1,9 @@
 var Game = {
 
     preload: function () {
-        game.load.image("bg", "img/bg.png"); // ici bg signifie le fond d"écran	
-        game.load.image("ground", "img/platform.png");
-        
-        // https://www.codeandweb.com/texturepacker/tutorials/creating-spritesheets-for-phaser-with-texturepacker
-        game.load.atlasJSONHash("player", "img/player/texture.png", "img/player/data.json");
+        game.load.image("bg", "assets/img/bg.png"); // ici bg signifie le fond d"écran	
+        game.load.image("ground", "assets/img/platform.png");               
+        game.load.atlasJSONHash("player", "assets/img/player/texture.png", "assets/img/player/data.json");
     },
 
     create: function () {
@@ -56,7 +54,7 @@ var Game = {
         
         player.push(new Player(controls2, "ply2", 0xffa5a5));      
     },
-    
+        
     update: function () {
         for (var i=0; i < player.length; i++) {
             game.debug.body(player[i].player);

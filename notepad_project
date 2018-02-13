@@ -1,0 +1,32 @@
+<NotepadPlus>
+    <Project name="StickWars">
+        <Folder name="css">
+            <File name="css\style.css" />
+        </Folder>
+        <Folder name="assets/img">
+            <Folder name="player">
+                <File name="assets/img\player\data.json" />
+                <File name="assets/img\player\texture.png" />
+            </Folder>
+            <File name="assets/img\bg.png" />
+            <File name="assets/img\button.png" />
+            <File name="assets/img\dude.png" />
+            <File name="assets/img\platform.png" />
+            <File name="assets/img\star.png" />
+        </Folder>
+        <Folder name="js">
+            <Folder name="states">
+                <File name="js\states\game.js" />
+                <File name="js\states\menu.js" />
+            </Folder>
+            <File name="js\main.js" />
+            <File name="js\player.js" />
+        </Folder>
+        <Folder name="lib">
+            <File name="lib\HealthBar.standalone.js" />
+            <File name="lib\phaser.js" />
+        </Folder>
+        <File name="index.html" />
+        <File name="README.md" />
+    </Project>
+</NotepadPlus>

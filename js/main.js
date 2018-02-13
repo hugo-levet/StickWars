@@ -8,21 +8,20 @@ var player = [];
 var platforms;
 
 var Main = {
+    
+    preload: function() {
+        // ici on charge toutes les ressources pour l'état actuel (images, sons, etc...)
+    },   
+    
+    create: function () {  
 
-  preload: function () {
-    game.load.image("bg", "img/bg.png"); // ici bg signifie le fond d"écran	
-	game.load.image("ground", "img/platform.png");
-	
-	// https://www.codeandweb.com/texturepacker/tutorials/creating-spritesheets-for-phaser-with-texturepacker
-	game.load.atlasJSONHash("player", "img/player/texture.png", "img/player/data.json");
-  },
-
-  create: function () {
-    game.state.add('Menu', Menu);
-    game.state.start('Menu');
-  }
-
+        // une fois le chargement terminé, on lance le menu.js
+        game.state.add('Menu', Menu);
+        game.state.start('Menu');
+    }
+    
 };
 
-game.state.add('Game', Game);
-game.state.start('Game');
+// on charge "Menu"
+game.state.add('Menu', Menu);
+game.state.start('Menu');
