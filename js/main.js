@@ -11,9 +11,10 @@ var game = new Phaser.Game(width, height, Phaser.AUTO, 'game');
 var player = [];
 var playerLobby = [];
 var interactionsBox = [];
-var platforms;
-
 var controls = [];
+var platforms;
+var plyJoinedTheGame = []; // enregistre les joueurs du lobby pour le state "game"
+
 
 // ici on pourrait rajouter une barre de chargement
 var Main = {
@@ -49,9 +50,18 @@ var Main = {
             attack: game.input.keyboard.addKey(Phaser.Keyboard.P)
         };
         
+        var controls4 = {
+            up: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_8),
+            down: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_5),
+            left: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_4),
+            right: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_6),
+            attack: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_9)
+        };
+        
         controls.push(controls1);
         controls.push(controls2);
         controls.push(controls3);
+        controls.push(controls4);
     
         game.state.add('MainMenu', MainMenu);
         game.state.start('MainMenu');

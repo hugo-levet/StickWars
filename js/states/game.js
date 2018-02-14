@@ -43,13 +43,17 @@ var Game = {
         
         // ====
         // The player and its settings
-        player.push(new Player(width * Math.random(), game.world.height - 180, controls[0], "ply1", 0xbbbbff));	
-        player.push(new Player(width * Math.random(), game.world.height - 180, controls[1], "ply2", 0xffa5a5));      
+        console.log(plyJoinedTheGame.length);
+        
+        for (var i=0; i < plyJoinedTheGame.length; i++) {
+            player.push(new Player(width * Math.random(), game.world.height - 180, controls[plyJoinedTheGame[i]], "ply" + plyJoinedTheGame[i], 0xbbbbff));	
+        }
+              
     },
         
     update: function () {
         for (var i=0; i < player.length; i++) {
-            player[i].update(platform);
+            player[i].update(platforms);
         }
     },
 };

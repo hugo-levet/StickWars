@@ -1,4 +1,4 @@
-const timeBeforeGame = 20;
+const timeBeforeGame = 10;
 
 var Lobby = {
     
@@ -45,7 +45,7 @@ var Lobby = {
         playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY/2, controls[0], "Z"));
         playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY/2, controls[1], "Y"));
         playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY * 1.5, controls[2], "O",));
-        playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY * 1.5, controls[2], "8(numpad)"));
+        playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY * 1.5, controls[3], "8(numpad)"));
     },
     
     update: function () {
@@ -54,15 +54,19 @@ var Lobby = {
         this.text.setText(Math.round(this.time));
         
         // quand le temps est à 0, on lance la game
-        if (this.time <= 0)
-            loadGame;
+        if (this.time <= 0) {
+            for (var i=0; i < playerLobby.length; i++) {
+                if (playerLobby[i].hasJoinedTheGame)
+                    plyJoinedTheGame.push(i);
+            }
+            
+            
+            game.state.add('Game', Game);
+            game.state.start('Game');
+        }
+            
         
         for (var i=0; i < playerLobby.length; i++) 
             playerLobby[i].update(this.borders);
     }
 };
-
-function loadGame() {
-    game.state.add('Game', Game);
-    game.state.start('Game');
-}
