@@ -37,6 +37,7 @@ class Player {
         this.damage = 10;        
         
 		this.player = game.add.sprite(width * Math.random(), game.world.height - 180, "player");
+        this.player.scale.setTo(ratioX, ratioY);
         this.graphics = game.add.graphics(this.player.x, this.player.y);		
         
         this.player.tint = tint; // on applique un filtre de couleur au joueur pour les comparer
@@ -72,13 +73,13 @@ class Player {
         this.hpBar = new HealthBar(game, barConfig);               
 	}
 		
-	update() {
-        this.hpBar.setPosition(this.player.x, this.player.y - 75);
-        
+	update() {               
 		var hitPlatform = game.physics.arcade.collide(this.player, platforms);
 		this.player.body.velocity.x = 0;
 		
-         // si il y a une collision sur la gauche, on ralentit la chute & on reset les jumps
+        this.hpBar.setPosition(this.player.x, this.player.y - 75);        
+        
+        // si il y a une collision sur les côtés, on slide sur le mur
         if (this.player.body.blocked.left || this.player.body.blocked.right ||
             this.player.body.touching.left || this.player.body.touching.right) {
                 

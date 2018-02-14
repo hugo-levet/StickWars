@@ -4,8 +4,10 @@ var Game = {
         game.load.image("bg", "assets/img/bg.png"); // ici bg signifie le fond d"écran	                   
         game.load.image("recycle_bin", "assets/img/recycle_bin_full.png");   
         game.load.image("ground", "assets/img/platform.png");   
+        
         game.load.image("explorer", "assets/img/explorer.png");   
         game.load.image("explorer_windows", "assets/img/explorer_windows.png");  
+        
         game.load.atlasJSONHash("player", "assets/img/player/texture.png", "assets/img/player/data.json");
     },
 
@@ -23,22 +25,23 @@ var Game = {
         
         var ground = platforms.create(0, game.world.height, "ground");
         ground.width = width;
-        ground.height = -38;
+        ground.height = convertY(-38);
         ground.alpha = 0; // alpha, c'est la transparence de 0 à 1
         ground.body.immovable = true;	
+        //ground.scale.setTo(ratioX, ratioY);
         
-        var bin = platforms.create(game.world.width - 110, game.world.height - 150, "recycle_bin");        
-        bin.body.immovable = true;	        
+        var bin = platforms.create(game.world.width - convertX(110), game.world.height - convertY(150), "recycle_bin");        
+        bin.body.immovable = true;	      
+        bin.scale.setTo(ratioX, ratioY);
         
         var fct = function() {
-            console.log("hit");
-           
-            var explorer = platforms.create(300, 200, "explorer_windows");        
-            explorer.body.immovable = true;	            
-       }
+            var explorer = platforms.create(convertX(300), convertY(200), "explorer_windows");    
+            explorer.body.immovable = true;	  
+            explorer.scale.setTo(ratioX, ratioY);
+        }
         
-        interactionsBox.push(new InteractionBox(213, game.world.height - 28, 26, 21, "explorer", fct));
-                    
+        interactionsBox.push(new InteractionBox(convertX(213), game.world.height - convertY(28), convertX(26), convertY(21), "explorer", fct));
+        
         // ====
         // The player and its settings
         var controls1 = {

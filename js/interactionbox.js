@@ -14,6 +14,6 @@ class InteractionBox {
         
         var sprite = game.add.sprite(x, y, icon);        
         sprite.width = width;
-        sprite.height = height;
+        sprite.height = height; 
     }
 }
