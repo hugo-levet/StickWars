@@ -3,7 +3,7 @@ var Game = {
     preload: function () {
         game.load.image("bg", "assets/img/bg.png"); // ici bg signifie le fond d"écran	                   
         game.load.image("recycle_bin", "assets/img/recycle_bin_full.png");   
-        game.load.image("ground", "assets/img/platform.png");   
+        
         
         game.load.image("explorer", "assets/img/explorer.png");   
         game.load.image("explorer_windows", "assets/img/explorer_windows.png");  
@@ -27,12 +27,11 @@ var Game = {
         ground.width = width;
         ground.height = convertY(-38);
         ground.alpha = 0; // alpha, c'est la transparence de 0 à 1
-        ground.body.immovable = true;	
-        //ground.scale.setTo(ratioX, ratioY);
         
-        var bin = platforms.create(game.world.width - convertX(110), game.world.height - convertY(150), "recycle_bin");        
-        bin.body.immovable = true;	      
+        var bin = platforms.create(game.world.width - convertX(110), game.world.height - convertY(150), "recycle_bin");                     
         bin.scale.setTo(ratioX, ratioY);
+        
+        platforms.setAll('body.immovable', true);
         
         var fct = function() {
             var explorer = platforms.create(convertX(300), convertY(200), "explorer_windows");    
@@ -44,32 +43,13 @@ var Game = {
         
         // ====
         // The player and its settings
-        var controls1 = {
-            up: game.input.keyboard.addKey(Phaser.Keyboard.Z),
-            down: game.input.keyboard.addKey(Phaser.Keyboard.S),
-            left: game.input.keyboard.addKey(Phaser.Keyboard.Q),
-            right: game.input.keyboard.addKey(Phaser.Keyboard.D),
-            attack: game.input.keyboard.addKey(Phaser.Keyboard.E)
-        };
-        
-        player.push(new Player(controls1, "ply1", 0xbbbbff));	
-
-        // ====
-        // The player and its settings
-        var controls2 = {
-            up: game.input.keyboard.addKey(Phaser.Keyboard.O),
-            down: game.input.keyboard.addKey(Phaser.Keyboard.L),
-            left: game.input.keyboard.addKey(Phaser.Keyboard.K),
-            right: game.input.keyboard.addKey(Phaser.Keyboard.M),
-            attack: game.input.keyboard.addKey(Phaser.Keyboard.P)
-        };
-        
-        player.push(new Player(controls2, "ply2", 0xffa5a5));      
+        player.push(new Player(width * Math.random(), game.world.height - 180, controls[0], "ply1", 0xbbbbff));	
+        player.push(new Player(width * Math.random(), game.world.height - 180, controls[1], "ply2", 0xffa5a5));      
     },
         
     update: function () {
         for (var i=0; i < player.length; i++) {
-            player[i].update();
+            player[i].update(platform);
         }
     },
 };

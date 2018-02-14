@@ -1,4 +1,4 @@
-var Menu = {
+var MainMenu = {
 
     // on va charger les images utilisés pour le menu
     preload: function () {
@@ -16,7 +16,7 @@ var Menu = {
         
         // PLAY BUTTON
         // créer l'image du bouton
-        var play = game.add.button(game.world.centerX, 400, 'button', loadGame, this, 2, 1, 0);
+        var play = game.add.button(game.world.centerX, 400, 'button', loadPlayMenu, this, 2, 1, 0);
         play.anchor.setTo(.5,.5);
         
         // puis on pose un texte par dessus
@@ -25,18 +25,18 @@ var Menu = {
         
         // CREDITS BUTTON
         // créer l'image du bouton
-        var play = game.add.button(game.world.centerX, 550, 'button', loadGame, this, 2, 1, 0);
+        var play = game.add.button(game.world.centerX, 550, 'button', loadCredits, this, 2, 1, 0);
         play.anchor.setTo(.5,.5);
         
         // puis on pose un texte par dessus
         var text = game.add.bitmapText(game.world.centerX, 550, 'pixel', 'Credits', 32);
         text.anchor.setTo(.5,.5);
-    },
+    },      
 };
 
-function loadGame() {
-    game.state.add('Game', Game);
-    game.state.start('Game');
+function loadPlayMenu() {
+    game.state.add('Lobby', Lobby);
+    game.state.start('Lobby');
 }
 
 function loadCredits() {

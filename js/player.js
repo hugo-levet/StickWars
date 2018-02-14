@@ -1,5 +1,5 @@
 const maxJumps = 2;
-const plySpeed = 250;
+const plySpeed = 400;
 const plySlideSpeed = 50;
 const plyGravity = 500;
 const jumpForce = 600;
@@ -22,8 +22,9 @@ var PlayerState = {
 // EN JS, DANS UNE CLASSE, ON N'A PAS BESOIN DE DECLARER LES VARIABLES AVANT DE LES UTILISER
 // IL FAUT RAJOUTER THIS. DEVANT CHAQUE VARIABLE INTERNE PARCONTRE :/
 
-class Player {		
-	constructor(controls, name, tint) {
+class Player {
+    
+	constructor(x, y, controls, name, tint) {
 		
 		// DÉCLARATION DES VARIABLES
 		this.isUpKeyReleased = false; // garde le dernier état de la touche de saut
@@ -36,7 +37,7 @@ class Player {
         this.name = name;         
         this.damage = 10;        
         
-		this.player = game.add.sprite(width * Math.random(), game.world.height - 180, "player");
+		this.player = game.add.sprite(x, y, "player");
         this.player.scale.setTo(ratioX, ratioY);
         this.graphics = game.add.graphics(this.player.x, this.player.y);		
         
@@ -73,8 +74,8 @@ class Player {
         this.hpBar = new HealthBar(game, barConfig);               
 	}
 		
-	update() {               
-		var hitPlatform = game.physics.arcade.collide(this.player, platforms);
+	update(platform) {               
+		var hitPlatform = game.physics.arcade.collide(this.player, platform);
 		this.player.body.velocity.x = 0;
 		
         this.hpBar.setPosition(this.player.x, this.player.y - 75);        
