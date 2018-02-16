@@ -1,3 +1,7 @@
+//
+// Cette classe s'instantie dans le lobby
+// Elle 
+
 class PlayerLobby {	
 	
 	constructor(x, y, controls, key) {
@@ -44,11 +48,11 @@ class PlayerLobby {
         
         // Update Loading
         this.radialProgressBar.clear();
-        this.radialProgressBar.lineStyle(32, 0xffffff);
+        this.radialProgressBar.lineStyle(16, 0xffffff);
         
         this.radialProgressBar.lineColor = Phaser.Color.interpolateColor(0xff0000, 0x80ff00, 360, this.angle, 1, 1);
 
-        this.radialProgressBar.arc(0, 0, 160, 0, game.math.degToRad(this.angle), false);
+        this.radialProgressBar.arc(0, 0, 60, 0, game.math.degToRad(this.angle), false);
         this.radialProgressBar.endFill();
     
     }

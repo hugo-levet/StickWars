@@ -24,7 +24,10 @@ var Main = {
     },   
     
     create: function () { 
-
+        attackBoxWidth = convertX(attackBoxWidth);
+        attackBoxHeight = convertY(attackBoxHeight);
+        sizeBoxAwayFromPlayer = convertX(sizeBoxAwayFromPlayer);
+        
         // on créer les contrôles des joueurs
         var controls1 = {
             up: game.input.keyboard.addKey(Phaser.Keyboard.Z),

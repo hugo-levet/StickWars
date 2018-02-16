@@ -50,7 +50,7 @@ var Lobby = {
     
     update: function () {
         
-        this.time -= game.time.elapsed/1000; 
+        this.time -= game.time.elapsed/1000;
         this.text.setText(Math.round(this.time));
         
         // quand le temps est à 0, on lance la game
@@ -64,8 +64,7 @@ var Lobby = {
             game.state.add('Game', Game);
             game.state.start('Game');
         }
-            
-        
+                    
         for (var i=0; i < playerLobby.length; i++) 
             playerLobby[i].update(this.borders);
     }

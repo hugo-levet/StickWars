@@ -5,9 +5,9 @@ const plyGravity = 500;
 const jumpForce = 600;
 const hpMax = 100;
 
-const attackBoxWidth = 65;
-const attackBoxHeight = 160;
-const sizeBoxAwayFromPlayer = 80;
+var attackBoxWidth = 65;
+var attackBoxHeight = 160;
+var sizeBoxAwayFromPlayer = 80;
 
 var PlayerState = {  
   RUN: 1,
