@@ -2,7 +2,7 @@
 const width = window.innerWidth * window.devicePixelRatio;
 const height = window.innerHeight * window.devicePixelRatio;
 const initialWidth = 1680;
-const initialHeight = 1080;
+const initialHeight = 1048;
 const ratioX = width / initialWidth;
 const ratioY = height / initialHeight;
 
@@ -19,8 +19,19 @@ var plyJoinedTheGame = []; // enregistre les joueurs du lobby pour le state "gam
 // ici on pourrait rajouter une barre de chargement
 var Main = {
     
-    preload: function() {
-        // ici on charge toutes les ressources pour l'état actuel (images, sons, etc...)
+    // ici on charge toutes les ressources pour l'état actuel (images, sons, etc...)
+    preload: function() {        
+        game.load.image("bg", "assets/img/world/bg.png"); // ici bg signifie le fond d"écran	                   
+        game.load.image("recycle_bin", "assets/img/world/recycle_bin_full.png");                  
+        game.load.image("explorer", "assets/img/world/explorer.png");   
+        game.load.image("explorer_windows", "assets/img/world/explorer_windows.png"); 
+        
+        game.load.image("button", "assets/img/button.png");        
+        game.load.image("ground", "assets/img/world/platform.png"); 
+
+        game.load.audio('footstep', 'assets/audio/footstep_run.mp3');
+        game.load.bitmapFont('pixel', 'assets/fonts/carrier_command.png', 'assets/fonts/carrier_command.xml');
+        game.load.atlasJSONHash("player", "assets/img/player/texture.png", "assets/img/player/data.json");    
     },   
     
     create: function () { 
@@ -66,6 +77,7 @@ var Main = {
         controls.push(controls3);
         controls.push(controls4);
     
+        // on lance le menu
         game.state.add('MainMenu', MainMenu);
         game.state.start('MainMenu');
     }

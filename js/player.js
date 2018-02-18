@@ -71,10 +71,14 @@ class Player {
             flipped: false
         };
         
-        this.hpBar = new HealthBar(game, barConfig);               
+        this.hpBar = new HealthBar(game, barConfig);         
+
+        this.footstep = game.sound.play('footstep');
+        this.footstep.stop();
 	}
 		
-	update(platform) {               
+	update(platform) {   
+        
 		var hitPlatform = game.physics.arcade.collide(this.player, platform);
 		this.player.body.velocity.x = 0;
 		
@@ -144,6 +148,10 @@ class Player {
 					
 				case PlayerState.RUN:
 					this.player.animations.play("run");
+                    
+                    // quand le joueur marche, on joue le son de bruit de pas
+                    if (!this.footstep.isPlaying)
+                        this.footstep = game.sound.play('footstep');
 					break;
 					
 				case PlayerState.ATTACK:

@@ -1,15 +1,6 @@
 const timeBeforeGame = 10;
 
 var Lobby = {
-    
-    // on va charger les images utilisés pour le menu
-    preload: function () {
-        game.load.image("button", "assets/img/button.png");        
-        game.load.image("ground", "assets/img/platform.png"); 
-
-        game.load.bitmapFont('pixel', 'assets/fonts/carrier_command.png', 'assets/fonts/carrier_command.xml');
-        game.load.atlasJSONHash("player", "assets/img/player/texture.png", "assets/img/player/data.json");        
-    },
 
     create: function () {
         

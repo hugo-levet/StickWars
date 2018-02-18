@@ -1,16 +1,5 @@
 var Game = {
 
-    preload: function () {
-        game.load.image("bg", "assets/img/bg.png"); // ici bg signifie le fond d"écran	                   
-        game.load.image("recycle_bin", "assets/img/recycle_bin_full.png");   
-        
-        
-        game.load.image("explorer", "assets/img/explorer.png");   
-        game.load.image("explorer_windows", "assets/img/explorer_windows.png");  
-        
-        game.load.atlasJSONHash("player", "assets/img/player/texture.png", "assets/img/player/data.json");
-    },
-
     create: function () {
         game.physics.startSystem(Phaser.Physics.ARCADE);
             
@@ -41,14 +30,13 @@ var Game = {
         
         interactionsBox.push(new InteractionBox(convertX(213), game.world.height - convertY(28), convertX(26), convertY(21), "explorer", fct));
         
-        // ====
-        // The player and its settings
-        console.log(plyJoinedTheGame.length);
+        // on décode les fichiers audio .mp3
+        footstep = game.add.audio('footstep');
         
-        for (var i=0; i < plyJoinedTheGame.length; i++) {
-            player.push(new Player(width * Math.random(), game.world.height - 180, controls[plyJoinedTheGame[i]], "ply" + plyJoinedTheGame[i], 0xbbbbff));	
-        }
-              
+        // ====
+        // On créer les joueurs                
+        for (var i=0; i < plyJoinedTheGame.length; i++) 
+            player.push(new Player(width * Math.random(), game.world.height - 180, controls[plyJoinedTheGame[i]], "ply" + plyJoinedTheGame[i], 0xbbbbff));	    
     },
         
     update: function () {

@@ -1,6 +1,6 @@
 //
 // Cette classe s'instantie dans le lobby
-// Elle 
+// Gère les entrées du joueur dans le lobby
 
 class PlayerLobby {	
 	

@@ -1,15 +1,9 @@
 var MainMenu = {
 
-    // on va charger les images utilisés pour le menu
-    preload: function () {
-        game.load.image("button", "assets/img/button.png");
-        game.load.bitmapFont('pixel', 'assets/fonts/carrier_command.png', 'assets/fonts/carrier_command.xml');
-    },
-
     create: function () {
         
         game.stage.backgroundColor = '#182d3b';
-        
+                
         // Le titre
         var text = game.add.bitmapText(game.world.centerX, 200, 'pixel', 'StickWars', 32);
         text.anchor.setTo(.5,.5);
