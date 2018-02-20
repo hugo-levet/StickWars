@@ -176,16 +176,20 @@ class Player {
         // ====
 		// SONS    
         switch (this.playerState) {
-            case PlayerState.JUMP:
-                if (this.footstep.isPlaying && !this.player.body.touching.down)
-                        this.footstep.stop();
-                break;
-                
             case PlayerState.RUN: 
                 // quand le joueur marche, on joue le son de bruit de pas
                 if (!this.footstep.isPlaying && this.player.body.touching.down)
                     this.footstep = game.sound.play('footstep');
                 
+                break;
+            
+            case PlayerState.JUMP:
+                if (!this.player.body.touching.down)
+                    this.footstep.stop();
+                break;            
+                
+            case PlayerState.IDLE:
+                this.footstep.stop();
                 break;
         }
 	}

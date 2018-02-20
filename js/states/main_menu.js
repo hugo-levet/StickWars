@@ -29,11 +29,15 @@ var MainMenu = {
 };
 
 function loadPlayMenu() {
+    game.sound.play('click');
+    
     game.state.add('Lobby', Lobby);
     game.state.start('Lobby');
 }
 
 function loadCredits() {
+    game.sound.play('click');
+    
     game.state.add('Credits', Credits);
     game.state.start('Credits');
 }

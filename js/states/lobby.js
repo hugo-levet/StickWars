@@ -37,12 +37,18 @@ var Lobby = {
         playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY/2, controls[1], "Y"));
         playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY * 1.5, controls[2], "O",));
         playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY * 1.5, controls[3], "8(numpad)"));
+        
+        this.count_sound = game.sound.play('lobby');
+        this.count_sound.stop();
     },
     
     update: function () {
         
         this.time -= game.time.elapsed/1000;
         this.text.setText(Math.round(this.time));
+        
+        if (this.time <= 4 && !this.count_sound.isPlaying)
+            this.count_sound.play();
         
         // quand le temps est à 0, on lance la game
         if (this.time <= 0) {
