@@ -97,7 +97,7 @@ class Player {
         }          
         
 		// on reset le double jump si on touche le sol
-		if (this.player.body.touching.down && hitPlatform)
+		if (this.player.body.touching.down)
 			this.jumpsCounts = 0;
 		
 		// ===
@@ -148,10 +148,6 @@ class Player {
 					
 				case PlayerState.RUN:
 					this.player.animations.play("run");
-                    
-                    // quand le joueur marche, on joue le son de bruit de pas
-                    if (!this.footstep.isPlaying)
-                        this.footstep = game.sound.play('footstep');
 					break;
 					
 				case PlayerState.ATTACK:
@@ -176,6 +172,22 @@ class Player {
 					break;
 			}	
 		}
+        
+        // ====
+		// SONS    
+        switch (this.playerState) {
+            case PlayerState.JUMP:
+                if (this.footstep.isPlaying && !this.player.body.touching.down)
+                        this.footstep.stop();
+                break;
+                
+            case PlayerState.RUN: 
+                // quand le joueur marche, on joue le son de bruit de pas
+                if (!this.footstep.isPlaying && this.player.body.touching.down)
+                    this.footstep = game.sound.play('footstep');
+                
+                break;
+        }
 	}
     
     getDamage(damage) {        
