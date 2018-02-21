@@ -55,8 +55,7 @@ var Lobby = {
             for (var i=0; i < playerLobby.length; i++) {
                 if (playerLobby[i].hasJoinedTheGame)
                     plyJoinedTheGame.push(i);
-            }
-            
+            }            
             
             game.state.add('Game', Game);
             game.state.start('Game');
