@@ -40,8 +40,7 @@ var Game = {
     },
         
     update: function () {
-        for (var i=0; i < player.length; i++) {
+        for (var i=0; i < player.length; i++)
             player[i].update(platforms);
-        }
     },
 };

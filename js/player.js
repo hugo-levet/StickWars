@@ -54,7 +54,7 @@ class Player {
 		this.player.animations.add("run", Phaser.Animation.generateFrameNames("run/", 1, 25, ".png", 4), 120, true);	
         this.player.animations.add("idle", Phaser.Animation.generateFrameNames("idle/", 1, 8, ".png", 4), 15, true);	
         this.player.animations.add("attack", Phaser.Animation.generateFrameNames("attack/", 1, 26, ".png", 4), 20, false);	
-        this.player.animations.add("jump", Phaser.Animation.generateFrameNames("jump/", 1, 21, ".png", 4), 15, false);	
+        this.player.animations.add("jump", Phaser.Animation.generateFrameNames("jump/", 1, 1, ".png", 4), 15, true);	
         
         // créer la barre de vie
         var barConfig = {
@@ -79,10 +79,7 @@ class Player {
 	}
 		
 	update(platform) {   
-        
-        game.debug.body(this.player);
-        console.log(this.playerState);
-        
+      
 		var hitPlatform = game.physics.arcade.collide(this.player, platform);
 		this.player.body.velocity.x = 0;
 		
@@ -151,7 +148,7 @@ class Player {
 					break;
 					
 				case PlayerState.RUN:
-					this.player.animations.play("run");
+                    this.player.animations.play("run");
 					break;
 					
 				case PlayerState.ATTACK:
@@ -167,10 +164,14 @@ class Player {
 				case PlayerState.JUMP:
 					var jumpAnim = this.player.animations.play("jump");
 					
-					this.freezeState = true;
-					jumpAnim.onComplete.add(this.stopAnimation, this);
+					/*this.freezeState = true;
+					jumpAnim.onComplete.add(this.stopAnimation, this);//*/
 					break;
 			}	
+            
+            // ici on overwrite l'animation si le joueur est en train de sauter
+            if (this.jumpsCounts != 0)
+                this.player.animations.play("jump");
 		}
         
         // ====
