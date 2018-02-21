@@ -48,15 +48,13 @@ class Player {
 		
 		this.player.body.gravity.y = plyGravity;
 		this.player.body.collideWorldBounds = true;
+        this.player.body.setSize(75, 147, 220, 0); // on modifie la boite de collision
 
 		// on extrait l'animation de l'atlas
 		this.player.animations.add("run", Phaser.Animation.generateFrameNames("run/", 1, 25, ".png", 4), 120, true);	
         this.player.animations.add("idle", Phaser.Animation.generateFrameNames("idle/", 1, 8, ".png", 4), 15, true);	
         this.player.animations.add("attack", Phaser.Animation.generateFrameNames("attack/", 1, 26, ".png", 4), 20, false);	
         this.player.animations.add("jump", Phaser.Animation.generateFrameNames("jump/", 1, 21, ".png", 4), 15, false);	
-		/*this.player.animations.add("idle", Phaser.Animation.generateFrameNames("idle/", 1, 10, ".png", 4), 15, true);
-		this.player.animations.add("attack", Phaser.Animation.generateFrameNames("attack/", 1, 10, ".png", 4), 20, false);
-		this.player.animations.add("jump", Phaser.Animation.generateFrameNames("jump/", 1, 10, ".png", 4), 15, false);	//*/
         
         // créer la barre de vie
         var barConfig = {
@@ -82,7 +80,7 @@ class Player {
 		
 	update(platform) {   
         
-        //game.debug.body(this.player);
+        game.debug.body(this.player);
         console.log(this.playerState);
         
 		var hitPlatform = game.physics.arcade.collide(this.player, platform);
@@ -159,15 +157,11 @@ class Player {
 				case PlayerState.ATTACK:
 					var attackAnim = this.player.animations.play("attack");
 					
-					this.freezeState = true;
-					attackAnim.onComplete.add(this.stopAnimation, this);
+					//this.freezeState = true;
+					//attackAnim.onComplete.add(this.stopAnimation, this);
                     
-                    // inflige des dégâts au bout de 500ms
-                    var v_name = this;
-                    
-                    setTimeout(function () {
-                        v_name.inflictDamage();
-                    }, 400);
+                    this.inflictDamage();
+     
 					break;
 					
 				case PlayerState.JUMP:
