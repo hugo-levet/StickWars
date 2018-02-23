@@ -5,9 +5,7 @@ const plyGravity = 500;
 const jumpForce = 600;
 const hpMax = 100;
 
-var attackBoxWidth = 65;
-var attackBoxHeight = 160;
-var sizeBoxAwayFromPlayer = 80;
+var highAttackBox = {x: 40, y: -20, width: 65, height: 25};
 
 var PlayerState = {  
   RUN: 1,
@@ -55,6 +53,7 @@ class Player {
         this.player.animations.add("idle", Phaser.Animation.generateFrameNames("idle/", 1, 8, ".png", 4), 15, true);	
         this.player.animations.add("attack", Phaser.Animation.generateFrameNames("attack/", 1, 26, ".png", 4), 20, false);	
         this.player.animations.add("jump", Phaser.Animation.generateFrameNames("jump/", 1, 1, ".png", 4), 15, true);	
+        this.player.animations.add("slide", Phaser.Animation.generateFrameNames("wall_slide/", 1, 1, ".png", 4), 15, true);	
         
         // créer la barre de vie
         var barConfig = {
@@ -84,18 +83,6 @@ class Player {
 		this.player.body.velocity.x = 0;
 		
         this.hpBar.setPosition(this.player.x, this.player.y - 75);        
-        
-        // si il y a une collision sur les côtés, on slide sur le mur
-        if (this.player.body.blocked.left || this.player.body.blocked.right ||
-            this.player.body.touching.left || this.player.body.touching.right) {
-                
-            this.jumpsCounts = 0;
-            this.player.body.gravity.y = 0;
-            this.player.body.velocity.y = plySlideSpeed;
-        } 
-        else {
-            this.player.body.gravity.y = plyGravity;
-        }          
         
 		// on reset le double jump si on touche le sol
 		if (this.player.body.touching.down)
@@ -128,6 +115,20 @@ class Player {
 		else {
 			this.playerState = PlayerState.IDLE;
 		}
+        
+        // si il y a une collision sur les côtés, on slide sur le mur
+        if (this.player.body.blocked.left || this.player.body.blocked.right ||
+            this.player.body.touching.left || this.player.body.touching.right) {
+                
+            this.jumpsCounts = 0;
+            this.player.body.gravity.y = 0;
+            this.player.body.velocity.y = plySlideSpeed;
+            
+            //this.playerState = PlayerState.SLIDEONWALL;
+        } 
+        else {
+            this.player.body.gravity.y = plyGravity;
+        }         
 		 
 		if (this.controls.up.isUp)
 			this.isUpKeyReleased = false;
@@ -135,9 +136,9 @@ class Player {
         // ====
         // DRAW ATTACK BOX COLLISION
         this.graphics.kill();        
-        this.graphics = game.add.graphics(this.player.x - attackBoxWidth/2, this.player.y - attackBoxHeight/2);
+        this.graphics = game.add.graphics(this.player.x - highAttackBox.width/2, this.player.y - highAttackBox.height/2);
         this.graphics.lineStyle(2, 0xff0000, 1);
-        this.graphics.drawRect(sizeBoxAwayFromPlayer * this.player.scale.x, 0, attackBoxWidth, attackBoxHeight);
+        this.graphics.drawRect(highAttackBox.x * this.player.scale.x, highAttackBox.y, highAttackBox.width, highAttackBox.height);
                   
 		// ====
 		// ANIMATION        
@@ -152,21 +153,19 @@ class Player {
 					break;
 					
 				case PlayerState.ATTACK:
-					var attackAnim = this.player.animations.play("attack");
-					
-					//this.freezeState = true;
-					//attackAnim.onComplete.add(this.stopAnimation, this);
-                    
+					this.player.animations.play("attack");
                     this.inflictDamage();
      
 					break;
 					
 				case PlayerState.JUMP:
-					var jumpAnim = this.player.animations.play("jump");
-					
-					/*this.freezeState = true;
-					jumpAnim.onComplete.add(this.stopAnimation, this);//*/
+					this.player.animations.play("jump");
 					break;
+                    
+                case PlayerState.SLIDEONWALL:
+                    this.player.animations.play("slide");
+                
+                    break;
 			}	
             
             // ici on overwrite l'animation si le joueur est en train de sauter
@@ -211,10 +210,10 @@ class Player {
     // inflige des dégâts aux autres joueurs dans la zone d'attaque du joueur
     inflictDamage() {
         var playerRect = {
-            x: this.player.x - attackBoxWidth/2 + sizeBoxAwayFromPlayer * this.player.scale.x, 
-            y: this.player.y - attackBoxHeight/2, 
-            width: attackBoxWidth, 
-            height: attackBoxHeight
+            x: this.player.x - highAttackBox.width/2 + highAttackBox.x * this.player.scale.x, 
+            y: this.player.y - highAttackBox.height/2, 
+            width: highAttackBox.width, 
+            height: highAttackBox.height
         };       
                   
         // on regarde si il y a un joueur dans la box d'attaque

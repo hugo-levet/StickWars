@@ -38,9 +38,10 @@ var Main = {
     },   
     
     create: function () { 
-        attackBoxWidth = convertX(attackBoxWidth);
-        attackBoxHeight = convertY(attackBoxHeight);
-        sizeBoxAwayFromPlayer = convertX(sizeBoxAwayFromPlayer);
+        highAttackBox.width = convertX(highAttackBox.width);
+        highAttackBox.height = convertY(highAttackBox.height);
+        highAttackBox.x = convertX(highAttackBox.x);
+        highAttackBox.y = convertX(highAttackBox.y);
         
         // on créer les contrôles des joueurs
         var controls1 = {
