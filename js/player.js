@@ -51,7 +51,7 @@ class Player {
 		// on extrait l'animation de l'atlas
 		this.player.animations.add("run", Phaser.Animation.generateFrameNames("run/", 1, 25, ".png", 4), 120, true);	
         this.player.animations.add("idle", Phaser.Animation.generateFrameNames("idle/", 1, 8, ".png", 4), 15, true);	
-        this.player.animations.add("attack", Phaser.Animation.generateFrameNames("attack/", 1, 26, ".png", 4), 20, false);	
+        this.player.animations.add("attack", Phaser.Animation.generateFrameNames("attack/", 1, 26, ".png", 4), 50, false);	
         this.player.animations.add("jump", Phaser.Animation.generateFrameNames("jump/", 1, 1, ".png", 4), 15, true);	
         this.player.animations.add("slide", Phaser.Animation.generateFrameNames("wall_slide/", 1, 1, ".png", 4), 15, true);	
         
@@ -124,7 +124,7 @@ class Player {
             this.player.body.gravity.y = 0;
             this.player.body.velocity.y = plySlideSpeed;
             
-            //this.playerState = PlayerState.SLIDEONWALL;
+            this.playerState = PlayerState.SLIDEONWALL;
         } 
         else {
             this.player.body.gravity.y = plyGravity;
