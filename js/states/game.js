@@ -28,7 +28,7 @@ var Game = {
             explorer.scale.setTo(ratioX, ratioY);
         }
         
-        interactionsBox.push(new InteractionBox(convertX(213), game.world.height - convertY(28), convertX(26), convertY(21), "explorer", fct));
+        interactionsBox.push(new InteractionBox(convertX(75), convertY(75), convertX(45), convertY(41), "explorer", fct));
         
         // on décode les fichiers audio .mp3
         footstep = game.add.audio('footstep');
