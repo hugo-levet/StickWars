@@ -4,6 +4,7 @@ const plySlideSpeed = 50;
 const plyGravity = 500;
 const jumpForce = 600;
 const hpMax = 100;
+const attackSpeed = 0.75; // 1 attack per second
 
 var highAttackBox = {x: 40, y: -20, width: 65, height: 25};
 
@@ -33,8 +34,10 @@ class Player {
         this.jumpsCounts = 0;
         this.controls = controls;
         this.name = name;         
-        this.damage = 10;        
-        
+        this.damage = 10;     
+        this.timerAtk = 0;  // temps depuis la dernier attaque du joueur
+                
+        // CREATION DU SPRITE DU JOUEUR
 		this.player = game.add.sprite(x, y, "stickman");
         this.player.scale.setTo(ratioX, ratioY);
         this.graphics = game.add.graphics(this.player.x, this.player.y);		
@@ -80,9 +83,10 @@ class Player {
 	update(platform) {   
       
 		var hitPlatform = game.physics.arcade.collide(this.player, platform);
-		this.player.body.velocity.x = 0;
-		
-        this.hpBar.setPosition(this.player.x, this.player.y - 75);        
+        
+		this.player.body.velocity.x = 0;		
+        this.hpBar.setPosition(this.player.x, this.player.y - 75);                
+        this.timerAtk += game.time.elapsed/1000;
         
 		// on reset le double jump si on touche le sol
 		if (this.player.body.touching.down)
@@ -154,7 +158,18 @@ class Player {
 					
 				case PlayerState.ATTACK:
 					this.player.animations.play("attack");
-                    this.inflictDamage();
+                    
+                    var ply = this;
+                    
+                    // on attaque dans this.attackSpeed secondes (on attends l'animation)
+                    setTimeout(function() { 
+                        if (ply.playerState != PlayerState.ATTACK || ply.timerAtk < attackSpeed)    
+                            return;
+                        
+                        ply.timerAtk = 0;
+                        ply.inflictDamage(); 
+                        
+                    }, this.attackSpeed);
      
 					break;
 					
@@ -247,6 +262,7 @@ class Player {
                 playerRect.y < interactionsBox[i].rect.y + interactionsBox[i].rect.height &&
                 playerRect.height + playerRect.y > interactionsBox[i].rect.y) {
                     
+                    console.log("Actionner est dans le box!");
                     interactionsBox[i].hitFunction();
             }
         }

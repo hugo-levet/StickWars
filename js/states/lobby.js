@@ -1,4 +1,4 @@
-const timeBeforeGame = 10;
+const timeBeforeGame = 5;
 
 var Lobby = {
 
