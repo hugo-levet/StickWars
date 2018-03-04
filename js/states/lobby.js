@@ -5,8 +5,7 @@ var Lobby = {
     create: function () {
         
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        game.stage.backgroundColor = '#182d3b';
-               
+        game.stage.backgroundColor = '#182d3b';              
         
         // ====
         // une ligne horizontal & verticale
@@ -33,16 +32,16 @@ var Lobby = {
         
         // ====
         // on ajoute les joueurs
-        playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY/2, controls[0], "Z"));
-        playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY/2, controls[1], "Y"));
-        playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY * 1.5, controls[2], "O",));
-        playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY * 1.5, controls[3], "8(numpad)"));
+        playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY/2, PlayerMetaEnum.BLUE, "Z"));
+        playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY/2, PlayerMetaEnum.RED, "Y"));
+        playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY * 1.5, PlayerMetaEnum.GREEN, "O",));
+        playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY * 1.5, PlayerMetaEnum.YELLOW, "8(numpad)"));
         
         this.count_sound = game.sound.play('lobby');
         this.count_sound.stop();
     },
     
-    update: function () {
+    update: function () {              
         
         this.time -= game.time.elapsed/1000;
         this.text.setText(Math.round(this.time));
@@ -52,9 +51,9 @@ var Lobby = {
         
         // quand le temps est à 0, on lance la game
         if (this.time <= 0) {
-            for (var i=0; i < playerLobby.length; i++) {
+            for (var i=0; i < playerLobby.length; i++) {                
                 if (playerLobby[i].hasJoinedTheGame)
-                    plyJoinedTheGame.push(i);
+                    playerMeta[i].enable = true;
             }            
             
             game.state.add('Game', Game);

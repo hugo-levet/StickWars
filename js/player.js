@@ -4,7 +4,7 @@ const plySlideSpeed = 50;
 const plyGravity = 500;
 const jumpForce = 600;
 const hpMax = 100;
-const attackSpeed = 0.75; // 1 attack per second
+const attackSpeed = 0.82; // 1 attack per second
 
 var highAttackBox = {x: 40, y: -20, width: 65, height: 25};
 
@@ -23,7 +23,7 @@ var PlayerState = {
 
 class Player {
     
-	constructor(x, y, controls, name, tint) {
+	constructor(x, y, controls, tint) {
 		
 		// DÉCLARATION DES VARIABLES
 		this.isUpKeyReleased = false; // garde le dernier état de la touche de saut
@@ -33,7 +33,6 @@ class Player {
 		this.hp = hpMax;
         this.jumpsCounts = 0;
         this.controls = controls;
-        this.name = name;         
         this.damage = 10;     
         this.timerAtk = 0;  // temps depuis la dernier attaque du joueur
                 
@@ -42,8 +41,10 @@ class Player {
         this.player.scale.setTo(ratioX, ratioY);
         this.graphics = game.add.graphics(this.player.x, this.player.y);		
         
-        this.player.tint = tint; // on applique un filtre de couleur au joueur pour les comparer
-
+        //this.player.tint = tint; // on applique un filtre de couleur au joueur pour les comparer
+        this.player.tint = Math.random() * 0xffffff;;
+        //this.player.filters = [new PIXI.InvertFilter()];
+        
 		game.physics.arcade.enable(this.player);
 		this.player.anchor.setTo(.5,.5);
 		
@@ -57,6 +58,7 @@ class Player {
         this.player.animations.add("attack", Phaser.Animation.generateFrameNames("attack/", 1, 26, ".png", 4), 50, false);	
         this.player.animations.add("jump", Phaser.Animation.generateFrameNames("jump/", 1, 1, ".png", 4), 15, true);	
         this.player.animations.add("slide", Phaser.Animation.generateFrameNames("wall_slide/", 1, 1, ".png", 4), 15, true);	
+        this.player.animations.add("tomb_stone", Phaser.Animation.generateFrameNames("tomb_stone/", 1, 1, ".png", 4), 15, true);	
         
         // créer la barre de vie
         var barConfig = {
@@ -81,6 +83,18 @@ class Player {
 	}
 		
 	update(platform) {   
+      
+        // si le joueur est mort, alors on affiche une pierre tombale
+        if (this.hp <= 0) {            
+            this.player.anchor.setTo(0.5, 0);
+            this.player.animations.play("tomb_stone");
+
+            
+            return;
+        }
+        
+        
+        //game.debug.body(this.player);
       
 		var hitPlatform = game.physics.arcade.collide(this.player, platform);
         

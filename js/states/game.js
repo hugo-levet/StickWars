@@ -26,6 +26,8 @@ var Game = {
             var explorer = platforms.create(convertX(300), convertY(200), "explorer_windows");    
             explorer.body.immovable = true;	  
             explorer.scale.setTo(ratioX, ratioY);
+            
+            game.sound.play('click');
         }
         
         interactionsBox.push(new InteractionBox(convertX(75), game.world.height - convertY(135), convertX(45), convertY(41), "explorer", fct));
@@ -35,8 +37,10 @@ var Game = {
         
         // ====
         // On créer les joueurs                
-        for (var i=0; i < plyJoinedTheGame.length; i++) 
-            player.push(new Player(width * Math.random(), game.world.height - 180, controls[plyJoinedTheGame[i]], "ply" + plyJoinedTheGame[i], 0xbbbbff));	    
+        for (var i=0; i < playerMeta.length; i++) {
+            if (playerMeta[i].enable)
+                player.push(new Player(width * Math.random(), game.world.height - 180, controls[playerMeta[i].id], playerMeta[i].tint));	    
+        }
     },
         
     update: function () {

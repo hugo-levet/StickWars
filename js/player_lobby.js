@@ -4,7 +4,7 @@
 
 class PlayerLobby {	
 	
-	constructor(x, y, controls, key) {
+	constructor(x, y, id, key, tint) {
         this.text = game.add.bitmapText(x, y, 'pixel', "Hold " + key + " to join the game", 16);
         this.text.anchor.setTo(.5,.5); 
 
@@ -16,10 +16,13 @@ class PlayerLobby {
         this.angle = 0; 
         this.hasJoinedTheGame = false;
         
-        this.controls = controls;
+        this.id = id;
+        this.controls = controls[id];
         
         this.x = x;
         this.y = y;
+        
+        this.tint = tint;
     }
     
     update(platform) {
@@ -39,6 +42,7 @@ class PlayerLobby {
                 this.radialProgressBar.destroy();
                 this.text.destroy();
                 
+                // on créer un joueur dans le lobby
                 this.player = new Player(this.x, this.y, this.controls, "player", 0xFFFFFF);
             }
         }            

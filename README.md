@@ -11,7 +11,10 @@ Bibliothèques utilisées pour le projet:
   
   
 Ressources utilisés:  
--\> Chevalier: https://www.gameart2d.com/the-knight-free-sprites.html)  
+-\> Projectile (kunai): 
 -\> Footstep: https://www.youtube.com/watch?v=ybl3y6V_ZT4)  
--\> Clic button: https://www.youtube.com/watch?v=2o11YM2Mwjc
-
+-\> Clic button: https://www.youtube.com/watch?v=2o11YM2Mwjc  
+-\> Tomb stone: https://www.gameart2d.com/free-graveyard-platformer-tileset.html
+  
+Placeholder (non disponible en jeu):  
+-\> Chevalier: https://www.gameart2d.com/the-knight-free-sprites.html)  
