@@ -32,10 +32,11 @@ var Lobby = {
         
         // ====
         // on ajoute les joueurs
-        playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY/2, PlayerMetaEnum.BLUE, "Z"));
-        playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY/2, PlayerMetaEnum.RED, "Y"));
-        playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY * 1.5, PlayerMetaEnum.GREEN, "O",));
-        playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY * 1.5, PlayerMetaEnum.YELLOW, "8(numpad)"));
+        this.playerLobby = [];
+        this.playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY/2, PlayerMetaEnum.BLUE, "Z"));
+        this.playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY/2, PlayerMetaEnum.RED, "Y"));
+        this.playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY * 1.5, PlayerMetaEnum.GREEN, "O",));
+        this.playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY * 1.5, PlayerMetaEnum.YELLOW, "8(numpad)"));
         
         this.count_sound = game.sound.play('lobby');
         this.count_sound.stop();
@@ -43,24 +44,27 @@ var Lobby = {
     
     update: function () {              
         
+        // CALCUL & AFFICHAGE DU TIMER
         this.time -= game.time.elapsed/1000;
         this.text.setText(Math.round(this.time));
         
+        // GESTION DU SON
         if (this.time <= 4 && !this.count_sound.isPlaying)
             this.count_sound.play();
         
         // quand le temps est à 0, on lance la game
         if (this.time <= 0) {
-            for (var i=0; i < playerLobby.length; i++) {                
-                if (playerLobby[i].hasJoinedTheGame)
+            for (var i=0; i < this.playerLobby.length; i++) {                
+                if (this.playerLobby[i].hasJoinedTheGame)
                     playerMeta[i].enable = true;
             }            
             
             game.state.add('Game', Game);
             game.state.start('Game');
         }
-                    
-        for (var i=0; i < playerLobby.length; i++) 
-            playerLobby[i].update(this.borders);
+        
+        // GESTION DES PLAYERS DANS LE LOBBY
+        for (var i=0; i < this.playerLobby.length; i++) 
+            this.playerLobby[i].update(this.borders);
     }
 };

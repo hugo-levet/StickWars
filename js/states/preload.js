@@ -1,7 +1,7 @@
 
 
 // ici on pourrait rajouter une barre de chargement
-var Main = {
+var Preload = {
     
     // ici on charge toutes les ressources pour l'état actuel (images, sons, etc...)
     preload: function() {        

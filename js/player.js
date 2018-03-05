@@ -3,7 +3,7 @@ const plySpeed = 400;
 const plySlideSpeed = 50;
 const plyGravity = 500;
 const jumpForce = 600;
-const hpMax = 100;
+const hpMax = 5;
 const attackSpeed = 0.82; // 1 attack per second
 
 var highAttackBox = {x: 40, y: -20, width: 65, height: 25};
@@ -23,7 +23,7 @@ var PlayerState = {
 
 class Player {
     
-	constructor(x, y, controls, tint) {
+	constructor(x, y, id, tint) {
 		
 		// DÉCLARATION DES VARIABLES
 		this.isUpKeyReleased = false; // garde le dernier état de la touche de saut
@@ -32,7 +32,8 @@ class Player {
 		this.playerState = PlayerState.IDLE;
 		this.hp = hpMax;
         this.jumpsCounts = 0;
-        this.controls = controls;
+        this.id = id;
+        this.controls = controls[this.id];
         this.damage = 10;     
         this.timerAtk = 0;  // temps depuis la dernier attaque du joueur
                 
@@ -42,7 +43,7 @@ class Player {
         this.graphics = game.add.graphics(this.player.x, this.player.y);		
         
         //this.player.tint = tint; // on applique un filtre de couleur au joueur pour les comparer
-        this.player.tint = Math.random() * 0xffffff;;
+        //this.player.tint = Math.random() * 0xffffff;;
         //this.player.filters = [new PIXI.InvertFilter()];
         
 		game.physics.arcade.enable(this.player);
@@ -88,7 +89,7 @@ class Player {
         if (this.hp <= 0) {            
             this.player.anchor.setTo(0.5, 0);
             this.player.animations.play("tomb_stone");
-
+            this.graphics.kill(); // on nettoie la collision box
             
             return;
         }

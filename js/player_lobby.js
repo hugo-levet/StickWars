@@ -26,6 +26,7 @@ class PlayerLobby {
     }
     
     update(platform) {
+        
         if (this.hasJoinedTheGame) {
             this.player.update(platform);
             

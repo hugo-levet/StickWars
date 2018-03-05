@@ -9,10 +9,8 @@ const ratioY = height / initialHeight;
 // resolution de base: 1680x1080
 var game = new Phaser.Game(width, height, Phaser.AUTO, 'game');
 var player = [];
-var playerLobby = [];
 var interactionsBox = [];
 var controls = [];
-var platforms;
 
 var PlayerMetaEnum = {  
   BLUE: 0,
@@ -21,15 +19,15 @@ var PlayerMetaEnum = {
   YELLOW: 3,
 };
 
-// enregistre la progression globale du joueur (score, id, enable?)
+// enregistre la progression globale du joueur (score, id, enable)
 var playerMeta = [];
-playerMeta.push(new PlayerMeta(PlayerMetaEnum.BLUE), "BLUE", 0x0088bf)
-playerMeta.push(new PlayerMeta(PlayerMetaEnum.RED), "RED", 0xc40233)
-playerMeta.push(new PlayerMeta(PlayerMetaEnum.GREEN), "GREEN", 0x00a568)
-playerMeta.push(new PlayerMeta(PlayerMetaEnum.YELLOW), "YELLOW", 0xffd400)
+playerMeta.push(new PlayerMeta(PlayerMetaEnum.BLUE, "BLUE", 0x0088bf));
+playerMeta.push(new PlayerMeta(PlayerMetaEnum.RED, "RED", 0xc40233));
+playerMeta.push(new PlayerMeta(PlayerMetaEnum.GREEN, "GREEN", 0x00a568));
+playerMeta.push(new PlayerMeta(PlayerMetaEnum.YELLOW, "YELLOW", 0xffd400));//*/
 
-game.state.add('Main', Main);
-game.state.start('Main');
+game.state.add('Preload', Preload);
+game.state.start('Preload');
 
 // on créer 2 fonctions qui permet d'afficher le jeu sur de multiples résolutions
 function convertX(x) {

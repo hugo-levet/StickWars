@@ -41,7 +41,7 @@ var Game = {
             console.log("new PlayerMeta -> " + playerMeta[i].name);
             
             if (playerMeta[i].enable) {
-                player.push(new Player(width * Math.random(), game.world.height - 180, playerMeta[i].id, playerMeta[i].tint));	    
+                player.push(new Player(width * Math.random(), game.world.height - 180, controls[playerMeta[i].id], playerMeta[i].tint));	    
             }
         }
     },
@@ -49,23 +49,5 @@ var Game = {
     update: function () {
         for (var i=0; i < player.length; i++)
             player[i].update(this.platforms);
-        
-        // Score System
-        var playersAlive = [];
-        
-        for (var i=0; i < player.length; i++) {
-            if (player[i].hp > 0)
-                playersAlive++;
-        }
-        
-        if (playersAlive.length == 1) {
-            var idWinner = playersAlive[0].id;
-            
-            playerMeta[idWinner].score++;
-            console.log("notre gagnant est " + playerMeta[idWinner].name);
-            
-            game.state.add('Game', Game);
-            game.state.start('Game');
-        }
     },
 };
