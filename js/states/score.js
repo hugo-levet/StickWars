@@ -1,53 +1,41 @@
-var Game = {
+const scoreDurationDisplay = 3;
+
+var Score = {
 
     create: function () {
-        game.physics.startSystem(Phaser.Physics.ARCADE);
-            
-        var bg = game.add.sprite(0, 0, "bg");	
-        bg.width = width;
-        bg.height = height;
-           
-        // ====
-        // on créer les platforms
-        this.platforms = game.add.group();
-        this.platforms.enableBody = true;
         
-        var ground = this.platforms.create(0, game.world.height, "ground");
-        ground.width = width;
-        ground.height = convertY(-38);
-        ground.alpha = 0; // alpha, c'est la transparence de 0 à 1
+        // === 
+        // ON AFFICHE LES SCORES
+        var enabledPlayer = [];
         
-        var bin = this.platforms.create(game.world.width - convertX(110), game.world.height - convertY(150), "recycle_bin");                     
-        bin.scale.setTo(ratioX, ratioY);
-        
-        this.platforms.setAll('body.immovable', true);
-        
-        var fct = function() {
-            var explorer = this.platforms.create(convertX(300), convertY(200), "explorer_windows");    
-            explorer.body.immovable = true;	  
-            explorer.scale.setTo(ratioX, ratioY);
-            
-            game.sound.play('click');
+        // on extrait les joueurs qui ont rejoint le lobby
+        for (var i=0; i < playerMeta.length; i++)  {
+            if (playerMeta[i].enable) 
+                enabledPlayer.push(playerMeta[i]);
         }
         
-        interactionsBox.push(new InteractionBox(convertX(75), game.world.height - convertY(135), convertX(45), convertY(41), "explorer", fct));
-        
-        // on décode les fichiers audio .mp3
-        footstep = game.add.audio('footstep');
-        
-        // ====
-        // On créer les joueurs          
-        for (var i=0; i < playerMeta.length; i++) {
-            console.log("new PlayerMeta -> " + playerMeta[i].name);
-            
-            if (playerMeta[i].enable) {
-                player.push(new Player(width * Math.random(), game.world.height - 180, controls[playerMeta[i].id], playerMeta[i].tint));	    
-            }
+        for (var i=0; i < enabledPlayer.length; i++) {
+            game.add.bitmapText(game.world.centerX - convertX(300), game.world.centerY + convertY(50) * i, 'pixel', enabledPlayer[i].name, 16);
+            game.add.bitmapText(game.world.centerX + convertX(50), game.world.centerY + convertY(50) * i, 'pixel', enabledPlayer[i].score.toString(), 16);            
         }
+        
+        // ===
+        // ON S'OCCUPE DU CHRONO
+        this.time = scoreDurationDisplay;
+        
+        this.text = game.add.bitmapText(game.world.width - convertX(50), game.world.centerY, 'pixel', this.time, 16);
+        this.text.anchor.setTo(.5,.5);         
     },
         
     update: function () {
-        for (var i=0; i < player.length; i++)
-            player[i].update(this.platforms);
+        
+        // compteur avant la reprise du jeu        
+        this.time -= game.time.elapsed/1000;        
+        this.text.setText(Math.round(this.time));
+        
+        if (this.time <= 0) {             
+            game.state.add('Game', Game);
+            game.state.start('Game');               
+        }    
     },
 };

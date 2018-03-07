@@ -10,4 +10,8 @@ var Credits = {
         var thxEveryone = game.add.bitmapText(game.world.centerX, 600, 'pixel', 'Merci a tout ceux qui le veulent', 32);
         thxEveryone.anchor.setTo(.5,.5);
     },      
+    
+    update: function () {
+        
+    }
 };

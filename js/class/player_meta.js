@@ -6,9 +6,10 @@ class PlayerMeta {
 	
 	constructor(id, name, tint) {
         this.id = id;        
-        this.score = 0;
+        this.name = name;
         this.tint = tint;
         
+        this.score = 0;
         this.enable = false;
     }
 }

@@ -7,6 +7,8 @@ var Game = {
         bg.width = width;
         bg.height = height;
            
+        player = [];
+           
         // ====
         // on créer les platforms
         this.platforms = game.add.group();
@@ -38,7 +40,7 @@ var Game = {
         // ====
         // On créer les joueurs          
         for (var i=0; i < playerMeta.length; i++) {
-            console.log("new PlayerMeta -> " + playerMeta[i].name);
+            //console.log("new PlayerMeta -> " + playerMeta[i].name);
             
             if (playerMeta[i].enable) {
                 player.push(new Player(width * Math.random(), game.world.height - 180, playerMeta[i].id, playerMeta[i].tint));	    
@@ -55,8 +57,10 @@ var Game = {
         
         for (var i=0; i < player.length; i++) {
             if (player[i].hp > 0)
-                playersAlive++;
+                playersAlive.push(player[i]);
         }
+        
+        console.log("playersAlive.length -> " + playersAlive.length);
         
         if (playersAlive.length == 1) {
             var idWinner = playersAlive[0].id;
@@ -64,8 +68,8 @@ var Game = {
             playerMeta[idWinner].score++;
             console.log("notre gagnant est " + playerMeta[idWinner].name);
             
-            game.state.add('Game', Game);
-            game.state.start('Game');
+            game.state.add('Score', Score);
+            game.state.start('Score');
         }
     },
 };

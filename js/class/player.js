@@ -3,7 +3,7 @@ const plySpeed = 400;
 const plySlideSpeed = 50;
 const plyGravity = 500;
 const jumpForce = 600;
-const hpMax = 5;
+const hpMax = 50;
 const attackSpeed = 0.82; // 1 attack per second
 
 const highAttackBox = {x: 40, y: -20, width: 65, height: 25};
