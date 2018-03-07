@@ -7,8 +7,9 @@ const ratioX = width / initialWidth;
 const ratioY = height / initialHeight;
 
 // resolution de base: 1680x1080
-var game = new Phaser.Game(width, height, Phaser.AUTO, 'game');
-var player = [];
+var game = new Phaser.Game(width, height, Phaser.CANVAS, 'game');
+var player = [],
+    platforms;
 var interactionsBox = [];
 var controls = [];
 

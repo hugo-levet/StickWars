@@ -11,21 +11,21 @@ var Game = {
            
         // ====
         // on créer les platforms
-        this.platforms = game.add.group();
-        this.platforms.enableBody = true;
+        platforms = game.add.group();
+        platforms.enableBody = true;
         
-        var ground = this.platforms.create(0, game.world.height, "ground");
+        var ground = platforms.create(0, game.world.height, "ground");
         ground.width = width;
         ground.height = convertY(-38);
         ground.alpha = 0; // alpha, c'est la transparence de 0 à 1
         
-        var bin = this.platforms.create(game.world.width - convertX(110), game.world.height - convertY(150), "recycle_bin");                     
+        var bin = platforms.create(game.world.width - convertX(110), game.world.height - convertY(150), "recycle_bin");                     
         bin.scale.setTo(ratioX, ratioY);
         
-        this.platforms.setAll('body.immovable', true);
+        platforms.setAll('body.immovable', true);
         
         var fct = function() {
-            var explorer = this.platforms.create(convertX(300), convertY(200), "explorer_windows");    
+            var explorer = platforms.create(convertX(300), convertY(200), "explorer_windows");    
             explorer.body.immovable = true;	  
             explorer.scale.setTo(ratioX, ratioY);
             
@@ -50,7 +50,7 @@ var Game = {
         
     update: function () {
         for (var i=0; i < player.length; i++)
-            player[i].update(this.platforms);
+            player[i].update(platforms);
         
         // Score System
         var playersAlive = [];
