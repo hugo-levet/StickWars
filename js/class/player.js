@@ -6,7 +6,7 @@ const jumpForce = 600;
 const hpMax = 5;
 const attackSpeed = 0.82; // 1 attack per second
 
-var highAttackBox = {x: 40, y: -20, width: 65, height: 25};
+const highAttackBox = {x: 40, y: -20, width: 65, height: 25};
 
 var PlayerState = {  
   RUN: 1,
@@ -33,7 +33,8 @@ class Player {
 		this.hp = hpMax;
         this.jumpsCounts = 0;
         this.id = id;
-        this.controls = controls[this.id];
+        this.controls = controls[id];            
+        
         this.damage = 10;     
         this.timerAtk = 0;  // temps depuis la dernier attaque du joueur
                 
@@ -65,8 +66,8 @@ class Player {
         var barConfig = {
             width: 100,
             height: 15,
-            x: this.player.x,
-            y: this.player.x,
+            x: x,
+            y: y,
             bg: {
               color: '#d8231b'
             },

@@ -22,7 +22,7 @@ class PlayerLobby {
         this.x = x;
         this.y = y;
         
-        this.tint = tint;
+        //this.tint = tint;
     }
     
     update(platform) {
@@ -44,7 +44,7 @@ class PlayerLobby {
                 this.text.destroy();
                 
                 // on créer un joueur dans le lobby
-                this.player = new Player(this.x, this.y, this.controls, "player", 0xFFFFFF);
+                this.player = new Player(this.x, this.y, this.id, "player", 0xFFFFFF);
             }
         }            
         else if (this.angle > 0) {           

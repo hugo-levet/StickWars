@@ -24,7 +24,7 @@ var playerMeta = [];
 playerMeta.push(new PlayerMeta(PlayerMetaEnum.BLUE, "BLUE", 0x0088bf));
 playerMeta.push(new PlayerMeta(PlayerMetaEnum.RED, "RED", 0xc40233));
 playerMeta.push(new PlayerMeta(PlayerMetaEnum.GREEN, "GREEN", 0x00a568));
-playerMeta.push(new PlayerMeta(PlayerMetaEnum.YELLOW, "YELLOW", 0xffd400));//*/
+playerMeta.push(new PlayerMeta(PlayerMetaEnum.YELLOW, "YELLOW", 0xffd400));
 
 game.state.add('Preload', Preload);
 game.state.start('Preload');
