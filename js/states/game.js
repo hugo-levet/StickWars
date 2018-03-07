@@ -43,7 +43,7 @@ var Game = {
             //console.log("new PlayerMeta -> " + playerMeta[i].name);
             
             if (playerMeta[i].enable) {
-                player.push(new Player(width * Math.random(), game.world.height - 180, playerMeta[i].id, playerMeta[i].tint));	    
+                player.push(new Player(width * Math.random(), game.world.height - convertY(180), playerMeta[i].id, playerMeta[i].tint));	    
             }
         }
     },

@@ -33,7 +33,7 @@ class Player {
 		this.hp = hpMax;
         this.jumpsCounts = 0;
         this.id = id;
-        this.controls = controls[id];            
+        this.controls = controls[id];          
         
         this.damage = 10;     
         this.timerAtk = 0;  // temps depuis la dernier attaque du joueur
@@ -43,9 +43,7 @@ class Player {
         this.player.scale.setTo(ratioX, ratioY);
         this.graphics = game.add.graphics(this.player.x, this.player.y);		
         
-        //this.player.tint = tint; // on applique un filtre de couleur au joueur pour les comparer
-        //this.player.tint = Math.random() * 0xffffff;;
-        //this.player.filters = [new PIXI.InvertFilter()];
+        this.player.tint = tint; // on applique un filtre de couleur au joueur pour les comparer
         
 		game.physics.arcade.enable(this.player);
 		this.player.anchor.setTo(.5,.5);
@@ -64,7 +62,7 @@ class Player {
         
         // créer la barre de vie
         var barConfig = {
-            width: 100,
+            width: 80,
             height: 15,
             x: x,
             y: y,
@@ -94,8 +92,7 @@ class Player {
             
             return;
         }
-        
-        
+                
         //game.debug.body(this.player);
       
 		var hitPlatform = game.physics.arcade.collide(this.player, platform);
