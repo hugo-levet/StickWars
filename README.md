@@ -18,7 +18,3 @@ Ressources utilisés:
   
 Placeholder (non disponible en jeu):  
 -\> Chevalier: https://www.gameart2d.com/the-knight-free-sprites.html)  
-
-TODO:
-- BUG: Players have weird hit box !!
-- Faire un système de victoire
