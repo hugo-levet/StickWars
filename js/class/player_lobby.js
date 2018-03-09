@@ -35,6 +35,7 @@ class PlayerLobby {
             // on charge le joueur
             if (this.angle > 360) {
                 this.hasJoinedTheGame = true;
+                playerMeta[this.id].enable = true;
                 
                 this.radialProgressBar.destroy();
                 this.text.destroy();

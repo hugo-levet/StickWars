@@ -1,4 +1,4 @@
-const timeBeforeGame = 5;
+const timeLobby = 5;
 
 var Lobby = {
 
@@ -8,7 +8,7 @@ var Lobby = {
         game.stage.backgroundColor = '#182d3b';              
         
         // ====
-        // une ligne horizontal & verticale
+        // on créer une plateforme horizontal & verticale
         this.borders = game.add.group();
         this.borders.enableBody = true;
         
@@ -26,8 +26,8 @@ var Lobby = {
         
         // ====
         // chronomètre avant le lancement de la game
-        this.time = timeBeforeGame;
-        this.text = game.add.bitmapText(game.world.centerX, game.world.centerY, 'pixel', this.time, 16);
+        this.time = timeLobby;
+        this.text = game.add.bitmapText(game.world.centerX, game.world.centerY, 'pixel', "Waiting for players", 16);
         this.text.anchor.setTo(.5,.5); 
         
         // ====
@@ -44,27 +44,33 @@ var Lobby = {
     
     update: function () {              
         
-        // CALCUL & AFFICHAGE DU TIMER
-        this.time -= game.time.elapsed/1000;
-        this.text.setText(Math.round(this.time));
+        // ON CALCULE LE NOMRBE DE JOUEUR DANS LE LOBBY
+        var countPlayerJoinLobby = 0;
+                
+        if (this.time == timeLobby) // on calcule seulement si le chrono n'a pas été déclenché
+            for (var i=0; i < this.playerLobby.length; i++)                    
+                if (this.playerLobby[i].hasJoinedTheGame)
+                    countPlayerJoinLobby++;            
+        
+        
+        // CALCUL & AFFICHAGE DU TIMER 
+        if (this.time != timeLobby || countPlayerJoinLobby >= 2) {
+            this.time -= game.time.elapsed/1000;
+            this.text.setText(Math.round(this.time));
+        }
         
         // GESTION DU SON
         if (this.time <= 4 && !this.count_sound.isPlaying)
             this.count_sound.play();
         
-        // quand le temps est à 0, on lance la game
-        if (this.time <= 0) {
-            for (var i=0; i < this.playerLobby.length; i++) {                
-                if (this.playerLobby[i].hasJoinedTheGame)
-                    playerMeta[i].enable = true;
-            }            
-            
-            game.state.add('Game', Game);
-            game.state.start('Game');
-        }
-        
         // GESTION DES PLAYERS DANS LE LOBBY
         for (var i=0; i < this.playerLobby.length; i++) 
-            this.playerLobby[i].update(this.borders);
+            this.playerLobby[i].update(this.borders);        
+        
+        // LANCEMENT DE LA GAME
+        if (this.time <= 0) {
+            game.state.add('Game', Game);
+            game.state.start('Game');
+        }                          
     }
 };
