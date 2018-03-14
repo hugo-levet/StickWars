@@ -30,19 +30,19 @@ var Preload = {
         
         // on créer les contrôles des joueurs
         var controls1 = {
+            up: game.input.keyboard.addKey(Phaser.Keyboard.Z),
+            down: game.input.keyboard.addKey(Phaser.Keyboard.S),
+            left: game.input.keyboard.addKey(Phaser.Keyboard.Q),
+            right: game.input.keyboard.addKey(Phaser.Keyboard.D),
+            attack: game.input.keyboard.addKey(Phaser.Keyboard.E)
+        };
+        
+        var controls2 = {
             up: game.input.keyboard.addKey(Phaser.Keyboard.UP),
             down: game.input.keyboard.addKey(Phaser.Keyboard.DOWN),
             left: game.input.keyboard.addKey(Phaser.Keyboard.LEFT),
             right: game.input.keyboard.addKey(Phaser.Keyboard.RIGHT),
             attack: game.input.keyboard.addKey(Phaser.Keyboard.SHIFT)
-        };
-        
-        var controls2 = {
-            up: game.input.keyboard.addKey(Phaser.Keyboard.Y),
-            down: game.input.keyboard.addKey(Phaser.Keyboard.H),
-            left: game.input.keyboard.addKey(Phaser.Keyboard.G),
-            right: game.input.keyboard.addKey(Phaser.Keyboard.J),
-            attack: game.input.keyboard.addKey(Phaser.Keyboard.U)
         };
         
         var controls3 = {
