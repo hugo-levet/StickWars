@@ -1,4 +1,4 @@
-StickWars
+StickWars (test lalilaloum)
 =========
 
 Ceci est un projet cool !  
@@ -18,6 +18,9 @@ Ressources utilisés:
   
 Placeholder (non disponible en jeu):  
 -\> Chevalier: https://www.gameart2d.com/the-knight-free-sprites.html
+<<<<<<< HEAD
 
 Et op on peut voir le projet ici !  
 -\> https://heron4102.github.io/StickWars/
+=======
+>>>>>>> 5b1d238ed5a3813cd834ef826da33f87a74e86d9
