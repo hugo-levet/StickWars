@@ -1,7 +1,7 @@
 const maxJumps = 2;
-const plySpeed = 400;
-const plySlideSpeed = 50;
-const plyGravity = 500;
+const plySpeed = 30;
+const plySlideSpeed = 5;
+const plyGravity = 800;
 const jumpForce = 600;
 const hpMax = 50;
 const attackSpeed = 0.82; // 1 attack per second
@@ -89,11 +89,12 @@ class Player {
             this.player.anchor.setTo(0.5, 0);
             this.player.animations.play("tomb_stone");
             this.graphics.kill(); // on nettoie la collision box
-            
+            this.hpBar.kill();
+
             return;
         }
                 
-        //game.debug.body(this.player);
+        game.debug.body(this.player);
       
 		var hitPlatform = game.physics.arcade.collide(this.player, platform);
         
@@ -121,13 +122,13 @@ class Player {
 			this.playerState = PlayerState.RUN;
 			this.player.scale.x = -1;
 				
-			this.player.body.velocity.x -= plySpeed;
+			this.player.body.velocity.x -= plySpeed * game.time.elapsed;
 		}	
 		else if (this.controls.right.isDown && this.playerState != this.playerState.ATTACK) {
 			this.playerState = PlayerState.RUN;		
 			this.player.scale.x = 1;
 				
-			this.player.body.velocity.x += plySpeed; 
+			this.player.body.velocity.x += plySpeed * game.time.elapsed; 
 		}
 		else {
 			this.playerState = PlayerState.IDLE;
@@ -139,7 +140,7 @@ class Player {
                 
             this.jumpsCounts = 0;
             this.player.body.gravity.y = 0;
-            this.player.body.velocity.y = plySlideSpeed;
+            this.player.body.velocity.y = plySlideSpeed * game.time.elapsed;
             
             this.playerState = PlayerState.SLIDEONWALL;
         } 
