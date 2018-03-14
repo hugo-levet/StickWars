@@ -4,7 +4,7 @@
 var Preload = {
     
     // ici on charge toutes les ressources pour l'état actuel (images, sons, etc...)
-    preload: function() {        
+    preload: function () {
         game.load.image("bg", "assets/img/world/bg.png"); // ici bg signifie le fond d"écran	                   
         game.load.image("recycle_bin", "assets/img/world/recycle_bin_full.png");                  
         game.load.image("explorer", "assets/img/world/explorer.png");   
@@ -30,11 +30,11 @@ var Preload = {
         
         // on créer les contrôles des joueurs
         var controls1 = {
-            up: game.input.keyboard.addKey(Phaser.Keyboard.Z),
-            down: game.input.keyboard.addKey(Phaser.Keyboard.S),
-            left: game.input.keyboard.addKey(Phaser.Keyboard.Q),
-            right: game.input.keyboard.addKey(Phaser.Keyboard.D),
-            attack: game.input.keyboard.addKey(Phaser.Keyboard.E)
+            up: game.input.keyboard.addKey(Phaser.Keyboard.UP),
+            down: game.input.keyboard.addKey(Phaser.Keyboard.DOWN),
+            left: game.input.keyboard.addKey(Phaser.Keyboard.LEFT),
+            right: game.input.keyboard.addKey(Phaser.Keyboard.RIGHT),
+            attack: game.input.keyboard.addKey(Phaser.Keyboard.SHIFT)
         };
         
         var controls2 = {
