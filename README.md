@@ -18,7 +18,6 @@ Ressources utilisés:
   
 Placeholder (non disponible en jeu):  
 -\> Chevalier: https://www.gameart2d.com/the-knight-free-sprites.html
-<<<<<<< HEAD
 
 Et op on peut voir le projet ici !  
 -\> https://heron4102.github.io/StickWars/
