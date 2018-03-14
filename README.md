@@ -22,5 +22,3 @@ Placeholder (non disponible en jeu):
 
 Et op on peut voir le projet ici !  
 -\> https://heron4102.github.io/StickWars/
-=======
->>>>>>> 5b1d238ed5a3813cd834ef826da33f87a74e86d9
