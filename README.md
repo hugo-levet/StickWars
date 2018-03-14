@@ -1,4 +1,4 @@
-StickWars
+StickWars (test lalilaloum)
 =========
 
 Ceci est un projet cool !  
