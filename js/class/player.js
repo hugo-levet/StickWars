@@ -1,7 +1,7 @@
 const maxJumps = 2;
 const plySpeed = 30;
 const plySlideSpeed = 5;
-const plyGravity = 800;
+const plyGravity = 1000;
 const jumpForce = 600;
 const hpMax = 50;
 const attackSpeed = 0.82; // 1 attack per second
