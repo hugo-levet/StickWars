@@ -47,7 +47,7 @@ var Preload = {
             down: game.input.keyboard.addKey(Phaser.Keyboard.DOWN),
             left: game.input.keyboard.addKey(Phaser.Keyboard.LEFT),
             right: game.input.keyboard.addKey(Phaser.Keyboard.RIGHT),
-            attack: game.input.keyboard.addKey(Phaser.Keyboard.SHIFT)
+            attack: game.input.keyboard.addKey(Phaser.Keyboard.0)
         };
         
         var controls3 = {
