@@ -2,6 +2,8 @@
 // Cette classe s'instantie dans le lobby
 // Gère les entrées du joueur dans le lobby
 
+const joinSpeed = 8;
+
 class PlayerLobby {	
 	
 	constructor(x, y, id, key) {
@@ -30,7 +32,7 @@ class PlayerLobby {
         }
             
         if (this.controls.up.isDown) {
-            this.angle += 4;
+            this.angle += joinSpeed;
             
             // on charge le joueur
             if (this.angle > 360) {

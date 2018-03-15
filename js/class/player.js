@@ -4,9 +4,10 @@ const plySlideSpeed = 5;
 const plyGravity = 1000;
 const jumpForce = 600;
 const hpMax = 50;
-const attackSpeed = 0.82; // 1 attack per second
+const attackSpeed = 0.82; // per second
 
-const highAttackBox = {x: 40, y: -20, width: 65, height: 25};
+const highAttackBox = {x: -50, y: 102, width: 129, height: 65};
+const normalBox = {x: 220, y: 0, width: 75, height: 167};
 
 var PlayerState = {  
   RUN: 1,
@@ -28,7 +29,8 @@ class Player {
 		// DÉCLARATION DES VARIABLES
 		this.isUpKeyReleased = false; // garde le dernier état de la touche de saut
 		this.freezeState = false; // gèle l'état du joueur pour attendre que l'animation se finisse (saut ou attaque) 
-			
+        this.attackAnimPlaying = false;
+            
 		this.playerState = PlayerState.IDLE;
 		this.hp = hpMax;
         this.jumpsCounts = 0;
@@ -50,7 +52,7 @@ class Player {
 		
 		this.player.body.gravity.y = plyGravity;
 		this.player.body.collideWorldBounds = true;
-        this.player.body.setSize(75, 147, 220, 0); // on modifie la boite de collision
+        this.player.body.setSize(normalBox.width, normalBox.height, normalBox.x, normalBox.y); // on modifie la boite de collision
 
 		// on extrait l'animation de l'atlas
 		this.player.animations.add("run", Phaser.Animation.generateFrameNames("run/", 1, 25, ".png", 4), 120, true);	
@@ -96,13 +98,13 @@ class Player {
         
         // ====                
         // DRAW ATTACK BOX COLLISION
-        this.graphics.kill();        
-        this.graphics = game.add.graphics(this.player.x - highAttackBox.width/2, this.player.y - highAttackBox.height/2);
+        /*this.graphics.kill();        
+        this.graphics = game.add.graphics(this.player.x - this.player.width/2, this.player.y - this.player.height/2);
         this.graphics.lineStyle(2, 0xff0000, 1);
-        this.graphics.drawRect(highAttackBox.x * this.player.scale.x, highAttackBox.y, highAttackBox.width, highAttackBox.height);                   
+        this.graphics.drawRect(normalBox.x + highAttackBox.x , normalBox.y + highAttackBox.y, highAttackBox.width, highAttackBox.height); //*/
       
 		var hitPlatform = game.physics.arcade.collide(this.player, platform);
-        
+    
         this.player.body.velocity.x = 0;	        
         this.hpBar.setPosition(this.player.x, this.player.y - 75);                
         this.timerAtk += game.time.elapsed/1000;
@@ -113,7 +115,7 @@ class Player {
 		
 		// ===
 		// GESTION DE L'ETAT DU JOUEUR
-		if (this.controls.attack.isDown) {
+		if (this.controls.attack.isDown && this.playerState != PlayerState.ATTACK) {
 			this.playerState = PlayerState.ATTACK;
 		}
         else if (this.controls.up.isDown && !this.isUpKeyReleased && this.jumpsCounts < maxJumps) {
@@ -171,7 +173,12 @@ class Player {
 				case PlayerState.ATTACK:
 					this.player.animations.play("attack");
                     
-                    var ply = this;
+                    // on gèle le système d'animation pour laisser l'animation du tacle se faire
+                    this.freezeState = true;                          
+                    this.attackAnimPlaying = true;
+                    
+                    var ply = this;                        
+                    this.player.animations.currentAnim.onComplete.add(function() { this.freezeState = false; this.attackAnimPlaying = false;}, this);
                     
                     // on attaque dans this.attackSpeed secondes (on attends l'animation)
                     setTimeout(function() { 
@@ -180,6 +187,7 @@ class Player {
                         
                         ply.timerAtk = 0;
                         ply.inflictDamage(); 
+                        
                         
                     }, this.attackSpeed);
      
@@ -219,6 +227,18 @@ class Player {
                 this.footstep.stop();
                 break;
         };
+        
+        // ====
+        // GESTION DES COLLISIONS BOX
+        if (this.attackAnimPlaying) {
+            // on calcule l'offset
+            var offsetX = normalBox.x;
+            var offsetY = normalBox.y;
+            
+            this.player.body.setSize(highAttackBox.width, highAttackBox.height, offsetX + highAttackBox.x, offsetY + highAttackBox.y);  
+        }
+        else
+            this.player.body.setSize(normalBox.width, normalBox.height, normalBox.x, normalBox.y); // on modifie la boite de collision
 	}
     
     getDamage(damage) {        
@@ -228,10 +248,6 @@ class Player {
         this.hpBar.setPercent(hpRelative);
         
         return hpRelative;
-    }
-    
-    stopAnimation() {
-        this.freezeState = false;
     }
     
     // inflige des dégâts aux autres joueurs dans la zone d'attaque du joueur

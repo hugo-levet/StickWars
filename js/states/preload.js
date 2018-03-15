@@ -26,7 +26,12 @@ var Preload = {
         highAttackBox.width = convertX(highAttackBox.width);
         highAttackBox.height = convertY(highAttackBox.height);
         highAttackBox.x = convertX(highAttackBox.x);
-        highAttackBox.y = convertX(highAttackBox.y);
+        highAttackBox.y = convertY(highAttackBox.y);
+        
+        normalBox.width = convertX(normalBox.width);
+        normalBox.height = convertY(normalBox.height);
+        normalBox.x = convertX(normalBox.x);
+        normalBox.y = convertY(normalBox.y);
         
         // on créer les contrôles des joueurs
         var controls1 = {

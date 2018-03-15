@@ -20,4 +20,9 @@ Placeholder (non disponible en jeu):
 -\> Chevalier: https://www.gameart2d.com/the-knight-free-sprites.html
 
 Et op on peut voir le projet ici !  
--\> https://heron4102.github.io/StickWars/
+-\> https://heron4102.github.io/StickWars/  
+  
+BUGS:  
+-\> JUMP + TACKLE = BUG  
+-\> NSM LE TACKLE !!!!!!!  
+-\> SLOWDOWN on TACKLE  
