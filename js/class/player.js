@@ -99,13 +99,10 @@ class Player {
         this.graphics.kill();        
         this.graphics = game.add.graphics(this.player.x - highAttackBox.width/2, this.player.y - highAttackBox.height/2);
         this.graphics.lineStyle(2, 0xff0000, 1);
-        this.graphics.drawRect(highAttackBox.x * this.player.scale.x, highAttackBox.y, highAttackBox.width, highAttackBox.height);
-            
-        game.debug.body(this.player);
+        this.graphics.drawRect(highAttackBox.x * this.player.scale.x, highAttackBox.y, highAttackBox.width, highAttackBox.height);                   
       
 		var hitPlatform = game.physics.arcade.collide(this.player, platform);
         
-
         this.player.body.velocity.x = 0;	        
         this.hpBar.setPosition(this.player.x, this.player.y - 75);                
         this.timerAtk += game.time.elapsed/1000;
@@ -119,6 +116,13 @@ class Player {
 		if (this.controls.attack.isDown) {
 			this.playerState = PlayerState.ATTACK;
 		}
+        else if (this.controls.up.isDown && !this.isUpKeyReleased && this.jumpsCounts < maxJumps) {
+			this.playerState = PlayerState.JUMP;
+			
+			this.isUpKeyReleased = true;
+			this.jumpsCounts++;		
+			this.player.body.velocity.y = -jumpForce; 
+		}
 		else if (this.controls.left.isDown) {
 			this.playerState = PlayerState.RUN;
 			this.player.scale.x = -1;
@@ -130,14 +134,7 @@ class Player {
 			this.player.scale.x = 1;
 				
 			this.player.body.velocity.x += plySpeed * game.time.elapsed; 
-		}
-        else if (this.controls.up.isDown && !this.isUpKeyReleased && this.jumpsCounts < maxJumps) {
-			this.playerState = PlayerState.JUMP;
-			
-			this.isUpKeyReleased = true;
-			this.jumpsCounts++;		
-			this.player.body.velocity.y = -jumpForce; 
-		}
+		}        
 		else {
 			this.playerState = PlayerState.IDLE;
 		}
@@ -221,7 +218,7 @@ class Player {
             case PlayerState.IDLE:
                 this.footstep.stop();
                 break;
-        }
+        };
 	}
     
     getDamage(damage) {        

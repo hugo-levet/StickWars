@@ -72,4 +72,12 @@ var Game = {
             game.state.start('Score');
         }
     },
+    
+    render: function() {
+    
+        for (var i=0; i < player.length; i++) {
+            if (player[i].hp > 0)
+                game.debug.body(player[i].player);
+        }               
+    }
 };
