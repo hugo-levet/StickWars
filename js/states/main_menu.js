@@ -26,6 +26,11 @@ var MainMenu = {
         var text = game.add.bitmapText(game.world.centerX, 550, 'pixel', 'Credits', 32);
         text.anchor.setTo(.5,.5);
     },      
+    
+    update: function() {
+        if (game.input.keyboard.addKey(Phaser.Keyboard.ENTER).isDown || game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).isDown) 
+            loadPlayMenu();
+    }
 };
 
 function loadPlayMenu() {

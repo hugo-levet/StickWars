@@ -55,7 +55,7 @@ class Player {
 		// on extrait l'animation de l'atlas
 		this.player.animations.add("run", Phaser.Animation.generateFrameNames("run/", 1, 25, ".png", 4), 120, true);	
         this.player.animations.add("idle", Phaser.Animation.generateFrameNames("idle/", 1, 8, ".png", 4), 15, true);	
-        this.player.animations.add("attack", Phaser.Animation.generateFrameNames("attack/", 1, 26, ".png", 4), 50, false);	
+        this.player.animations.add("attack", Phaser.Animation.generateFrameNames("tackle/", 1, 26, ".png", 4), 30, false);	
         this.player.animations.add("jump", Phaser.Animation.generateFrameNames("jump/", 1, 1, ".png", 4), 15, true);	
         this.player.animations.add("slide", Phaser.Animation.generateFrameNames("wall_slide/", 1, 1, ".png", 4), 15, true);	
         this.player.animations.add("tomb_stone", Phaser.Animation.generateFrameNames("tomb_stone/", 1, 1, ".png", 4), 15, true);	
@@ -93,12 +93,20 @@ class Player {
 
             return;
         }
-                
+        
+        // ====                
+        // DRAW ATTACK BOX COLLISION
+        this.graphics.kill();        
+        this.graphics = game.add.graphics(this.player.x - highAttackBox.width/2, this.player.y - highAttackBox.height/2);
+        this.graphics.lineStyle(2, 0xff0000, 1);
+        this.graphics.drawRect(highAttackBox.x * this.player.scale.x, highAttackBox.y, highAttackBox.width, highAttackBox.height);
+            
         game.debug.body(this.player);
       
 		var hitPlatform = game.physics.arcade.collide(this.player, platform);
         
-		this.player.body.velocity.x = 0;		
+
+        this.player.body.velocity.x = 0;	        
         this.hpBar.setPosition(this.player.x, this.player.y - 75);                
         this.timerAtk += game.time.elapsed/1000;
         
@@ -110,25 +118,25 @@ class Player {
 		// GESTION DE L'ETAT DU JOUEUR
 		if (this.controls.attack.isDown) {
 			this.playerState = PlayerState.ATTACK;
-		}	
-		else if (this.controls.up.isDown && !this.isUpKeyReleased && this.jumpsCounts < maxJumps) {
-			this.playerState = PlayerState.JUMP;
-			
-			this.isUpKeyReleased = true;
-			this.jumpsCounts++;		
-			this.player.body.velocity.y = -jumpForce; 
 		}
-		else if (this.controls.left.isDown && this.playerState != this.playerState.ATTACK) {
+		else if (this.controls.left.isDown) {
 			this.playerState = PlayerState.RUN;
 			this.player.scale.x = -1;
 				
 			this.player.body.velocity.x -= plySpeed * game.time.elapsed;
 		}	
-		else if (this.controls.right.isDown && this.playerState != this.playerState.ATTACK) {
+		else if (this.controls.right.isDown) {
 			this.playerState = PlayerState.RUN;		
 			this.player.scale.x = 1;
 				
 			this.player.body.velocity.x += plySpeed * game.time.elapsed; 
+		}
+        else if (this.controls.up.isDown && !this.isUpKeyReleased && this.jumpsCounts < maxJumps) {
+			this.playerState = PlayerState.JUMP;
+			
+			this.isUpKeyReleased = true;
+			this.jumpsCounts++;		
+			this.player.body.velocity.y = -jumpForce; 
 		}
 		else {
 			this.playerState = PlayerState.IDLE;
@@ -150,14 +158,7 @@ class Player {
 		 
 		if (this.controls.up.isUp)
 			this.isUpKeyReleased = false;
-		
-        // ====
-        // DRAW ATTACK BOX COLLISION
-        this.graphics.kill();        
-        this.graphics = game.add.graphics(this.player.x - highAttackBox.width/2, this.player.y - highAttackBox.height/2);
-        this.graphics.lineStyle(2, 0xff0000, 1);
-        this.graphics.drawRect(highAttackBox.x * this.player.scale.x, highAttackBox.y, highAttackBox.width, highAttackBox.height);
-                  
+		             
 		// ====
 		// ANIMATION        
 		if (!this.freezeState) {	
