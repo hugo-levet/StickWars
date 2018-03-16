@@ -115,7 +115,10 @@ class Player {
 		
 		// ===
 		// GESTION DE L'ETAT DU JOUEUR
-		if (this.controls.attack.isDown && this.playerState != PlayerState.ATTACK) {
+        if (this.attackAnimPlaying) {
+            this.player.body.velocity.x += plySpeed * game.time.elapsed * this.player.scale.x * 1.25;
+        }
+		else if (this.controls.attack.isDown) {
 			this.playerState = PlayerState.ATTACK;
 		}
         else if (this.controls.up.isDown && !this.isUpKeyReleased && this.jumpsCounts < maxJumps) {
