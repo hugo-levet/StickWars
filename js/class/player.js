@@ -276,12 +276,13 @@ class Player {
             
             console.log(player[i].id + " isn't the attacker");
 
+            console.log(" this.player.body.left " + this.player.body.left);
+            
             if (this.player.body.left < player[i].player.body.right &&
-                this.player.body.right > player[i].player.body.left &&
-                this.player.body.top <  player[i].player.body.bottom &&
-                this.player.body.botttom > player[i].player.body.top) {
-                    
-                    console.log(player[i].id + " est dans le box! w/ " + player[i].name);
+                this.player.body.right > player[i].player.body.left && 
+                this.player.body.top < player[i].player.body.bottom && 
+                this.player.body.bottom > player[i].player.body.top) {                    
+                    console.log(player[i].id + " est dans le box! w/ " + player[i].id);
                     player[i].getDamage(this.damage);
             }
         }

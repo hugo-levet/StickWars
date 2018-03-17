@@ -16,8 +16,7 @@ Ressources utilisés :
 -\> Tomb stone: https://www.gameart2d.com/free-graveyard-platformer-tileset.html  
 -\> Stickman: C'est fait par nous 🤘   
   
-BUGS :  
--\> PROBLEME DE COLLISIONS BOX  
+BUGS :
 -\> CON #1: Quand on glisse sur un mur, on peut passer sous les plateforms (c'est le sprite qui pose pb!!)  
 
 **Et op on peut voir le projet ici !**  
