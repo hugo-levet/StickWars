@@ -34,43 +34,38 @@ var Preload = {
         normalBox.y = convertY(normalBox.y);
         
         // on créer les contrôles des joueurs
-        var controls1 = {
+        controls.push({
             up: game.input.keyboard.addKey(Phaser.Keyboard.Z),
             down: game.input.keyboard.addKey(Phaser.Keyboard.S),
             left: game.input.keyboard.addKey(Phaser.Keyboard.Q),
             right: game.input.keyboard.addKey(Phaser.Keyboard.D),
             attack: game.input.keyboard.addKey(Phaser.Keyboard.E)
-        };
+        });
         
-        var controls2 = {
+        controls.push({
             up: game.input.keyboard.addKey(Phaser.Keyboard.UP),
             down: game.input.keyboard.addKey(Phaser.Keyboard.DOWN),
             left: game.input.keyboard.addKey(Phaser.Keyboard.LEFT),
             right: game.input.keyboard.addKey(Phaser.Keyboard.RIGHT),
             attack: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_0)
-        };
+        });
         
-        var controls3 = {
+        controls.push({
             up: game.input.keyboard.addKey(Phaser.Keyboard.O),
             down: game.input.keyboard.addKey(Phaser.Keyboard.L),
             left: game.input.keyboard.addKey(Phaser.Keyboard.K),
             right: game.input.keyboard.addKey(Phaser.Keyboard.M),
             attack: game.input.keyboard.addKey(Phaser.Keyboard.P)
-        };
+        });
         
-        var controls4 = {
+        controls.push({
             up: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_8),
             down: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_5),
             left: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_4),
             right: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_6),
             attack: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_9)
-        };
+        });
         
-        controls.push(controls1);
-        controls.push(controls2);
-        controls.push(controls3);
-        controls.push(controls4);
-    
         // on lance le menu
         game.state.add('MainMenu', MainMenu);
         game.state.start('MainMenu');
