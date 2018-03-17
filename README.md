@@ -14,15 +14,11 @@ Ressources utilisés:
 -\> Footstep: https://www.youtube.com/watch?v=ybl3y6V_ZT4  
 -\> Clic button: https://www.youtube.com/watch?v=2o11YM2Mwjc  
 -\> Tomb stone: https://www.gameart2d.com/free-graveyard-platformer-tileset.html  
--\> Stickman: C'est fait par nous les gars 🤘   
+-\> Stickman: C'est fait par nous 🤘   
   
-Placeholder (non disponible en jeu):  
--\> Chevalier: https://www.gameart2d.com/the-knight-free-sprites.html
-
 Et op on peut voir le projet ici !  
 -\> https://heron4102.github.io/StickWars/  
   
 BUGS:  
 -\> JUMP + TACKLE = BUG  
--\> NSM LE TACKLE !!!!!!!  
--\> SLOWDOWN on TACKLE  
+-\> PROBLEME DE COLLISIONS BOX
