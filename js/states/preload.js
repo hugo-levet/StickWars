@@ -15,6 +15,7 @@ var Preload = {
         game.load.image("ground", "assets/img/world/platform.png"); 
 
         game.load.audio('footstep', 'assets/audio/footstep_run.mp3');
+        game.load.audio('jump', 'assets/audio/jump.mp3');
         game.load.audio('click', 'assets/audio/button_click.mp3');
         game.load.audio('lobby', 'assets/audio/lobby_count.mp3');
         

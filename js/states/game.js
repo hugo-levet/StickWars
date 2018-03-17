@@ -36,6 +36,7 @@ var Game = {
         
         // on décode les fichiers audio .mp3
         footstep = game.add.audio('footstep');
+        jump = game.add.audio('jump');
         
         // ====
         // On créer les joueurs          

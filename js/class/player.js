@@ -223,6 +223,7 @@ class Player {
             
             case PlayerState.JUMP:
                 if (!this.player.body.touching.down)
+                    this.jump = game.sound.play('jump');
                     this.footstep.stop();
                 break;            
                 
