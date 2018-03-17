@@ -10,8 +10,8 @@ var Preload = {
         game.load.image("explorer", "assets/img/world/explorer.png");   
         game.load.image("explorer_windows", "assets/img/world/explorer_windows.png"); 
         
-        game.load.image("button", "assets/img/button.png");        
-        game.load.image("return", "assets/img/return.png");
+        game.load.image("button", "assets/img/button.png");   
+        game.load.image("return", "assets/img/return.png");        
         game.load.image("ground", "assets/img/world/platform.png"); 
 
         game.load.audio('footstep', 'assets/audio/footstep_run.mp3');
