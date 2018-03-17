@@ -86,6 +86,8 @@ class Player {
 		
 	update(platform) {   
       
+        console.log(this.id + " # vel y = " + this.player.body.velocity.y); 
+      
         // si le joueur est mort, alors on affiche une pierre tombale
         if (this.hp <= 0) {            
             this.player.anchor.setTo(0.5, 0);
@@ -98,7 +100,7 @@ class Player {
         
         // ====                
         // DRAW ATTACK BOX COLLISION
-        /*this.graphics.kill();        
+        this.graphics.kill();        
         this.graphics = game.add.graphics(this.player.x - this.player.width/2, this.player.y - this.player.height/2);
         this.graphics.lineStyle(2, 0xff0000, 1);
         this.graphics.drawRect(normalBox.x + highAttackBox.x , normalBox.y + highAttackBox.y, highAttackBox.width, highAttackBox.height); //*/
@@ -148,9 +150,9 @@ class Player {
         if (this.player.body.blocked.left || this.player.body.blocked.right ||
             this.player.body.touching.left || this.player.body.touching.right) {
                 
-            this.jumpsCounts = 0;
-            this.player.body.gravity.y = 0;
+            this.jumpsCounts = 0;            
             this.player.body.velocity.y = plySlideSpeed * game.time.elapsed;
+            this.player.body.gravity.y = 0;
             
             this.playerState = PlayerState.SLIDEONWALL;
         } 
@@ -201,7 +203,7 @@ class Player {
 					break;
                     
                 case PlayerState.SLIDEONWALL:
-                    this.player.animations.play("slide");
+                    //this.player.animations.play("slide");
                 
                     break;
 			}	
