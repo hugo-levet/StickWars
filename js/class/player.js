@@ -6,7 +6,7 @@ const jumpForce = 600;
 const hpMax = 50;
 const attackSpeed = 0.82; // per second
 
-const attackBox = {x: -50, y: 102, width: 129, height: 65};
+const attackBox = {x: 170, y: 102, width: 129, height: 65};
 const normalBox = {x: 220, y: 0, width: 75, height: 167};
 
 var PlayerState = {  
@@ -94,30 +94,34 @@ class Player {
             this.hpBar.kill();
 
             return;
-        }
-        
+        }        
         
 		var hitPlatform = game.physics.arcade.collide(this.player, platform);
     
         this.player.body.velocity.x = 0;	        
-        this.hpBar.setPosition(this.player.x, this.player.y - 75);                
+        this.hpBar.setPosition(this.player.x, this.player.y - convertY(75));                
         this.timerAtk += game.time.elapsed/1000;
         
         // ====                
         // DRAW ATTACK BOX COLLISION
-        this.graphics.kill();        
+        /*this.graphics.kill();        
         this.graphics = game.add.graphics(this.player.x - Math.abs(this.player.width/2), this.player.y - this.player.height/2);
         this.graphics.lineStyle(2, 0xff0000, 1);
-        this.graphics.drawRect(normalBox.x, normalBox.y, normalBox.width, normalBox.height); //*/     
+        this.graphics.drawRect(attackBox.x, attackBox.y, attackBox.width, attackBox.height); //*/     
 
 		// on reset le double jump si on touche le sol
 		if (this.player.body.touching.down)
 			this.jumpsCounts = 0;
 		
+        // ===
+        // GESTION DE L'ATTAQUE
+        if (this.attackAnimPlaying)
+            this.inflictDamage(); 
+        
 		// ===
 		// GESTION DE L'ETAT DU JOUEUR
         if (this.attackAnimPlaying) {
-            this.player.body.velocity.x += plySpeed * game.time.elapsed * this.player.scale.x * 1.25;
+            this.player.body.velocity.x += plySpeed * game.time.elapsed * +this.player.scale.x * 1.25;
         }
 		else if (this.controls.attack.isDown) {
 			this.playerState = PlayerState.ATTACK;
@@ -161,7 +165,15 @@ class Player {
 		 
 		if (this.controls.up.isUp)
 			this.isUpKeyReleased = false;
-		             
+		            
+        // ====
+        // GESTION DES COLLISIONS BOX
+        if (this.attackAnimPlaying) 
+            this.player.body.setSize(attackBox.width, attackBox.height, attackBox.x, attackBox.y);  
+        else
+            this.player.body.setSize(normalBox.width, normalBox.height, normalBox.x, normalBox.y); // on modifie la boite de collision
+	
+                    
 		// ====
 		// ANIMATION        
 		if (!this.freezeState) {	
@@ -185,7 +197,7 @@ class Player {
                     this.player.animations.currentAnim.onComplete.add(function() { this.freezeState = false; this.attackAnimPlaying = false;}, this);
                     
                     // on attaque dans this.attackSpeed secondes (on attends l'animation)
-                    setTimeout(function() { 
+                    /*setTimeout(function() { 
                         if (ply.playerState != PlayerState.ATTACK || ply.timerAtk < attackSpeed)    
                             return;
                         
@@ -193,7 +205,7 @@ class Player {
                         ply.inflictDamage(); 
                         
                         
-                    }, this.attackSpeed);
+                    }, this.attackSpeed);//*/
      
 					break;
 					
@@ -230,20 +242,8 @@ class Player {
             case PlayerState.IDLE:
                 this.footstep.stop();
                 break;
-        };
-        
-        // ====
-        // GESTION DES COLLISIONS BOX
-        if (this.attackAnimPlaying) {
-            // on calcule l'offset
-            var offsetX = normalBox.x;
-            var offsetY = normalBox.y;
-            
-            this.player.body.setSize(attackBox.width, attackBox.height, offsetX + attackBox.x, offsetY + attackBox.y);  
-        }
-        else
-            this.player.body.setSize(normalBox.width, normalBox.height, normalBox.x, normalBox.y); // on modifie la boite de collision
-	}
+        };       
+    }
     
     getDamage(damage) {        
         this.hp -= damage;
@@ -262,24 +262,24 @@ class Player {
             width: attackBox.width, 
             height: attackBox.height
         };       
-                  
+                     
+        console.log("\n" + this.id + " ATTACKING!");
+             
         // on regarde si il y a un joueur dans la box d'attaque
         for (var i=0; i < player.length; i++) {
-            // on ne check pas les collisions du joueur qui attaque
-            if (player[i] == this)
-                continue;
             
-            var rect2 = {
-                x: player[i].player.x, 
-                y: player[i].player.y, 
-                width: player[i].player.width, 
-                height: player[i].player.height
-            };
+            console.log("process for " + player[i].id);
+            
+            // on ne check pas les collisions du joueur qui attaque
+            if (player[i].id == this.id)
+                continue;            
+            
+            console.log(player[i].id + " isn't the attacker");
 
-            if (playerRect.x < rect2.x + rect2.width &&
-                playerRect.x + playerRect.width > rect2.x &&
-                playerRect.y < rect2.y + rect2.height &&
-                playerRect.height + playerRect.y > rect2.y) {
+            if (this.player.body.left < player[i].player.body.right &&
+                this.player.body.right > player[i].player.body.left &&
+                this.player.body.top <  player[i].player.body.bottom &&
+                this.player.body.botttom > player[i].player.body.top) {
                     
                     console.log(player[i].id + " est dans le box! w/ " + player[i].name);
                     player[i].getDamage(this.damage);
@@ -289,10 +289,10 @@ class Player {
          // on regarde si il y a un actionner dans la box d'attaque
         for (var i=0; i < interactionsBox.length; i++) {
 
-            if (playerRect.x < interactionsBox[i].rect.x + interactionsBox[i].rect.width &&
-                playerRect.x + playerRect.width > interactionsBox[i].rect.x &&
-                playerRect.y < interactionsBox[i].rect.y + interactionsBox[i].rect.height &&
-                playerRect.height + playerRect.y > interactionsBox[i].rect.y) {
+            if (this.player.body.left < interactionsBox[i].rect.x + interactionsBox[i].rect.width &&
+                this.player.body.right > interactionsBox[i].rect.x &&
+                this.player.body.top < interactionsBox[i].rect.y + interactionsBox[i].rect.height &&
+                this.player.body.bottom > interactionsBox[i].rect.y) {
                     
                     console.log("Actionner est dans le box!");
                     interactionsBox[i].hitFunction();

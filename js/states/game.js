@@ -62,15 +62,14 @@ var Game = {
         for (var i=0; i < player.length; i++)
             player[i].update(platforms);
         
-        // Score System
+        // ====
+        // SCORE SYSTEM
         var playersAlive = [];
         
         for (var i=0; i < player.length; i++) {
             if (player[i].hp > 0)
                 playersAlive.push(player[i]);
-        }
-        
-        console.log("playersAlive.length -> " + playersAlive.length);
+        }               
         
         if (playersAlive.length == 1) {
             var idWinner = playersAlive[0].id;
