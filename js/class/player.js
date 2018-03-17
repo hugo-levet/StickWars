@@ -221,10 +221,10 @@ class Player {
                 
                 break;
             
-            case PlayerState.JUMP:
-                if (!this.player.body.touching.down)
-                    this.jump = game.sound.play('jump');
-                    this.footstep.stop();
+            case PlayerState.JUMP:                
+                this.jump = game.sound.play('jump');
+                this.footstep.stop();
+                
                 break;            
                 
             case PlayerState.IDLE:

@@ -22,6 +22,3 @@ Et op on peut voir le projet ici !
 BUGS :  
 -\> JUMP + TACKLE = BUG  
 -\> PROBLEME DE COLLISIONS BOX
-
-Problèmes secondaires :  
--\> manque le son du premier saut 
