@@ -24,10 +24,10 @@ var Preload = {
     },   
     
     create: function () { 
-        highAttackBox.width = convertX(highAttackBox.width);
-        highAttackBox.height = convertY(highAttackBox.height);
-        highAttackBox.x = convertX(highAttackBox.x);
-        highAttackBox.y = convertY(highAttackBox.y);
+        attackBox.width = convertX(attackBox.width);
+        attackBox.height = convertY(attackBox.height);
+        attackBox.x = convertX(attackBox.x);
+        attackBox.y = convertY(attackBox.y);
         
         normalBox.width = convertX(normalBox.width);
         normalBox.height = convertY(normalBox.height);
