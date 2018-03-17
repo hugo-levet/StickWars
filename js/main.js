@@ -6,12 +6,12 @@ const initialHeight = 1048;
 const ratioX = width / initialWidth;
 const ratioY = height / initialHeight;
 
-// resolution de base: 1680x1080
+// resolution de base: 1680x1048
 var game = new Phaser.Game(width, height, Phaser.CANVAS, 'game');
-var player = [],
-    platforms;
-var interactionsBox = [];
-var controls = [];
+var player = [],    
+    interactionsBox = [],
+    controls = [];
+var platforms;
 
 var PlayerMetaEnum = {  
   BLUE: 0,
