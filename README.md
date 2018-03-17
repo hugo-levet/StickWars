@@ -23,5 +23,5 @@ BUGS :
 -\> JUMP + TACKLE = BUG  
 -\> PROBLEME DE COLLISIONS BOX
 
-Problèmes secondaires :
+Problèmes secondaires :  
 -\> manque le son du premier saut 
