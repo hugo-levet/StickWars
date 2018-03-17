@@ -18,8 +18,7 @@ var Preload = {
         game.load.audio('click', 'assets/audio/button_click.mp3');
         game.load.audio('lobby', 'assets/audio/lobby_count.mp3');
         
-        game.load.bitmapFont('pixel', 'assets/fonts/carrier_command.png', 'assets/fonts/carrier_command.xml');
-        game.load.atlasJSONHash("player", "assets/img/player/texture.png", "assets/img/player/data.json");    
+        game.load.bitmapFont('pixel', 'assets/fonts/carrier_command.png', 'assets/fonts/carrier_command.xml');        
         game.load.atlasJSONHash("stickman", "assets/img/stickman/atlas.png", "assets/img/stickman/data.json");    
     },   
     
