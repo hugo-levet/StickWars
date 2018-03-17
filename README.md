@@ -24,5 +24,4 @@ Et op on peut voir le projet ici !
   
 BUGS:  
 -\> JUMP + TACKLE = BUG  
--\> NSM LE TACKLE !!!!!!!  
--\> SLOWDOWN on TACKLE  
+-\> PROBLEME DE COLLISIONS BOX
