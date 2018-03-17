@@ -32,6 +32,7 @@ class Player {
         this.attackAnimPlaying = false;
             
 		this.playerState = PlayerState.IDLE;
+        this.idHit = []; // enregistre les joueurs qui ont été touché par le tacle
 		this.hp = hpMax;
         this.jumpsCounts = 0;
         this.id = id;
@@ -192,20 +193,10 @@ class Player {
                     // on gèle le système d'animation pour laisser l'animation du tacle se faire
                     this.freezeState = true;                          
                     this.attackAnimPlaying = true;
+                       
+                    this.idHit = [];
                     
-                    var ply = this;                        
-                    this.player.animations.currentAnim.onComplete.add(function() { this.freezeState = false; this.attackAnimPlaying = false;}, this);
-                    
-                    // on attaque dans this.attackSpeed secondes (on attends l'animation)
-                    /*setTimeout(function() { 
-                        if (ply.playerState != PlayerState.ATTACK || ply.timerAtk < attackSpeed)    
-                            return;
-                        
-                        ply.timerAtk = 0;
-                        ply.inflictDamage(); 
-                        
-                        
-                    }, this.attackSpeed);//*/
+                    this.player.animations.currentAnim.onComplete.add(function() { this.freezeState = false; this.attackAnimPlaying = false;}, this);                                
      
 					break;
 					
@@ -266,17 +257,18 @@ class Player {
         console.log("\n" + this.id + " ATTACKING!");
              
         // on regarde si il y a un joueur dans la box d'attaque
+        Loop1:
         for (var i=0; i < player.length; i++) {
-            
-            console.log("process for " + player[i].id);
             
             // on ne check pas les collisions du joueur qui attaque
             if (player[i].id == this.id)
                 continue;            
             
-            console.log(player[i].id + " isn't the attacker");
-
-            console.log(" this.player.body.left " + this.player.body.left);
+            for (var j=0; j < this.idHit.length; j++) {
+                if (player[i].id == this.idHit[j]) {
+                    continue Loop1;
+                }
+            }                       
             
             if (this.player.body.left < player[i].player.body.right &&
                 this.player.body.right > player[i].player.body.left && 
@@ -284,6 +276,7 @@ class Player {
                 this.player.body.bottom > player[i].player.body.top) {                    
                     console.log(player[i].id + " est dans le box! w/ " + player[i].id);
                     player[i].getDamage(this.damage);
+                    this.idHit.push(player[i].id);
             }
         }
         
