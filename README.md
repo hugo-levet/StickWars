@@ -17,7 +17,6 @@ Ressources utilisés :
 -\> Stickman: C'est fait par nous 🤘   
   
 BUGS :  
--\> JUMP + TACKLE = BUG  
 -\> PROBLEME DE COLLISIONS BOX  
 -\> CON #1: Quand on glisse sur un mur, on peut passer sous les plateforms (c'est le sprite qui pose pb!!)  
 

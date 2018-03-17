@@ -220,7 +220,7 @@ class Player {
 			}	
             
             // ici on overwrite l'animation si le joueur est en train de sauter
-            if (this.jumpsCounts != 0)
+            if (this.jumpsCounts != 0 && !this.attackAnimPlaying)
                 this.player.animations.play("jump");
 		}
         
