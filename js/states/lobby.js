@@ -4,6 +4,15 @@ var Lobby = {
 
     create: function () {
         
+        // RETURN BUTTON
+        // créer l'image du bouton
+        var retour = game.add.button(0, 0, 'return', loadMainMenu, this, 2, 1, 0);
+ 
+        // puis on pose un texte par dessus
+        var text = game.add.bitmapText(40, 40, 'pixel', '<', 32);
+        ////
+        
+        
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.stage.backgroundColor = '#182d3b';              
         
@@ -74,3 +83,10 @@ var Lobby = {
         }                          
     }
 };
+
+function loadMainMenu() {
+    game.sound.play('click');
+    
+    game.state.add('MainMenu', MainMenu);
+    game.state.start('MainMenu');
+}

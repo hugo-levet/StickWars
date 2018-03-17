@@ -47,6 +47,15 @@ var Game = {
                 player.push(new Player(width * Math.random(), game.world.height - convertY(180), playerMeta[i].id, playerMeta[i].tint));	    
             }
         }
+        
+        // RETURN BUTTON
+        // créer l'image du bouton
+        var retour = game.add.button(0, 0, 'return', loadMainMenu, this, 2, 1, 0);
+ 
+        // puis on pose un texte par dessus
+        var text = game.add.bitmapText(40, 40, 'pixel', '<', 32);
+        ////
+        
     },
         
     update: function () {
@@ -82,3 +91,10 @@ var Game = {
         }               
     }
 };
+
+function loadMainMenu() {
+    game.sound.play('click');
+    
+    game.state.add('MainMenu', MainMenu);
+    game.state.start('MainMenu');
+}
