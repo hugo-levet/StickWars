@@ -194,8 +194,7 @@ class Player {
                     this.freezeState = true;                          
                     this.attackAnimPlaying = true;
                        
-                    this.idHit = [];
-                    
+                    this.idHit = [];                    
                     this.player.animations.currentAnim.onComplete.add(function() { this.freezeState = false; this.attackAnimPlaying = false;}, this);                                
      
 					break;
@@ -205,8 +204,7 @@ class Player {
 					break;
                     
                 case PlayerState.SLIDEONWALL:
-                    //this.player.animations.play("slide");
-                
+                    this.player.animations.play("slide");                
                     break;
 			}	
             

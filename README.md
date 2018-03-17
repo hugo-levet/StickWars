@@ -17,7 +17,7 @@ Ressources utilisés :
 -\> Stickman: C'est fait par nous 🤘   
   
 BUGS :
--\> CON #1: Quand on glisse sur un mur, on peut passer sous les plateforms (c'est le sprite qui pose pb!!)  
+-\> collisions box par exacte en fonction de la résolution
 
 **Et op on peut voir le projet ici !**  
 -\> https://heron4102.github.io/StickWars/  
