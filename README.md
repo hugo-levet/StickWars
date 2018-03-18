@@ -17,7 +17,8 @@ Ressources utilisés :
 -\> Stickman: C'est fait par nous 🤘   
   
 BUGS :  
--\> collisions box par exacte en fonction de la résolution(ce bug est chiant lol)
+-\> Collisions box pas exacte en fonction de la résolution (ce bug est chiant lol)  
+-\> Si on précharge un bonhomme au lobby et qu'en faite nan ben il vient quand même dans le jeu
 
 **Et op on peut voir le projet ici !**  
 -\> https://heron4102.github.io/StickWars/  
