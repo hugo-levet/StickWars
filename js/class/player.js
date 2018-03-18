@@ -6,8 +6,8 @@ const jumpForce = 600;
 const hpMax = 50;
 const attackSpeed = 0.82; // per second
 
-const attackBox = {x: 170, y: 102, width: 129, height: 65};
-const normalBox = {x: 220, y: 0, width: 75, height: 167};
+const attackBox = {x: 170, y: 80, width: 129, height: 65};
+const normalBox = {x: 220, y: 0, width: 75, height: 145};
 
 var PlayerState = {  
   RUN: 1,
@@ -136,13 +136,13 @@ class Player {
 		}
 		else if (this.controls.left.isDown) {
 			this.playerState = PlayerState.RUN;
-			this.player.scale.x = -1;
+			this.player.scale.x = -ratioX;
 				
 			this.player.body.velocity.x -= plySpeed * game.time.elapsed;
 		}	
 		else if (this.controls.right.isDown) {
 			this.playerState = PlayerState.RUN;		
-			this.player.scale.x = 1;
+			this.player.scale.x = ratioX;
 				
 			this.player.body.velocity.x += plySpeed * game.time.elapsed; 
 		}        
