@@ -20,8 +20,10 @@ var Credits = {
         thxEveryone.anchor.setTo(.5,.5);
     },      
     
-    update: function () {
-        
+    update: function () {        
+        //retour menu
+        if (game.input.keyboard.addKey(Phaser.Keyboard.ESC).isDown) 
+            loadMainMenu();        
     }
 };
 

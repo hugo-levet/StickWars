@@ -52,6 +52,10 @@ var Lobby = {
     },
     
     update: function () {              
+           
+        //retour menu
+        if (game.input.keyboard.addKey(Phaser.Keyboard.ESC).isDown) 
+            loadMainMenu();
         
         // ON CALCULE LE NOMRBE DE JOUEUR DANS LE LOBBY
         var countPlayerJoinLobby = 0;

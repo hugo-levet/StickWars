@@ -37,6 +37,10 @@ var Score = {
         
     update: function () {
         
+        //retour menu
+        if (game.input.keyboard.addKey(Phaser.Keyboard.ESC).isDown) 
+            loadMainMenu();
+        
         // compteur avant la reprise du jeu        
         this.time -= game.time.elapsed/1000;        
         this.text.setText(Math.round(this.time));

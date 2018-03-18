@@ -59,7 +59,11 @@ var Game = {
         
     },
         
-    update: function () {
+    update: function () {    
+        
+        //retour menu
+        if (game.input.keyboard.addKey(Phaser.Keyboard.ESC).isDown) 
+            loadMainMenu();
         for (var i=0; i < player.length; i++)
             player[i].update(platforms);
         
