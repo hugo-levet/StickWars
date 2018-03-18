@@ -18,7 +18,7 @@ Ressources utilisés :
   
 BUGS :  
 -\> Collisions box pas exacte en fonction de la résolution (ce bug est chiant lol)  
--\> Si on précharge un bonhomme au lobby et qu'en faite nan ben il vient quand même dans le jeu
+-\> Si on précharge un bonhomme au lobby et qu'en faite nan ben il vient quand même dans le jeu  
 -\> Pour le joueur en haut a droite : si il tacle le jeu plante
 
 **Et op on peut voir le projet ici !**  
