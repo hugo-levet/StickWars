@@ -16,8 +16,8 @@ Ressources utilisés :
 -\> Tomb stone: https://www.gameart2d.com/free-graveyard-platformer-tileset.html  
 -\> Stickman: C'est fait par nous 🤘   
   
-BUGS :
--\> collisions box par exacte en fonction de la résolution
+BUGS :  
+-\> collisions box par exacte en fonction de la résolution(ce bug est chiant lol)
 
 **Et op on peut voir le projet ici !**  
 -\> https://heron4102.github.io/StickWars/  

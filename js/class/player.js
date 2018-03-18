@@ -83,6 +83,8 @@ class Player {
 
         this.footstep = game.sound.play('footstep');
         this.footstep.stop();
+        this.tackle = game.sound.play('tackle');
+        this.tackle.stop();
 	}
 		
 	update(platform) {   
@@ -221,11 +223,18 @@ class Player {
                 if (!this.footstep.isPlaying && this.player.body.touching.down)
                     this.footstep = game.sound.play('footstep');
                 
+                console.log('caca');    
                 break;
             
             case PlayerState.JUMP:                
                 this.jump = game.sound.play('jump');
-                this.footstep.stop();                
+                this.footstep.stop();            
+                break; 
+            
+            case PlayerState.ATTACK:  
+                if (!this.tackle.isPlaying && this.player.body.touching.down)
+                    this.tackle = game.sound.play('tackle');
+                    this.footstep.stop(); 
                 break;            
                 
             case PlayerState.IDLE:
