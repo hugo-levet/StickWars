@@ -23,6 +23,8 @@ var Preload = {
     },   
     
     create: function () { 
+        game.plugins.add(Fabrique.Plugins.Responsiveness);
+    
         attackBox.width = convertX(attackBox.width);
         attackBox.height = convertY(attackBox.height);
         attackBox.x = convertX(attackBox.x);
