@@ -3,6 +3,15 @@ var Game = {
     create: function () {
         game.physics.startSystem(Phaser.Physics.ARCADE);
             
+        //  This sets a limit on the up-scale
+        //  Then we tell Phaser that we want it to scale up to whatever the browser can handle, but to do it proportionally
+        game.scale.scaleMode = Phaser.ScaleManager.aspectRatio;
+        game.scale.pageAlignVertically = true;
+        game.scale.pageAlignHorizontally = true;
+        game.scale.setShowAll();
+        game.scale.refresh(); 
+    
+            
         var bg = game.add.sprite(0, 0, "bg");	
         bg.width = width;
         bg.height = height;
@@ -16,7 +25,7 @@ var Game = {
         
         var ground = platforms.create(0, game.world.height, "ground");
         ground.width = width;
-        ground.height = convertY(-38);
+        ground.height = convertY(-38) * ratioY;
         ground.alpha = 0; // alpha, c'est la transparence de 0 à 1
         
         var bin = platforms.create(game.world.width - convertX(110), game.world.height - convertY(150), "recycle_bin");                     

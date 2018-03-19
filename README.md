@@ -8,6 +8,7 @@ Cahier des charges (GDD) : https://docs.google.com/document/d/146OOi7Vn77JdE9v2h
 Bibliothèques utilisées pour le projet :  
 -\> Phaser: https://phaser.io/tutorials/getting-started/index  
 -\> Phaser HealthBar: https://github.com/bmarwane/phaser.healthbar
+-\> Phaser Responsive: https://www.npmjs.com/package/phaser-responsive
   
   
 Ressources utilisés :  

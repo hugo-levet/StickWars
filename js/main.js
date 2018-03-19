@@ -34,9 +34,9 @@ game.state.start('Preload');
 
 // on créer 2 fonctions qui permet d'afficher le jeu sur de multiples résolutions
 function convertX(x) {
-    return x * ratioX;
+    return x;// * ratioX;
 }
 
 function convertY(y) {
-    return y * ratioY;
+    return y;// * ratioY;
 }
