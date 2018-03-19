@@ -36,7 +36,7 @@ var Lobby = {
         // ====
         // chronomètre avant le lancement de la game
         this.time = timeLobby;
-        this.text = game.add.bitmapText(game.world.centerX, game.world.centerY, 'pixel', "Waiting for players", convertY(16));
+        this.text = game.add.bitmapText(game.world.centerX, game.world.centerY, 'pixel', "Waiting for players", 16);
         this.text.anchor.setTo(.5,.5); 
         
         // ====
