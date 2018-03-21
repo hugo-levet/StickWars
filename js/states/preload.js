@@ -22,9 +22,7 @@ var Preload = {
         game.load.atlasJSONHash("stickman", "assets/img/stickman/atlas.png", "assets/img/stickman/data.json");    
     },   
     
-    create: function () { 
-        game.plugins.add(Fabrique.Plugins.Responsiveness);
-    
+    create: function () {
         attackBox.width = convertX(attackBox.width);
         attackBox.height = convertY(attackBox.height);
         attackBox.x = convertX(attackBox.x);
