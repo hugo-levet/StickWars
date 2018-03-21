@@ -9,7 +9,7 @@ var LevelLoader = {
         
         // ====
         // on créer les platforms
-        var map = new LevelCreator("theWay");
+        var map = new LevelCreator(level_steven);
         map.create();
 
         /*

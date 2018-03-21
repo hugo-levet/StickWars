@@ -2,29 +2,32 @@
 
 class LevelCreator {		
     
-	constructor(path) {
-        this.path = path;
+	constructor(data) {
+        this.data = data;
     }
 
     create() {
         platforms = game.add.group();
         platforms.enableBody = true;
         
-        var map = JSON.parse(this.path);
-
-        /*
-        var bg = game.add.sprite(0, 0, "bg");	
-        bg.width = width;
-        bg.height = height;
-
-        var ground = platforms.create(0, game.world.height, "ground");
-        ground.width = width;
-        ground.height = convertY(-38) * ratioY;
-        ground.alpha = 0; // alpha, c'est la transparence de 0 à 1
+        var map = this.data;
         
-        var bin = platforms.create(game.world.width - convertX(110), game.world.height - convertY(150), "recycle_bin");
-        bin.scale.setTo(ratioX, ratioY);
+        for (var i=0; i < map.plateforms.length; i++) {
+            var sprite;
+            
+            if (map.plateforms[i].collider)
+                var ground = platforms.create(0, 0, map.plateforms[i].sprite);
+            else
+                sprite = game.add.sprite(0, 0, map.plateforms[i].sprite);	
+            
+            sprite.x = map.plateforms[i].x * width / 100;
+            sprite.y = map.plateforms[i].y * height / 100;
+            sprite.width = map.plateforms[i].w * width / 100;
+            sprite.height = map.plateforms[i].h * height / 100;
+            
+
+        }
         
-        platforms.setAll('body.immovable', true);//*/
+        platforms.setAll('body.immovable', true);
     }
 }
