@@ -25,6 +25,15 @@ var MainMenu = {
         // puis on pose un texte par dessus
         var text = game.add.bitmapText(game.world.centerX, 550, 'pixel', 'Credits', 32);
         text.anchor.setTo(.5,.5);
+
+        // CREDITS BUTTON
+        // créer l'image du bouton
+        var play = game.add.button(game.world.centerX, 700, 'button', loadLevelLoader, this, 2, 1, 0);
+        play.anchor.setTo(.5,.5);
+        
+        // puis on pose un texte par dessus
+        var text = game.add.bitmapText(game.world.centerX, 700, 'pixel', 'Level Editor', 32);
+        text.anchor.setTo(.5,.5);
     },      
     
     update: function() {
@@ -45,4 +54,11 @@ function loadCredits() {
     
     game.state.add('Credits', Credits);
     game.state.start('Credits');
+}
+
+function loadLevelLoader() {
+    game.sound.play('click');
+    
+    game.state.add('LevelLoader', LevelLoader);
+    game.state.start('LevelLoader');
 }
