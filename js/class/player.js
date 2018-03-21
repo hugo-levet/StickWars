@@ -222,8 +222,6 @@ class Player {
                 // quand le joueur marche, on joue le son de bruit de pas
                 if (!this.footstep.isPlaying && this.player.body.touching.down)
                     this.footstep = game.sound.play('footstep');
-                
-                console.log('caca');    
                 break;
             
             case PlayerState.JUMP:                
