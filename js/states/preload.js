@@ -3,6 +3,15 @@ var Preload = {
     
     // ici on charge toutes les ressources pour l'état actuel (images, sons, etc...)
     preload: function () {
+		game.load.image("logo", "assets/img/logo.png");
+		game.load.image("preload_bar", "assets/img/preload_bar.png");
+		
+		var logo = game.add.sprite(game.world.centerX, game.world.centerY, "logo");
+		logo.anchor.setTo(0.5);				
+		
+		var preloadBar = game.add.sprite(game.world.centerX, game.world.centerY, "preload_bar");
+		game.load.setPreloadSprite(preloadBar);
+		
         game.load.image("bg", "assets/img/world/bg.png"); // ici bg signifie le fond d"écran	                   
         game.load.image("recycle_bin", "assets/img/world/recycle_bin_full.png");                  
         game.load.image("explorer", "assets/img/world/explorer.png");   
