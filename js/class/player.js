@@ -294,7 +294,7 @@ class Player {
                 this.player.body.bottom > interactionsBox[i].rect.y) {
                     
                     console.log("Actionner est dans le box!");
-                    interactionsBox[i].hitFunction();
+                    interactionsBox[i].hit();
             }
         }
     }
