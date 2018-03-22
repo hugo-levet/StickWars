@@ -3,13 +3,17 @@ var Preload = {
     
     // ici on charge toutes les ressources pour l'état actuel (images, sons, etc...)
     preload: function () {
+		game.stage.backgroundColor = '#182d3b';      
+		
 		console.log("In preload state");
 				
 		var logo = game.add.sprite(game.world.centerX, game.world.centerY, "logo");
 		logo.anchor.setTo(0.5);				
 		
-		var preloadBar = game.add.sprite(game.world.centerX, game.world.centerY, "preload_bar");
+		var preloadBar = game.add.sprite(0, game.world.centerY - 50, "preload_bar");
+		preloadBar.width = width;		
 		game.load.setPreloadSprite(preloadBar);
+		
 		
         game.load.image("bg", "assets/img/world/bg.png"); // ici bg signifie le fond d"écran	                   
         game.load.image("recycle_bin", "assets/img/world/recycle_bin_full.png");                  
