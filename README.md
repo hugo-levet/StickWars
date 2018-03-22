@@ -23,8 +23,9 @@ Ressources utilisés :
 -\> eventuellement, mise à jour vers phaser 3 pour + de perf (système de "state" a modifié...)
   
 BUGS :  
--\> Si on précharge un bonhomme au lobby et qu'en faite nan ben il vient quand même dans le jeu  
--\> Pour tous les joueurs ! Si il tacle le jeu plante
+-\> LOBBY : Les joueurs sont considérés comme chargé lorsque la touche *saut* est enclenché (même si la barre n'est pas chargée au max)  
+-\> LOBBY : Au premier saut(généré de base) le jeu plante si la touche *attaque* est appuyé  
+-\> GAME : On peut passer à travers les collisions du bas de la fenêtre (grâce aux collisions du tacle qui sont moins hautes)  
 
 **Et op on peut voir le projet ici !**  
 -\> https://heron4102.github.io/StickWars/  
