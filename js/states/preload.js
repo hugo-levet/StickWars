@@ -3,9 +3,8 @@ var Preload = {
     
     // ici on charge toutes les ressources pour l'état actuel (images, sons, etc...)
     preload: function () {
-		game.load.image("logo", "assets/img/logo.png");
-		game.load.image("preload_bar", "assets/img/preload_bar.png");
-		
+		console.log("In preload state");
+				
 		var logo = game.add.sprite(game.world.centerX, game.world.centerY, "logo");
 		logo.anchor.setTo(0.5);				
 		
