@@ -24,6 +24,13 @@ var Preload = {
 		game.load.setPreloadSprite(preloadBar);
 		
 		
+		game.load.script("main_menu", "js/states/main_menu.js");
+		game.load.script("lobby", "js/states/lobby.js");
+		game.load.script("game", "js/states/game.js");
+		game.load.script("score", "js/states/score.js");
+		game.load.script("credits_menu", "js/states/credits_menu.js");
+		
+		
         game.load.image("bg", "assets/img/world/bg.png"); // ici bg signifie le fond d"écran	                   
         game.load.image("recycle_bin", "assets/img/world/recycle_bin_full.png");                  
         game.load.image("explorer", "assets/img/world/explorer.png");   
