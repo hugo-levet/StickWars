@@ -59,9 +59,8 @@ var LevelLoader = {
     
     render: function() {
         // on affiche les collisions box des joueurs
-        for (var i=0; i < player.length; i++) {
+        for (var i=0; i < player.length; i++) 
             if (player[i].hp > 0)
-                game.debug.body(player[i].player);
-        }               
+                game.debug.body(player[i].player);                 
     }
 };

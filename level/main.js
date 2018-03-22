@@ -5,29 +5,28 @@ const PlateformsEnum = {
 };
 
 
-/*
+
 // ca, c'est la fonction améliorée, cependant vu que le programme marche pas,
 // on garde la fonction qui marche avec game.js
 var explorer_function = () => {        
     var explorer = platforms.create(0, 0, "explorer_windows");              
-    
+    var explorer_sprite = game.add.sprite(0, 0, "explorer_windows");	
+	
     explorer.x = 17.9 * width / 100;
     explorer.y = 19.1 * height / 100;
     explorer.width = 61.25 * width / 100;
     explorer.height = 52.7 * height / 100;
+	explorer_sprite.x = 17.9 * width / 100;
+    explorer_sprite.y = 19.1 * height / 100;
+    explorer_sprite.width = 61.25 * width / 100;
+    explorer_sprite.height = 52.7 * height / 100;
     
     explorer.body.immovable = true;	
 
     game.sound.play('click');
 }//*/
 
-    var explorer_function = function() {
-        var explorer = platforms.create(convertX(300), convertY(200), "explorer_windows");    
-        explorer.body.immovable = true;	  
-        explorer.scale.setTo(ratioX, ratioY);
-        
-        game.sound.play('click');
-    }
+
 
 var level_main = {
 	"plateforms": [
