@@ -7,6 +7,8 @@ var BootStrap = {
     },   
 	
 	create: function () {
+		console.log("In boot state");
+		
 		game.state.add('Preload', Preload);
 		game.state.start('Preload');
     }
