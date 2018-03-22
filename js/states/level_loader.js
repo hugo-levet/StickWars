@@ -6,23 +6,12 @@ var LevelLoader = {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         
         player = [];
+        interactionsBox = [];
         
         // ====
         // on créer les platforms
-        var map = new LevelCreator(level_steven);
+        var map = new LevelCreator(level_main);
         map.create();
-
-        /*        
-        var fct = function() {
-            var explorer = platforms.create(convertX(300), convertY(200), "explorer_windows");                 
-            explorer.body.immovable = true;
-            explorer.scale.setTo(ratioX, ratioY);
-            
-            game.sound.play('click');
-        }
-        
-        interactionsBox.push(new InteractionBox(convertX(75), game.world.height - convertY(135), convertX(45), convertY(41), "explorer", fct));
-        //*/
 
         // on décode les fichiers audio .mp3
         footstep = game.add.audio('footstep');
@@ -30,27 +19,21 @@ var LevelLoader = {
         tackle = game.add.audio('tackle');        
         
         // RETURN BUTTON
-        // créer l'image du bouton
         var retour = game.add.button(0, 0, 'return', loadMainMenu, this, 2, 1, 0);
- 
-        // puis on pose un texte par dessus
         var text = game.add.bitmapText(40, 40, 'pixel', '<', 32);        
 
-        // ====
         // On créer les joueurs
         for (var i=0; i < 3; i++) {      
             player.push(new Player(width * Math.random(), game.world.height - convertY(180), playerMeta[i].id, playerMeta[i].tint));	                
-        }
-    
-        console.log("player.length -> " + player.length);
-            
+        }     
     },
         
     update: function () {    
         
-        //retour menu
+        // retour menu
         if (game.input.keyboard.addKey(Phaser.Keyboard.ESC).isDown) 
             loadMainMenu();
+                
         for (var i=0; i < player.length; i++)
             player[i].update(platforms);
         
@@ -75,17 +58,10 @@ var LevelLoader = {
     },
     
     render: function() {
-    
+        // on affiche les collisions box des joueurs
         for (var i=0; i < player.length; i++) {
             if (player[i].hp > 0)
                 game.debug.body(player[i].player);
         }               
     }
 };
-
-function loadMainMenu() {
-    game.sound.play('click');
-    
-    game.state.add('MainMenu', MainMenu);
-    game.state.start('MainMenu');
-}

@@ -269,11 +269,10 @@ class Player {
             if (player[i].id == this.id)
                 continue;            
             
-            for (var j=0; j < this.idHit.length; j++) {
-                if (player[i].id == this.idHit[j]) {
-                    continue Loop1;
-                }
-            }                       
+            // si le joueur a déjà été touché par l'attaque, on l'ignore
+            for (var j=0; j < this.idHit.length; j++) 
+                if (player[i].id == this.idHit[j]) 
+                    continue Loop1;                   
             
             if (this.player.body.left < player[i].player.body.right &&
                 this.player.body.right > player[i].player.body.left && 

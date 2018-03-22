@@ -87,10 +87,3 @@ var Lobby = {
         }                          
     }
 };
-
-function loadMainMenu() {
-    game.sound.play('click');
-    
-    game.state.add('MainMenu', MainMenu);
-    game.state.start('MainMenu');
-}

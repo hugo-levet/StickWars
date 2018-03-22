@@ -22,7 +22,7 @@ var PlayerMetaEnum = {
 
 console.log("RESOLUTION: " + width + " x " + height);
 
-// enregistre la progression globale du joueur (score, id, enable)
+// playerMeta enregistre la progression globale du joueur (score, id, enable)
 var playerMeta = [];
 playerMeta.push(new PlayerMeta(PlayerMetaEnum.BLUE, "BLUE", 0x0088bf));
 playerMeta.push(new PlayerMeta(PlayerMetaEnum.RED, "RED", 0xc40233));

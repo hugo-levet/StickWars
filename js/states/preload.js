@@ -66,9 +66,7 @@ var Preload = {
             attack: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_9)
         });
         
-        // on lance le menu
-        game.state.add('MainMenu', MainMenu);
-        game.state.start('MainMenu');
+        loadMainMenu();
     }
     
 };
