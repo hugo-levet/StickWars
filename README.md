@@ -21,6 +21,7 @@ Ressources utilisés :
 -\> rendre le jeu plus fun (ajout d'une attaque à distance ?)  
 -\> améliorer l'interface des scores  
 -\> rajouter un selecteur de map & un nombre max de round   
+-\> ajouter une barre de chargement !!   
   
 BUGS :  
 -\> Si on précharge un bonhomme au lobby et qu'en faite nan ben il vient quand même dans le jeu  
