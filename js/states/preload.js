@@ -4,14 +4,18 @@ var Preload = {
     // ici on charge toutes les ressources pour l'état actuel (images, sons, etc...)
     preload: function () {
 		
-		game.stage.backgroundColor = '#182d3b';      
-		
+		game.stage.backgroundColor = '#182d3b';      		
 		
 		// on créer la barre de chargement
 		console.log("In preload state");
 		
 		var logo = game.add.sprite(game.world.centerX, game.world.centerY, "logo");
 		logo.anchor.setTo(0.5);				
+		
+		var bgPreloadBar = game.add.sprite(game.world.centerX, convertY(85), "bg_preload_bar");		
+		bgPreloadBar.anchor.setTo(0.5);				
+		bgPreloadBar.width = width - convertX(5);		
+		bgPreloadBar.height = convertY(10);
 		
 		var preloadBar = game.add.sprite(game.world.centerX, convertY(85), "preload_bar");		
 		preloadBar.anchor.setTo(0.5);				
