@@ -259,7 +259,7 @@ class Player {
             height: attackBox.height
         };       
                      
-        console.log("\n" + this.id + " ATTACKING!");
+        //console.log(this.id + " ATTACKING!");
              
         // on regarde si il y a un joueur dans la box d'attaque
         Loop1:
@@ -279,7 +279,7 @@ class Player {
                 this.player.body.right > player[i].player.body.left && 
                 this.player.body.top < player[i].player.body.bottom && 
                 this.player.body.bottom > player[i].player.body.top) {                    
-                    console.log(player[i].id + " est dans le box! w/ " + player[i].id);
+                    //console.log(player[i].id + " est dans le box! w/ " + player[i].id);
                     player[i].getDamage(this.damage);
                     this.idHit.push(player[i].id);
             }
@@ -288,12 +288,12 @@ class Player {
          // on regarde si il y a un actionner dans la box d'attaque
         for (var i=0; i < interactionsBox.length; i++) {
 
-            if (this.player.body.left < interactionsBox[i].rect.x + interactionsBox[i].rect.width &&
-                this.player.body.right > interactionsBox[i].rect.x &&
-                this.player.body.top < interactionsBox[i].rect.y + interactionsBox[i].rect.height &&
-                this.player.body.bottom > interactionsBox[i].rect.y) {
+            if (this.player.body.left < interactionsBox[i].sprite.x + interactionsBox[i].sprite.width &&
+                this.player.body.right > interactionsBox[i].sprite.x &&
+                this.player.body.top < interactionsBox[i].sprite.y + interactionsBox[i].sprite.height &&
+                this.player.body.bottom > interactionsBox[i].sprite.y) {
                     
-                    console.log("Actionner est dans le box!");
+                    //console.log("Actionner est dans le box!");
                     interactionsBox[i].hit();
             }
         }

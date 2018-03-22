@@ -10,8 +10,7 @@ var Game = {
         game.scale.pageAlignHorizontally = true;
         game.scale.setShowAll();
         game.scale.refresh(); 
-    
-            
+                
         var bg = game.add.sprite(0, 0, "bg");	
         bg.width = width;
         bg.height = height;

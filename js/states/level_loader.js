@@ -12,20 +12,7 @@ var LevelLoader = {
         var map = new LevelCreator(level_steven);
         map.create();
 
-        /*
-        platforms = game.add.group();
-        platforms.enableBody = true;
-        
-        var ground = platforms.create(0, game.world.height, "ground");
-        ground.width = width;
-        ground.height = convertY(-38) * ratioY;
-        ground.alpha = 0; // alpha, c'est la transparence de 0 à 1
-        
-        var bin = platforms.create(game.world.width - convertX(110), game.world.height - convertY(150), "recycle_bin");
-        bin.scale.setTo(ratioX, ratioY);
-        
-        platforms.setAll('body.immovable', true);
-        
+        /*        
         var fct = function() {
             var explorer = platforms.create(convertX(300), convertY(200), "explorer_windows");                 
             explorer.body.immovable = true;
@@ -51,8 +38,7 @@ var LevelLoader = {
 
         // ====
         // On créer les joueurs
-        for (var i=0; i < 3; i++) {
-            //console.log("new PlayerMeta -> " + playerMeta[i].name);            
+        for (var i=0; i < 3; i++) {      
             player.push(new Player(width * Math.random(), game.world.height - convertY(180), playerMeta[i].id, playerMeta[i].tint));	                
         }
     

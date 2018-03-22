@@ -8,22 +8,32 @@ class LevelCreator {
 
     create() {
         platforms = game.add.group();
-        platforms.enableBody = true;
-        
+        platforms.enableBody = true;        
         
         console.log("Building level...");
-        var map = this.data;
-        
+        var map = this.data;        
         
         for (var i=0; i < map.plateforms.length; i++) {
             console.log("level: building " + map.plateforms[i].sprite);
             
             var sprite;
             
-            if (map.plateforms[i].collider)
-                sprite = platforms.create(0, 0, map.plateforms[i].sprite);
-            else
-                sprite = game.add.sprite(0, 0, map.plateforms[i].sprite);	
+            switch (map.plateforms[i].type) {
+                
+                case PlateformsEnum.COLLIDER:            
+                    sprite = platforms.create(0, 0, map.plateforms[i].sprite);
+                    break;
+                
+                case PlateformsEnum.DECO:
+                    sprite = game.add.sprite(0, 0, map.plateforms[i].sprite);	
+                    break;
+                
+                case PlateformsEnum.INTERACTION:
+                    var box = new InteractionBox(0, 0, 0, 0, map.plateforms[i].sprite, map.plateforms[i].function);       
+                    interactionsBox.push(box);                    
+                    sprite = box.sprite; // on récupère le sprite de l'interactionsBox
+                    break;
+            }            
             
             sprite.x = map.plateforms[i].x * width / 100;
             sprite.y = map.plateforms[i].y * height / 100;
@@ -31,6 +41,8 @@ class LevelCreator {
             sprite.height = map.plateforms[i].h * height / 100;
         }
         
-        platforms.setAll('body.immovable', true);
+        console.log("Level successfully build ! 👍 \n\n");
+        
+        platforms.setAll('body.immovable', true);               
     }
 }
