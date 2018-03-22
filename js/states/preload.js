@@ -13,9 +13,9 @@ var Preload = {
 		var logo = game.add.sprite(game.world.centerX, game.world.centerY, "logo");
 		logo.anchor.setTo(0.5);				
 		
-		var preloadBar = game.add.sprite(game.world.centerX, convertY(35), "preload_bar");		
+		var preloadBar = game.add.sprite(game.world.centerX, convertY(85), "preload_bar");		
 		preloadBar.anchor.setTo(0.5);				
-		preloadBar.width -= convertX(5);		
+		preloadBar.width = width - convertX(5);		
 		preloadBar.height = convertY(10);
 		game.load.setPreloadSprite(preloadBar);
 		
