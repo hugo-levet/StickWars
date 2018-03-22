@@ -17,8 +17,12 @@ Ressources utilisés :
 -\> Tomb stone: https://www.gameart2d.com/free-graveyard-platformer-tileset.html  
 -\> Stickman: C'est fait par nous 🤘   
   
+**TODO:**  
+-\> rendre le jeu plus fun (ajout d'une attaque à distance ?)  
+-\> améliorer l'interface des scores  
+-\> rajouter un selecteur de map & un nombre max de round   
+  
 BUGS :  
--\> Collisions box pas exacte en fonction de la résolution (ce bug est chiant lol)  
 -\> Si on précharge un bonhomme au lobby et qu'en faite nan ben il vient quand même dans le jeu  
 -\> Pour tous les joueurs ! Si il tacle le jeu plante
 
