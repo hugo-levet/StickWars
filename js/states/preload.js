@@ -23,14 +23,28 @@ var Preload = {
 		preloadBar.height = convertY(10);
 		game.load.setPreloadSprite(preloadBar);
 		
+		// ====
+		// CHARGEMENT DES SCRIPTS
 		
+		// LEVELS
+		game.load.script("level_window", "level/windows.js");
+		
+		// CLASSES
+		game.load.script("player", "js/class/player.js");
+		game.load.script("player_lobby", "js/class/player_lobby.js");
+		game.load.script("player_meta", "js/class/player_meta.js");
+		game.load.script("interaction_box", "js/class/interactionbox.js");
+		game.load.script("level_creator", "js/class/level_creator.js");
+		
+		// STATES
 		game.load.script("main_menu", "js/states/main_menu.js");
 		game.load.script("lobby", "js/states/lobby.js");
 		game.load.script("game", "js/states/game.js");
 		game.load.script("score", "js/states/score.js");
 		game.load.script("credits_menu", "js/states/credits_menu.js");
 		
-		
+		// ====
+		// CHARGEMENT ASSETS
         game.load.image("bg", "assets/img/world/bg.png"); // ici bg signifie le fond d"écran	                   
         game.load.image("recycle_bin", "assets/img/world/recycle_bin_full.png");                  
         game.load.image("explorer", "assets/img/world/explorer.png");   
