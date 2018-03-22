@@ -5,25 +5,23 @@ var MainMenu = {
         game.stage.backgroundColor = '#182d3b';
         
         // LE TITRE
-        var text = game.add.bitmapText(game.world.centerX, 200, 'pixel', 'StickWars', 32);
+        var text = game.add.bitmapText(game.world.centerX, convertY(19.0), 'pixel', 'StickWars', convertX(fontSize));
         text.anchor.setTo(.5,.5);
         
         // PLAY BUTTON
-        var play = game.add.button(game.world.centerX, 400, 'button', loadPlayMenu, this, 2, 1, 0);
+        var play = game.add.button(game.world.centerX, convertY(50), 'button', loadPlayMenu, this, 2, 1, 0);
         play.anchor.setTo(.5,.5);
-        var text = game.add.bitmapText(game.world.centerX, 400, 'pixel', 'Play', 32);
+		play.width = convertX(40);
+		play.height = convertY(20);
+        var text = game.add.bitmapText(game.world.centerX, convertY(50), 'pixel', 'Play', convertX(fontSize));
         text.anchor.setTo(.5,.5);
         
         // CREDITS BUTTON
-        var play = game.add.button(game.world.centerX, 550, 'button', loadCredits, this, 2, 1, 0);
+        var play = game.add.button(game.world.centerX, convertY(75), 'button', loadCredits, this, 2, 1, 0);
         play.anchor.setTo(.5,.5);
-        var text = game.add.bitmapText(game.world.centerX, 550, 'pixel', 'Credits', 32);
-        text.anchor.setTo(.5,.5);
-
-        // CREDITS BUTTON
-        var play = game.add.button(game.world.centerX, 700, 'button', loadLevelLoader, this, 2, 1, 0);
-        play.anchor.setTo(.5,.5);
-        var text = game.add.bitmapText(game.world.centerX, 700, 'pixel', 'Level Editor', 32);
+		play.width = convertX(40);
+		play.height = convertY(20);
+        var text = game.add.bitmapText(game.world.centerX, convertY(75), 'pixel', 'Credits', convertX(fontSize));
         text.anchor.setTo(.5,.5);
     },      
     
@@ -32,31 +30,3 @@ var MainMenu = {
             loadPlayMenu();
     }
 };
-
-function loadPlayMenu() {
-    game.sound.play('click');
-    
-    game.state.add('Lobby', Lobby);
-    game.state.start('Lobby');
-}
-
-function loadCredits() {
-    game.sound.play('click');
-    
-    game.state.add('Credits', Credits);
-    game.state.start('Credits');
-}
-
-function loadLevelLoader() {
-    game.sound.play('click');
-    
-    game.state.add('LevelLoader', LevelLoader);
-    game.state.start('LevelLoader');
-}
-
-function loadMainMenu() {
-    game.sound.play('click');
-    
-    game.state.add('MainMenu', MainMenu);
-    game.state.start('MainMenu');
-}

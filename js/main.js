@@ -13,6 +13,8 @@ var player = [],
     controls = [];
 var platforms;
 
+const fontSize = 3;
+
 var PlayerMetaEnum = {  
   BLUE: 0,
   RED: 1,
@@ -34,9 +36,37 @@ game.state.start('Preload');
 
 // on créer 2 fonctions qui permet d'afficher le jeu sur de multiples résolutions
 function convertX(x) {
-    return x;// * ratioX;
+    return x * width / 100;
 }
 
 function convertY(y) {
-    return y;// * ratioY;
+    return y * height / 100;
+}
+
+function loadPlayMenu() {
+    game.sound.play('click');
+    
+    game.state.add('Lobby', Lobby);
+    game.state.start('Lobby');
+}
+
+function loadCredits() {
+    game.sound.play('click');
+    
+    game.state.add('Credits', Credits);
+    game.state.start('Credits');
+}
+
+function loadLevelLoader() {
+    game.sound.play('click');
+    
+    game.state.add('LevelLoader', LevelLoader);
+    game.state.start('LevelLoader');
+}
+
+function loadMainMenu() {
+    game.sound.play('click');
+    
+    game.state.add('MainMenu', MainMenu);
+    game.state.start('MainMenu');
 }

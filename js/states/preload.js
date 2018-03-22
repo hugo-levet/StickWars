@@ -23,15 +23,16 @@ var Preload = {
     },   
     
     create: function () { 
-        attackBox.width = convertX(attackBox.width);
-        attackBox.height = convertY(attackBox.height);
-        attackBox.x = convertX(attackBox.x);
-        attackBox.y = convertY(attackBox.y);
+        // c'est les vestiges d'un ancien code
+		/*attackBox.width = attackBox.width;
+        attackBox.height = attackBox.height;
+        attackBox.x = attackBox.x;
+        attackBox.y = attackBox.y;
         
-        normalBox.width = convertX(normalBox.width);
-        normalBox.height = convertY(normalBox.height);
-        normalBox.x = convertX(normalBox.x);
-        normalBox.y = convertY(normalBox.y);
+        normalBox.width = normalBox.width;
+        normalBox.height = normalBox.height;
+        normalBox.x = normalBox.x;
+        normalBox.y = normalBox.y;//*/
         
         // on créer les contrôles des joueurs
         controls.push({

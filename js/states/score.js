@@ -23,15 +23,15 @@ var Score = {
         }
         
         for (var i=0; i < enabledPlayer.length; i++) {
-            game.add.bitmapText(game.world.centerX - convertX(300), game.world.centerY + convertY(50) * i, 'pixel', enabledPlayer[i].name, 16);
-            game.add.bitmapText(game.world.centerX + convertX(50), game.world.centerY + convertY(50) * i, 'pixel', enabledPlayer[i].score.toString(), 16);            
+            game.add.bitmapText(convertX(32.1), convertY(50) + convertY(4.8) * i, 'pixel', enabledPlayer[i].name, 16);
+            game.add.bitmapText(convertX(53.0), convertY(50) + convertY(4.8) * i, 'pixel', enabledPlayer[i].score.toString(), 16);            
         }
         
         // ===
         // ON S'OCCUPE DU CHRONO
         this.time = scoreDurationDisplay;
         
-        this.text = game.add.bitmapText(game.world.width - convertX(50), game.world.centerY, 'pixel', this.time, 16);
+        this.text = game.add.bitmapText(convertX(97.03), convertY(50), 'pixel', this.time, 16);
         this.text.anchor.setTo(.5,.5);         
     },
         

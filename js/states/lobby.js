@@ -4,15 +4,7 @@ var Lobby = {
 
     create: function () {
         
-        // RETURN BUTTON
-        // créer l'image du bouton
-        var retour = game.add.button(0, 0, 'return', loadMainMenu, this, 2, 1, 0);
- 
-        // puis on pose un texte par dessus
-        var text = game.add.bitmapText(40, 40, 'pixel', '<', 32);
-        ////
-        
-        
+       
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.stage.backgroundColor = '#182d3b';              
         
@@ -36,7 +28,7 @@ var Lobby = {
         // ====
         // chronomètre avant le lancement de la game
         this.time = timeLobby;
-        this.text = game.add.bitmapText(game.world.centerX, game.world.centerY, 'pixel', "Waiting for players", 16);
+        this.text = game.add.bitmapText(game.world.centerX, game.world.centerY, 'pixel', "Waiting for players", convertX(fontSize/2));
         this.text.anchor.setTo(.5,.5); 
         
         // ====
@@ -49,6 +41,10 @@ var Lobby = {
         
         this.count_sound = game.sound.play('lobby');
         this.count_sound.stop();
+		
+		 // RETURN BUTTON
+        var retour = game.add.button(0, 0, 'return', loadMainMenu, this, 2, 1, 0);
+        var text = game.add.bitmapText(40, 40, 'pixel', '<', 32);                
     },
     
     update: function () {              
@@ -62,7 +58,7 @@ var Lobby = {
                 
         if (this.time == timeLobby) // on calcule seulement si le chrono n'a pas été déclenché
             for (var i=0; i < this.playerLobby.length; i++)                    
-                if (this.playerLobby[i].hasJoinedTheGame)
+                if (this.playerLobby[i].lobbyJoined)
                     countPlayerJoinLobby++;            
         
         
@@ -82,6 +78,8 @@ var Lobby = {
         
         // LANCEMENT DE LA GAME
         if (this.time <= 0) {
+			this.count_sound.stop();
+			
             game.state.add('Game', Game);
             game.state.start('Game');
         }                          

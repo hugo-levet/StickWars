@@ -14,9 +14,9 @@ class PlayerLobby {
         this.controls = controls[id];        
         
         this.angle = 0; 
-        this.hasJoinedTheGame = false;              
+        this.lobbyJoined = false;              
 
-        this.text = game.add.bitmapText(x, y, 'pixel', "Hold " + key + " to join the game", 16);
+        this.text = game.add.bitmapText(x, y, 'pixel', "Hold " + key + " to join the game", convertX(fontSize/3));
         this.text.anchor.setTo(.5,.5); 
 
         this.radialProgressBar = game.add.graphics(x, y);
@@ -25,7 +25,7 @@ class PlayerLobby {
     
     update(platform) {
         
-        if (this.hasJoinedTheGame) {
+        if (this.lobbyJoined) {
             this.player.update(platform);
             
             return;
@@ -36,7 +36,7 @@ class PlayerLobby {
             
             // on charge le joueur
             if (this.angle > 360) {
-                this.hasJoinedTheGame = true;
+                this.lobbyJoined = true;
                 playerMeta[this.id].enable = true;
                 
                 this.radialProgressBar.destroy();
@@ -50,7 +50,8 @@ class PlayerLobby {
             this.angle -= 2;
         }
         
-        // Update Loading
+        // ===
+		// MAJ DU CERCLE DE CHARGEMENT
         this.radialProgressBar.clear();
         this.radialProgressBar.lineStyle(16, 0xffffff);
         

@@ -24,11 +24,11 @@ var explorer_function = () => {
     explorer.body.immovable = true;	
 
     game.sound.play('click');
-}//*/
+}
 
 
 
-var level_main = {
+var level_windows = {
 	"plateforms": [
     {
 		"sprite": "bg",
