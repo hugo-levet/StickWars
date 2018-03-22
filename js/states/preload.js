@@ -32,7 +32,7 @@ var Preload = {
 		// CLASSES
 		game.load.script("player", "js/class/player.js");
 		game.load.script("player_lobby", "js/class/player_lobby.js");
-		game.load.script("player_meta", "js/class/player_meta.js");
+		
 		game.load.script("interaction_box", "js/class/interactionbox.js");
 		game.load.script("level_creator", "js/class/level_creator.js");
 		
