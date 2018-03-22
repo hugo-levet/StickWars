@@ -20,7 +20,7 @@ Ressources utilisés :
 -\> améliorer l'interface des scores  
 -\> rajouter un selecteur de map & un nombre max de round   
 -\> ajouter une barre de chargement !!   
--\> eventuellement, mise à jour vers phaser 3 pour + de perf (système de "state" a modifié...)
+-\> eventuellement, mise à jour vers phaser 3 pour + de perf (système de "state" a modifié...)  
 -\> faire tomber les *tombstones* sur le sol  
   
 BUGS :  
