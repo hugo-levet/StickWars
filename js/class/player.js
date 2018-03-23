@@ -8,6 +8,7 @@ const attackSpeed = 0.82; // per second
 
 const attackBox = {x: 170, y: 80, width: 129, height: 65};
 const normalBox = {x: 220, y: 0, width: 75, height: 145};
+const tombstoneBox = {x: 0, y: 0, width: 54, height: 55};
 
 var PlayerState = {
   RUN: 1,
@@ -89,16 +90,19 @@ class Player {
 
 	update(platform) {
 
+		var hitPlatform = game.physics.arcade.collide(this.player, platform);
+		
 		// si le joueur est mort, alors on affiche une pierre tombale
-		if (this.hp <= 0) {
-			this.player.animations.play("tomb_stone");
+		if (this.hp <= 0) {						
+			this.player.body.setSize(tombstoneBox.width, tombstoneBox.height, tombstoneBox.x, tombstoneBox.y);
+			this.player.animations.play("tomb_stone");				
+			
 			this.hpBar.kill();
 
 			return;
 		}
 
-		var hitPlatform = game.physics.arcade.collide(this.player, platform);
-
+		
 		this.player.body.velocity.x = 0;
 		this.hpBar.setPosition(this.player.x, this.player.y - convertY(8));
 		this.timerAtk += game.time.elapsed/1000;

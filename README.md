@@ -19,9 +19,7 @@ Ressources utilisés :
 -\> rendre le jeu plus fun (ajout d'une attaque à distance ?)  
 -\> améliorer l'interface des scores  
 -\> rajouter un selecteur de map & un nombre max de round   
--\> ajouter une barre de chargement !!   
 -\> eventuellement, mise à jour vers phaser 3 pour + de perf (système de "state" a modifié...)  
--\> faire tomber les *tombstones* sur le sol  
   
 BUGS :  
 -\> LOBBY : Les joueurs sont considérés comme chargé lorsque la touche *saut* est enclenché (même si la barre n'est pas chargée au max)  
