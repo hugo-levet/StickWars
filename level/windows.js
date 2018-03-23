@@ -4,10 +4,6 @@ const PlateformsEnum = {
     DECO: 2
 };
 
-
-
-// ca, c'est la fonction améliorée, cependant vu que le programme marche pas,
-// on garde la fonction qui marche avec game.js
 var explorer_function = () => {        
     var explorer = platforms.create(0, 0, "explorer_windows");              
     var explorer_sprite = game.add.sprite(0, 0, "explorer_windows");	

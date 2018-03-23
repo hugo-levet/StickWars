@@ -20,6 +20,7 @@ Ressources utilisés :
 -\> améliorer l'interface des scores  
 -\> rajouter un selecteur de map & un nombre max de round   
 -\> eventuellement, mise à jour vers phaser 3 pour + de perf (système de "state" a modifié...)  
+-\> Polish le jeu (https://gamedevelopment.tutsplus.com/articles/5-important-ways-to-add-polish-to-your-game--gamedev-7642)  	
   
 BUGS :  
 -\> LOBBY : Les joueurs sont considérés comme chargé lorsque la touche *saut* est enclenché (même si la barre n'est pas chargée au max)  
