@@ -7,6 +7,7 @@ var Game = {
 
 		player = [];
 		interactionsBox = [];
+		projectiles = [];
 
 		// ====
 		// on créer les platforms
@@ -38,6 +39,9 @@ var Game = {
 
 		for (var i=0; i < player.length; i++)
 			player[i].update(platforms);
+		
+		for (var i=0; i < projectiles.length; i++)
+			projectiles[i].update();
 
 		// ====
 		// SCORE SYSTEM

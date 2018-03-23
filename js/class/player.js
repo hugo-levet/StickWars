@@ -12,10 +12,11 @@ const tombstoneBox = {x: 0, y: 0, width: 54, height: 55};
 
 var PlayerState = {
   RUN: 1,
-  ATTACK: 2,
+  ATTACK: 2,  
   JUMP: 3,
   IDLE: 4,
-  SLIDEONWALL: 5
+  SLIDEONWALL: 5,
+  PROJECTILE: 6
 };
 
 //
@@ -117,13 +118,13 @@ class Player {
 			this.inflictDamage();
 
 		// ===
-		// GESTION DE L'ETAT DU JOUEUR
+		// GESTION DE L'ETAT DU JOUEUR				
 		if (this.attackAnimPlaying) {
 			this.player.body.velocity.x += plySpeed * game.time.elapsed * +this.player.scale.x * 1.25;
 		}
 		else if (this.controls.attack.isDown) {
 			this.playerState = PlayerState.ATTACK;
-		}
+		}		
 		else if (this.controls.up.isDown && !this.isUpKeyReleased && this.jumpsCounts < maxJumps) {
 			this.playerState = PlayerState.JUMP;
 
@@ -145,6 +146,13 @@ class Player {
 		}
 		else {
 			this.playerState = PlayerState.IDLE;
+		}
+
+		// on ne met pas cette condition dans le paté en haut 
+		// pour qu'on puisse courir/sauter en tirant
+		if (this.controls.projectile.isDown) {
+			var proj = new Projectile(this.player.x, this.player.y - 60, this.player.scale.x, this.id);
+			projectiles.push(proj);
 		}
 
 		// si il y a une collision sur les côtés, on slide sur le mur

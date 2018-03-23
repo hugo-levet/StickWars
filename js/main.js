@@ -10,8 +10,10 @@ const ratioY = height / initialHeight;
 var game = new Phaser.Game(width, height, Phaser.CANVAS, 'game');
 var player = [],    
     interactionsBox = [],
-    controls = [];
-var platforms;
+	projectiles = [],
+	platforms;
+	
+var controls = [];
 
 const fontSize = 3;
 

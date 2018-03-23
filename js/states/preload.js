@@ -31,9 +31,9 @@ var Preload = {
 		
 		// CLASSES
 		game.load.script("player", "js/class/player.js");
-		game.load.script("player_lobby", "js/class/player_lobby.js");
-		
+		game.load.script("player_lobby", "js/class/player_lobby.js");		
 		game.load.script("interaction_box", "js/class/interactionbox.js");
+		game.load.script("projectile", "js/class/projectile.js");
 		game.load.script("level_creator", "js/class/level_creator.js");
 		
 		// STATES
@@ -49,6 +49,7 @@ var Preload = {
         game.load.image("recycle_bin", "assets/img/world/recycle_bin_full.png");                  
         game.load.image("explorer", "assets/img/world/explorer.png");   
         game.load.image("explorer_windows", "assets/img/world/explorer_windows.png"); 
+		game.load.image("projectile", "assets/img/projectile.png"); 
         
         game.load.image("button", "assets/img/button.png");   
         game.load.image("return", "assets/img/return.png");        
@@ -82,7 +83,8 @@ var Preload = {
             down: game.input.keyboard.addKey(Phaser.Keyboard.S),
             left: game.input.keyboard.addKey(Phaser.Keyboard.Q),
             right: game.input.keyboard.addKey(Phaser.Keyboard.D),
-            attack: game.input.keyboard.addKey(Phaser.Keyboard.E)
+            attack: game.input.keyboard.addKey(Phaser.Keyboard.E),
+			projectile: game.input.keyboard.addKey(Phaser.Keyboard.A)
         });
         
         controls.push({
@@ -90,7 +92,8 @@ var Preload = {
             down: game.input.keyboard.addKey(Phaser.Keyboard.DOWN),
             left: game.input.keyboard.addKey(Phaser.Keyboard.LEFT),
             right: game.input.keyboard.addKey(Phaser.Keyboard.RIGHT),
-            attack: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_0)
+            attack: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_0),
+			projectile: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_1)
         });
         
         controls.push({
@@ -98,7 +101,8 @@ var Preload = {
             down: game.input.keyboard.addKey(Phaser.Keyboard.L),
             left: game.input.keyboard.addKey(Phaser.Keyboard.K),
             right: game.input.keyboard.addKey(Phaser.Keyboard.M),
-            attack: game.input.keyboard.addKey(Phaser.Keyboard.P)
+            attack: game.input.keyboard.addKey(Phaser.Keyboard.P),
+			projectile: game.input.keyboard.addKey(Phaser.Keyboard.I)
         });
         
         controls.push({
@@ -106,7 +110,8 @@ var Preload = {
             down: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_5),
             left: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_4),
             right: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_6),
-            attack: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_9)
+            attack: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_9),
+			projectile: game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_7)
         });
         
         loadMainMenu();
