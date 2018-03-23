@@ -27,7 +27,7 @@ Ressources utilisés :
 BUGS :  
 -\> LOBBY : Les joueurs sont considérés comme chargé lorsque la touche *saut* est enclenché (même si la barre n'est pas chargée au max)  
 -\> LOBBY : Au premier saut(généré de base) le jeu plante si la touche *attaque* est appuyé  
--\> LOBBY : Le sol des  joueurs 8(numpad) et O n''est pas considéré comme un sol et donc restent bloqués sur l'animation du saut
+-\> LOBBY : Le sol des  joueurs 8(numpad) et O n'est pas considéré comme un sol et donc restent bloqués sur l'animation du saut  
 -\> GAME : On peut passer à travers les collisions du bas de la fenêtre (grâce aux collisions du tacle qui sont moins hautes)  
   
 **Et op on peut voir le projet ici !**  
