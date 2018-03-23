@@ -5,6 +5,7 @@ const plyGravity = 1000;
 const jumpForce = 600;
 const hpMax = 50;
 const attackSpeed = 0.82; // per second
+const attackSpeedProjectile = 1;
 
 const attackBox = {x: 170, y: 80, width: 129, height: 65};
 const normalBox = {x: 220, y: 0, width: 75, height: 145};
@@ -42,6 +43,7 @@ class Player {
 
 		this.damage = 10;
 		this.timerAtk = 0;	// temps depuis la dernier attaque du joueur
+		this.timerProjectile = 0;
 
 		// CREATION DU SPRITE DU JOUEUR
 		this.player = game.add.sprite(x, y, "stickman");
@@ -77,7 +79,7 @@ class Player {
 			bar: {
 			  color: '#00923b'
 			},
-			animationDuration: 200,
+			animationDuration: 50,
 			flipped: false
 		};
 
@@ -107,6 +109,7 @@ class Player {
 		this.player.body.velocity.x = 0;
 		this.hpBar.setPosition(this.player.x, this.player.y - convertY(8));
 		this.timerAtk += game.time.elapsed/1000;
+		this.timerProjectile += game.time.elapsed/1000;
 
 		// on reset le double jump si on touche le sol
 		if (this.player.body.touching.down)
@@ -150,8 +153,10 @@ class Player {
 
 		// on ne met pas cette condition dans le paté en haut 
 		// pour qu'on puisse courir/sauter en tirant
-		if (this.controls.projectile.isDown) {
-			var proj = new Projectile(this.player.x, this.player.y - 60, this.player.scale.x, this.id);
+		if (this.controls.projectile.isDown && this.timerProjectile >= attackSpeedProjectile) {
+			
+			this.timerProjectile = 0;
+			var proj = new Projectile(this.player.x, this.player.y - 30, this.player.scale.x, this.id);
 			projectiles.push(proj);
 		}
 

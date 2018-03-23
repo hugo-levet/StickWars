@@ -40,8 +40,15 @@ var Game = {
 		for (var i=0; i < player.length; i++)
 			player[i].update(platforms);
 		
-		for (var i=0; i < projectiles.length; i++)
-			projectiles[i].update();
+		for (var i=0; i < projectiles.length; i++) {
+			
+			// la fonction update renvoie true quand le projectile a touché un truc
+			// si elle renvoie true, alors on supprime le projectile
+			if (projectiles[i].update()) {
+				projectiles[i].destroy();
+				projectiles.splice(i, i+1);					
+			}
+		}
 
 		// ====
 		// SCORE SYSTEM

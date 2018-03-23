@@ -1,12 +1,15 @@
 const projectileSpeed = 2;
-const projectileDamage = 1;
+const projectileDamage = 10;
 
 class Projectile {		
     
 	// casterId est l'id du joueur qui a lancé le projectile
 	constructor(x, y, direction, casterId) {        
         this.sprite = game.add.sprite(x, y, "projectile"); 
-		this.sprite.width *= direction;
+		this.sprite.anchor.setTo(0.5);
+		
+		if (direction < 0)
+			this.sprite.angle = 180;
 		
         this.casterId = casterId;
 		this.direction = direction;
@@ -25,8 +28,16 @@ class Projectile {
 				this.sprite.top < player[i].player.body.bottom &&
 				this.sprite.bottom > player[i].player.body.top) {					
 					
-					player[i].getDamage(projectileDamage);						
+					
+					console.log("projectile touché");
+					player[i].getDamage(projectileDamage);		
+					
+					return true;
 			}
 		}
+	}
+	
+	destroy() {
+		this.sprite.destroy();
 	}
 }
