@@ -5,11 +5,11 @@ var MainMenu = {
         game.stage.backgroundColor = '#182d3b';
         
         // LE TITRE
-        var text = game.add.bitmapText(game.world.centerX, convertY(19.0), 'pixel', 'StickWars', convertX(fontSize));
+        var text = game.add.bitmapText(game.world.centerX, convertY(19.0), 'pixel', 'Map Selector', convertX(fontSize));
         text.anchor.setTo(.5,.5);
         
         // PLAY BUTTON
-        var play = game.add.button(game.world.centerX, convertY(50), 'button', loadPlayMenu, this, 2, 1, 0);
+        var play = game.add.button(game.world.centerX, convertY(50), 'button', loadMapSelector, this, 2, 1, 0);
         play.anchor.setTo(.5,.5);
 		play.width = convertX(40);
 		play.height = convertY(20);

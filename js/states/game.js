@@ -10,7 +10,7 @@ var Game = {
 
 		// ====
 		// on créer les platforms
-		var map = new LevelCreator(level_google);
+		var map = new LevelCreator(selectedMap);
 		map.create();
 
 		// on décode les fichiers audio .mp3
@@ -73,5 +73,5 @@ var Game = {
 		for (var i=0; i < player.length; i++)
 			if (player[i].hp > 0)
 				game.debug.body(player[i].player);
-	}*/
+	}//*/
 };

@@ -39,6 +39,7 @@ var Preload = {
 		
 		// STATES
 		game.load.script("main_menu", "js/states/main_menu.js");
+		game.load.script("map_selector", "js/states/map_selector.js");
 		game.load.script("lobby", "js/states/lobby.js");
 		game.load.script("game", "js/states/game.js");
 		game.load.script("score", "js/states/score.js");
@@ -46,16 +47,16 @@ var Preload = {
 		
 		// ====
 		// CHARGEMENT ASSETS
-        game.load.image("bg", "assets/img/world/bg.png"); // ici bg signifie le fond d"écran
-        game.load.image("firefox", "assets/img/world/firefox.png"); // ici bg signifie le fond d"écran	                   
-        game.load.image("recycle_bin", "assets/img/world/recycle_bin_full.png");                  
-        game.load.image("explorer", "assets/img/world/explorer.png");   
-        game.load.image("explorer_windows", "assets/img/world/explorer_windows.png"); 
+        game.load.image("window", "assets/img/windows/bg.png"); // ici bg signifie le fond d"écran
+        game.load.image("firefox", "assets/img/google/bg.png");
+        game.load.image("recycle_bin", "assets/img/windows/recycle_bin_full.png");                  
+        game.load.image("explorer", "assets/img/windows/explorer.png");   
+        game.load.image("explorer_windows", "assets/img/windows/explorer_windows.png"); 
 		game.load.image("projectile", "assets/img/projectile.png"); 
         
         game.load.image("button", "assets/img/button.png");   
         game.load.image("return", "assets/img/return.png");        
-        game.load.image("ground", "assets/img/world/platform.png"); 
+        game.load.image("ground", "assets/img/windows/platform.png"); 
 
         game.load.audio('footstep', 'assets/audio/footstep_run.mp3');
         game.load.audio('jump', 'assets/audio/jump.mp3');

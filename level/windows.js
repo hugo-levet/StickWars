@@ -21,7 +21,7 @@ var explorer_function = () => {
 var level_windows = {
 	"plateforms": [
     {
-		"sprite": "bg",
+		"sprite": "window",
         "type": PlateformsEnum.DECO,
 		"x": 0,
 		"y": 0,

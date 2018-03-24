@@ -12,7 +12,7 @@ var player = [],
     interactionsBox = [],
 	projectiles = [],
 	platforms;
-	
+var selectedMap;	
 var controls = [];
 
 const fontSize = 3;
@@ -65,16 +65,16 @@ function loadCredits() {
     game.state.start('Credits');
 }
 
-function loadLevelLoader() {
-    game.sound.play('click');
-    
-    game.state.add('LevelLoader', LevelLoader);
-    game.state.start('LevelLoader');
-}
-
 function loadMainMenu() {
     game.sound.play('click');
     
     game.state.add('MainMenu', MainMenu);
     game.state.start('MainMenu');
+}
+
+function loadMapSelector() {
+    game.sound.play('click');
+    
+    game.state.add('MapSelector', MapSelector);
+    game.state.start('MapSelector');
 }
