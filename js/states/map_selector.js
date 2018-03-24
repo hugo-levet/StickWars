@@ -26,6 +26,11 @@ var MapSelector = {
 		play.width = convertX(size);
 		play.height = convertY(size);
     },      
+	
+	update: function() {
+        if (game.input.keyboard.addKey(Phaser.Keyboard.ENTER).isDown || game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).isDown) 
+            windowSelecter();
+    }
 };
 
 var windowSelecter = () => {
