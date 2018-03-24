@@ -27,6 +27,6 @@ var MainMenu = {
     
     update: function() {
         if (game.input.keyboard.addKey(Phaser.Keyboard.ENTER).isDown || game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).isDown) 
-            loadPlayMenu();
+            loadMapSelector();
     }
 };

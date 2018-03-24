@@ -3,7 +3,6 @@ var Credits = {
     create: function () {
         
         // RETOUR BUTTON
-        // créer l'image du bouton
         var retour = game.add.button(0, 0, 'return', loadMainMenu, this, 2, 1, 0);
         var text = game.add.bitmapText(40, 40, 'pixel', '<', 32);
         
