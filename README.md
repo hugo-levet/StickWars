@@ -18,8 +18,8 @@ Ressources utilisés :
 
   
 **TODO :**  
--\> rendre le jeu plus fun
--\> améliorer l'interface des scores  
+-\> rendre le jeu plus fun  
+-\> améliorer l'interface (https://www.pinterest.fr/armdb/game-ui-main-menu/?lp=true)  
 -\> rajouter un nombre max de round   
 -\> Rajouter un max de son + de la musique  
   
