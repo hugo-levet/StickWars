@@ -9,7 +9,7 @@ var MapSelector = {
         var text = game.add.bitmapText(40, 40, 'pixel', '<', 32);
 		
         // LE TITRE
-        var text = game.add.bitmapText(game.world.centerX, convertY(19.0), 'pixel', 'StickWars', convertX(fontSize));
+        var text = game.add.bitmapText(game.world.centerX, convertY(19.0), 'pixel', 'Map Selector', convertX(fontSize));
         text.anchor.setTo(.5,.5);
                 
 		var x = convertX(30);
