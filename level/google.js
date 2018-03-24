@@ -1,10 +1,4 @@
-const PlateformsEnum = {
-    COLLIDER: 0,
-    INTERACTION: 0,
-    DECO: 1
-};
-
-var level_windows = {
+var level_google = {
 	"plateforms": [
     {
 		"sprite": "firefox",

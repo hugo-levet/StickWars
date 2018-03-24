@@ -1,9 +1,3 @@
-const PlateformsEnum = {
-    COLLIDER: 0,
-    INTERACTION: 1,
-    DECO: 2
-};
-
 var explorer_function = () => {        
     var explorer = platforms.create(0, 0, "explorer_windows");              
     var explorer_sprite = game.add.sprite(0, 0, "explorer_windows");	

@@ -17,7 +17,13 @@ var controls = [];
 
 const fontSize = 3;
 
-var PlayerMetaEnum = {  
+const PlateformsEnum = {
+    COLLIDER: 0,
+    INTERACTION: 1,
+    DECO: 2
+};
+
+const PlayerMetaEnum = {  
   BLUE: 0,
   RED: 1,
   GREEN: 2,
