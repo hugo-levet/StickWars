@@ -13,16 +13,15 @@ Ressources utilisés :
 -\> Footstep: https://www.youtube.com/watch?v=ybl3y6V_ZT4  
 -\> Clic button: https://www.youtube.com/watch?v=2o11YM2Mwjc  
 -\> Tomb stone: https://www.gameart2d.com/free-graveyard-platformer-tileset.html  
--\> Projectile: https://www.gameart2d.com/ninja-adventure---free-sprites.html
+-\> Projectile: https://www.gameart2d.com/ninja-adventure---free-sprites.html  
 -\> Stickman: C'est fait par nous 🤘   
 
   
 **TODO :**  
--\> rendre le jeu plus fun (ajout d'une attaque à distance ?)  
+-\> rendre le jeu plus fun
 -\> améliorer l'interface des scores  
--\> rajouter un selecteur de map & un nombre max de round   
--\> eventuellement, mise à jour vers phaser 3 pour + de perf (système de "state" a modifié...)  
--\> Polish le jeu (https://gamedevelopment.tutsplus.com/articles/5-important-ways-to-add-polish-to-your-game--gamedev-7642)  	
+-\> rajouter un nombre max de round   
+-\> Rajouter un max de son + de la musique  
   
 BUGS :  
 -\> LOBBY : Les joueurs sont considérés comme chargé lorsque la touche *saut* est enclenché (même si la barre n'est pas chargée au max)  
