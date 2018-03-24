@@ -28,6 +28,7 @@ var Preload = {
 		
 		// LEVELS
 		game.load.script("level_window", "level/windows.js");
+		game.load.script("level_google", "level/google.js");
 		
 		// CLASSES
 		game.load.script("player", "js/class/player.js");
