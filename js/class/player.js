@@ -153,7 +153,7 @@ class Player {
 
 		// on ne met pas cette condition dans le paté en haut 
 		// pour qu'on puisse courir/sauter en tirant
-		if (this.controls.projectile.isDown && this.timerProjectile >= attackSpeedProjectile) {
+		if (this.controls.attack.isDown && this.timerProjectile >= attackSpeedProjectile) {
 			
 			this.timerProjectile = 0;
 			var proj = new Projectile(this.player.x, this.player.y - 30, this.player.scale.x, this.id);
