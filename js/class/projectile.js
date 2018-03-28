@@ -11,6 +11,7 @@ class Projectile {
 		if (direction < 0)
 			this.sprite.angle = 180;
 		
+		this.sprite.scale.setTo(0.6);
         this.casterId = casterId;
 		this.direction = direction;
     }
