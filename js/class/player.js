@@ -125,7 +125,7 @@ class Player {
 		if (this.attackAnimPlaying) {
 			this.player.body.velocity.x += plySpeed * game.time.elapsed * +this.player.scale.x * 1.25;
 		}
-		else if (this.controls.attack.isDown) {
+		else if (this.controls.down.isDown) {
 			this.playerState = PlayerState.ATTACK;
 		}		
 		else if (this.controls.up.isDown && !this.isUpKeyReleased && this.jumpsCounts < maxJumps) {
