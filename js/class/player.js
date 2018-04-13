@@ -255,6 +255,12 @@ class Player {
 		var hpRelative = this.hp / hpMax * 100;
 		this.hpBar.setPercent(hpRelative);
 
+		// si il meurt, on rajoute sa mort aux stats
+		if (this.hp <= 0) {
+			var stickmanKilled = parseInt(localStorage.getItem("stickmanKilled")) + 1;
+			localStorage.setItem("stickmanKilled", stickmanKilled);
+		}
+		
 		return hpRelative;
 	}
 

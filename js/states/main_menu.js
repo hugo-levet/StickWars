@@ -17,11 +17,19 @@ var MainMenu = {
         text.anchor.setTo(.5,.5);
         
         // CREDITS BUTTON
-        var play = game.add.button(game.world.centerX, convertY(75), 'button', loadCredits, this, 2, 1, 0);
+        var play = game.add.button(game.world.centerX, convertY(72), 'button', loadCredits, this, 2, 1, 0);
         play.anchor.setTo(.5,.5);
 		play.width = convertX(30);
 		play.height = convertY(15);
-        var text = game.add.bitmapText(game.world.centerX, convertY(75), 'pixel', 'Credits', convertX(fontSize/2));
+        var text = game.add.bitmapText(game.world.centerX, convertY(72), 'pixel', 'Credits', convertX(fontSize/2));
+        text.anchor.setTo(.5,.5);
+		
+		// STATISTIQUES BUTTON
+        var play = game.add.button(game.world.centerX, convertY(90), 'button', loadStats, this, 2, 1, 0);
+        play.anchor.setTo(.5,.5);
+		play.width = convertX(30);
+		play.height = convertY(15);
+        var text = game.add.bitmapText(game.world.centerX, convertY(90), 'pixel', 'Statistiques', convertX(fontSize/2));
         text.anchor.setTo(.5,.5);
     },      
     

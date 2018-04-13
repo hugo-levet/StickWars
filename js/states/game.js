@@ -2,6 +2,10 @@
 var Game = {
 
 	create: function () {
+		
+		var gameNumber = parseInt(localStorage.getItem("gameNumber"))+1;
+		localStorage.setItem("gameNumber", gameNumber);
+			
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
 		player = [];
@@ -62,7 +66,7 @@ var Game = {
 
 			playerMeta[idWinner].score++;
 			console.log("notre gagnant est " + playerMeta[idWinner].name);
-
+			
 			game.state.add('Score', Score);
 			game.state.start('Score');
 		}

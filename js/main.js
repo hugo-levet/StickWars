@@ -65,6 +65,13 @@ function loadCredits() {
     game.state.start('Credits');
 }
 
+function loadStats() {
+    game.sound.play('click');
+    
+    game.state.add('Stats', Stats);
+    game.state.start('Stats');
+}
+
 function loadMainMenu() {
     game.sound.play('click');
     

@@ -53,6 +53,19 @@ var Lobby = {
         if (game.input.keyboard.addKey(Phaser.Keyboard.ESC).isDown) 
             loadMainMenu();
         
+		for (var i=0; i < projectiles.length; i++) {			
+			// la fonction update renvoie true quand le projectile a touché un truc
+			// si elle renvoie true, alors on supprime le projectile
+			if (projectiles[i].update()) {
+				projectiles[i].destroy();
+				projectiles.splice(i, i+1);					
+			}
+		}
+		
+		// GESTION DES PLAYERS DANS LE LOBBY
+        for (var i=0; i < this.playerLobby.length; i++) 
+            this.playerLobby[i].update(this.borders);   
+		
         // ON CALCULE LE NOMRBE DE JOUEUR DANS LE LOBBY
         var countPlayerJoinLobby = 0;
                 
@@ -71,10 +84,7 @@ var Lobby = {
         // GESTION DU SON
         if (this.time <= 4 && !this.count_sound.isPlaying)
             this.count_sound.play();
-        
-        // GESTION DES PLAYERS DANS LE LOBBY
-        for (var i=0; i < this.playerLobby.length; i++) 
-            this.playerLobby[i].update(this.borders);        
+                     
         
         // LANCEMENT DE LA GAME
         if (this.time <= 0) {

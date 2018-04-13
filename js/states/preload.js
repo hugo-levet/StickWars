@@ -44,6 +44,7 @@ var Preload = {
 		game.load.script("game", "js/states/game.js");
 		game.load.script("score", "js/states/score.js");
 		game.load.script("credits_menu", "js/states/credits_menu.js");
+		game.load.script("stats", "js/states/stats.js");
 		
 		// ====
 		// CHARGEMENT ASSETS
@@ -79,6 +80,13 @@ var Preload = {
         normalBox.height = normalBox.height;
         normalBox.x = normalBox.x;
         normalBox.y = normalBox.y;//*/
+		
+		// on créer la sauvegarde si elle n'existe pas
+		if (localStorage.getItem("gameNumber") == null)
+			localStorage.setItem("gameNumber", 0)
+		
+		if (localStorage.getItem("stickmanKilled") == null)
+			localStorage.setItem("stickmanKilled", 0)
         
         // on créer les contrôles des joueurs
         controls.push({
