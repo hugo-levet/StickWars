@@ -7,13 +7,13 @@ var Credits = {
         var text = game.add.bitmapText(40, 40, 'pixel', '<', 32);
         
         // LES CREDITS
-        var thxPlayer = game.add.bitmapText(game.world.centerX, convertY(30), 'pixel', 'Merci a toi', convertX(fontSize));
+        var thxPlayer = game.add.bitmapText(game.world.centerX, convertY(30), 'pixel', 'Game Art 2D', convertX(fontSize));
         thxPlayer.anchor.setTo(.5,.5);
         
-        var thxMe = game.add.bitmapText(game.world.centerX, convertY(50), 'pixel', 'Merci a moi', convertX(fontSize));
+        var thxMe = game.add.bitmapText(game.world.centerX, convertY(70), 'pixel', 'Not Even Entertainment \n[Youtube]', convertX(fontSize));
         thxMe.anchor.setTo(.5,.5);
         
-        var thxEveryone = game.add.bitmapText(game.world.centerX, convertY(70), 'pixel', 'c tro long', convertX(fontSize));
+        var thxEveryone = game.add.bitmapText(game.world.centerX, convertY(50), 'pixel', 'All Sounds [Youtube]', convertX(fontSize));
         thxEveryone.anchor.setTo(.5,.5);
     },      
     
