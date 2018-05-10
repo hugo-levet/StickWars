@@ -6,12 +6,13 @@ const joinSpeed = 8;
 
 class PlayerLobby {	
 	
-	constructor(x, y, id, key) {
+	constructor(x, y, id, key, spriteId) {
         
         this.x = x;
         this.y = y;      
         this.id = id;
         this.controls = controls[id];        
+        this.spriteId = spriteId;
         
         this.angle = 0; 
         this.lobbyJoined = false;              
@@ -20,7 +21,7 @@ class PlayerLobby {
         this.text.anchor.setTo(.5,.5); 
 
         this.radialProgressBar = game.add.graphics(x, y);
-        this.radialProgressBar.lineStyle(32, 0xff0000);                       
+        this.radialProgressBar.lineStyle(32, 0xff0000);
     }
     
     update(platform) {
@@ -42,11 +43,17 @@ class PlayerLobby {
                 this.radialProgressBar.destroy();
                 this.text.destroy();
                 
+                // les touches des joueurs
+                var touche = game.add.sprite(this.x, this.y, this.spriteId);
+                touche.anchor.set(0.5, 0.5);
+                touche.width = 20 * width / 100;
+                touche.height = 20 * height / 100;
+
                 // on créer un joueur dans le lobby
                 this.player = new Player(this.x, this.y, this.id, playerMeta[this.id].tint);
             }
         }            
-        else if (this.angle > 0) {           
+        else if (this.angle > 0) {
             this.angle -= 2;
         }
         

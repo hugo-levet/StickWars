@@ -55,6 +55,10 @@ var Preload = {
         game.load.image("explorer_windows", "assets/img/windows/explorer_windows.png"); 
 		game.load.image("projectile", "assets/img/projectile.png"); 
         
+        game.load.image("touches p1", "assets/img/touches_tuto/p1.png");
+        game.load.image("touches p2", "assets/img/touches_tuto/p2.png");
+        game.load.image("touches p3", "assets/img/touches_tuto/p3.png");
+        game.load.image("touches p4", "assets/img/touches_tuto/p4.png");
         game.load.image("button", "assets/img/button.png");   
         game.load.image("return", "assets/img/return.png");        
         game.load.image("ground", "assets/img/windows/platform.png"); 

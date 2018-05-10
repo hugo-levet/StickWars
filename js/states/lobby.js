@@ -4,7 +4,7 @@ var Lobby = {
 
     create: function () {
         
-       
+        
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.stage.backgroundColor = '#182d3b';              
         
@@ -16,14 +16,15 @@ var Lobby = {
         var horizontal = this.borders.create(game.world.centerX, 0, "ground");
         horizontal.width = 50;
         horizontal.height = height; 
-        horizontal.anchor.set(0.5, 0);                       
+        horizontal.anchor.set(0.5, 0);
         
         var vertical = this.borders.create(0, game.world.centerY, "ground");
         vertical.width = width;
-        vertical.height = 50;     
-        vertical.anchor.set(0, 0.5);                   
+        vertical.height = 50;
+        vertical.anchor.set(0, 0.5);
                 
         this.borders.setAll('body.immovable', true);
+        
         
         // ====
         // chronomètre avant le lancement de la game
@@ -34,21 +35,21 @@ var Lobby = {
         // ====
         // on ajoute les joueurs
         this.playerLobby = [];
-        this.playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY/2, PlayerMetaEnum.BLUE, "Z"));
-        this.playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY/2, PlayerMetaEnum.RED, "UP"));
-        this.playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY * 1.5, PlayerMetaEnum.GREEN, "O"));
-        this.playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY * 1.5, PlayerMetaEnum.YELLOW, "8(numpad)"));
+        this.playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY/2, PlayerMetaEnum.BLUE, "Z", "touches p1"));
+        this.playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY/2, PlayerMetaEnum.RED, "UP", "touches p2"));
+        this.playerLobby.push(new PlayerLobby(game.world.centerX/2, game.world.centerY * 1.5, PlayerMetaEnum.GREEN, "O", "touches p3"));
+        this.playerLobby.push(new PlayerLobby(game.world.centerX * 1.5, game.world.centerY * 1.5, PlayerMetaEnum.YELLOW, "8(numpad)", "touches p4"));
         
         this.count_sound = game.sound.play('lobby');
         this.count_sound.stop();
 		
-		 // RETURN BUTTON
+		// RETURN BUTTON
         var retour = game.add.button(0, 0, 'return', loadMainMenu, this, 2, 1, 0);
         var text = game.add.bitmapText(40, 40, 'pixel', '<', 32);                
     },
     
-    update: function () {              
-           
+    update: function () {
+        
         //retour menu
         if (game.input.keyboard.addKey(Phaser.Keyboard.ESC).isDown) 
             loadMainMenu();
@@ -84,7 +85,7 @@ var Lobby = {
         // GESTION DU SON
         if (this.time <= 4 && !this.count_sound.isPlaying)
             this.count_sound.play();
-                     
+        
         
         // LANCEMENT DE LA GAME
         if (this.time <= 0) {
