@@ -9,28 +9,22 @@ var MainMenu = {
         text.anchor.setTo(.5,.5);
         
         // PLAY BUTTON
-        var play = game.add.button(game.world.centerX, convertY(50), 'button', loadMapSelector, this, 2, 1, 0);
+        var play = game.add.button(game.world.centerX, convertY(50), 'play', loadMapSelector, this, 2, 1, 0);
         play.anchor.setTo(.5,.5);
 		play.width = convertX(40);
 		play.height = convertY(20);
-        var text = game.add.bitmapText(game.world.centerX, convertY(50), 'pixel', 'Play', convertX(fontSize));
-        text.anchor.setTo(.5,.5);
         
         // CREDITS BUTTON
-        var play = game.add.button(game.world.centerX, convertY(72), 'button', loadCredits, this, 2, 1, 0);
+        var play = game.add.button(game.world.centerX, convertY(72), 'credits', loadCredits, this, 2, 1, 0);
         play.anchor.setTo(.5,.5);
 		play.width = convertX(30);
-		play.height = convertY(15);
-        var text = game.add.bitmapText(game.world.centerX, convertY(72), 'pixel', 'Credits', convertX(fontSize/2));
-        text.anchor.setTo(.5,.5);
+		play.height = convertY(13);
 		
 		// STATISTIQUES BUTTON
-        var play = game.add.button(game.world.centerX, convertY(90), 'button', loadStats, this, 2, 1, 0);
+        var play = game.add.button(game.world.centerX, convertY(90), 'stats', loadStats, this, 2, 1, 0);
         play.anchor.setTo(.5,.5);
 		play.width = convertX(30);
-		play.height = convertY(15);
-        var text = game.add.bitmapText(game.world.centerX, convertY(90), 'pixel', 'Statistiques', convertX(fontSize/2));
-        text.anchor.setTo(.5,.5);
+		play.height = convertY(13);
     },      
     
     update: function() {
