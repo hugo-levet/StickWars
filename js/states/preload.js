@@ -4,7 +4,7 @@ var Preload = {
     // ici on charge toutes les ressources pour l'état actuel (images, sons, etc...)
     preload: function () {
 		
-		game.stage.backgroundColor = '#182d3b';      		
+		game.stage.backgroundColor = '#2a2b50';      		
 		
 		// on créer la barre de chargement
 		console.log("In preload state");
