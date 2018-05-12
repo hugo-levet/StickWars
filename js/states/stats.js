@@ -7,18 +7,21 @@ var Stats = {
         var text = game.add.bitmapText(40, 40, 'pixel', '<', 32);
 		
 		// LE TITRE
-        var text = game.add.bitmapText(game.world.centerX, convertY(19.0), 'pixel', 'Statistiques', convertX(fontSize));
-        text.anchor.setTo(.5,.5);
+        var title = game.add.text(game.world.centerX, convertY(19.0), 'Statistiques', styleTitle);
+        title.anchor.setTo(.5,.5);
+		title.resolution = 3;
 				
 		// NOMBRE PARTIES
 		var gameNumber = localStorage.getItem("gameNumber");
-        var text = game.add.bitmapText(game.world.centerX, convertY(25), 'pixel', 'Nombre de parties: ' + gameNumber, convertX(fontSize-2));
-        text.anchor.setTo(.5,.5);
+        var games = game.add.text(game.world.centerX, convertY(55), 'Nombre de parties: ' + gameNumber, styleP);
+        games.anchor.setTo(.5,.5);
+		games.resolution = 3;
 		
-		// NOMBRE PARTIES
+		// NOMBRE KILL
 		var stickmanKilled = localStorage.getItem("stickmanKilled")
-        var text = game.add.bitmapText(game.world.centerX, convertY(28), 'pixel', 'Stickman tues: ' + stickmanKilled, convertX(fontSize-2));
-        text.anchor.setTo(.5,.5);
+        var killed = game.add.text(game.world.centerX, convertY(65), 'Stickman tués: ' + stickmanKilled, styleP);
+        killed.anchor.setTo(.5,.5);
+		killed.resolution = 3;
     },      
     
     update: function () {        

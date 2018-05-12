@@ -7,14 +7,17 @@ var Credits = {
         var text = game.add.bitmapText(40, 40, 'pixel', '<', 32);
         
         // LES CREDITS
-        var thxPlayer = game.add.bitmapText(game.world.centerX, convertY(30), 'pixel', 'Game Art 2D', convertX(fontSize));
-        thxPlayer.anchor.setTo(.5,.5);
-        
-        var thxMe = game.add.bitmapText(game.world.centerX, convertY(70), 'pixel', 'Not Even Entertainment \n[Youtube]', convertX(fontSize));
-        thxMe.anchor.setTo(.5,.5);
-        
-        var thxEveryone = game.add.bitmapText(game.world.centerX, convertY(50), 'pixel', 'All Sounds [Youtube]', convertX(fontSize));
-        thxEveryone.anchor.setTo(.5,.5);
+		var gameArt2D = game.add.text(game.world.centerX, convertY(30), "Game Art 2D", styleP);
+		gameArt2D.anchor.setTo(.5,.5);
+        gameArt2D.resolution = 3;
+		
+        var allSounds = game.add.text(game.world.centerX, convertY(50), 'All Sounds [Youtube]', styleP);
+        allSounds.anchor.setTo(.5,.5);
+		allSounds.resolution = 3;
+		
+		var notEven = game.add.text(game.world.centerX, convertY(70), 'Not Even Entertainment [Youtube]', styleP);
+        notEven.anchor.setTo(.5,.5);
+		notEven.resolution = 3;
     },      
     
     update: function () {        
