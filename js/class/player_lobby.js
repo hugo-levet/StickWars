@@ -16,8 +16,8 @@ class PlayerLobby {
         
         this.angle = 0; 
         this.lobbyJoined = false;              
-
-        this.text = game.add.text(x, y, "Hold " + key + " to join the game", styleP);
+		
+        this.text = game.add.text(x, y, "Hold " + key + " to join the game", styleSmall);
         this.text.anchor.setTo(.5,.5); 
 
         this.radialProgressBar = game.add.graphics(x, y);

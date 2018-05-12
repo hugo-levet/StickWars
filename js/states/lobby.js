@@ -25,11 +25,11 @@ var Lobby = {
                 
         this.borders.setAll('body.immovable', true);
         
-        
         // ====
         // chronomètre avant le lancement de la game
+		var style = {font: convertX(1.5)+"px pixellari", fill: "#ffffff"};
         this.time = timeLobby;
-        this.text = game.add.text(game.world.centerX, game.world.centerY, "Waiting for players", styleP);
+        this.text = game.add.text(game.world.centerX, game.world.centerY, "Waiting for players", style);
         this.text.anchor.setTo(.5,.5); 
         
         // ====

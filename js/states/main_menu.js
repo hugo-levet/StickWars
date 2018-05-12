@@ -2,7 +2,7 @@ var MainMenu = {
 
     create: function () {
         
-        game.stage.backgroundColor = '#2a2b50';
+        game.stage.backgroundColor = '#182d3b';
         
         // LE TITRE		
 		var text = game.add.text(game.world.centerX, convertY(19.0), "StickWars", styleTitle);

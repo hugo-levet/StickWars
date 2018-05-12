@@ -4,7 +4,7 @@ var Preload = {
     // ici on charge toutes les ressources pour l'état actuel (images, sons, etc...)
     preload: function () {
 		
-		game.stage.backgroundColor = '#2a2b50';      		
+		game.stage.backgroundColor = '#182d3b';      		
 		
 		// on créer la barre de chargement
 		console.log("In preload state");
@@ -27,9 +27,9 @@ var Preload = {
 		// CHARGEMENT DES SCRIPTS
 		
 		//HACK TO PRELOAD A CUSTOM FONT
-		this.game.add.text(0, 0, "hack", {font:"1px peace_sans", fill:"#FFFFFF"});
 		styleTitle = {font: convertX(fontSizeTitle)+"px pixellari", fill: "#ffffff"};
 		styleP= {font: convertX(fontSizeP)+"px pixellari", fill: "#ffffff"};
+		styleSmall= {font: convertX(fontSizeSmall)+"px pixellari", fill: "#ffffff"};
 		
 		// LEVELS
 		game.load.script("level_window", "level/windows.js");
