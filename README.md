@@ -22,6 +22,7 @@ Ressources utilisés :
 -\> améliorer l'interface (https://www.pinterest.fr/armdb/game-ui-main-menu/?lp=true)  
 -\> rajouter un nombre max de round   
 -\> Rajouter un max de son + de la musique  
+-\> Polish le jeu (rajouter des particules comme un effet de fumée derrière les pas des stickman)  
   
 BUGS :  
 -\> LOBBY : Les joueurs sont considérés comme chargé lorsque la touche *saut* est enclenché (même si la barre n'est pas chargée au max)  
