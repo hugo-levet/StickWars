@@ -15,10 +15,8 @@ var player = [],
 var selectedMap;	
 var controls = [];
 
-var styleTitle, styleP, styleSmall;
-const fontSizeTitle = 8;
-const fontSizeP = 3; // pour les paragraphes
-const fontSizeSmall = 1.5;
+var styleTitle, styleP, styleSmall, styleFloatingText;
+const fontSizeTitle = 8, fontSizeP = 3, fontSizeSmall = 1.5, fontSizeFloatingtext = 2;
 
 const PlateformsEnum = {
     COLLIDER: 0,

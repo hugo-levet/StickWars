@@ -28,8 +28,9 @@ var Preload = {
 		
 		//HACK TO PRELOAD A CUSTOM FONT
 		styleTitle = {font: convertX(fontSizeTitle)+"px pixellari", fill: "#ffffff"};
-		styleP= {font: convertX(fontSizeP)+"px pixellari", fill: "#ffffff"};
-		styleSmall= {font: convertX(fontSizeSmall)+"px pixellari", fill: "#ffffff"};
+        styleP = {font: convertX(fontSizeP)+"px pixellari", fill: "#ffffff"};
+		styleSmall = {font: convertX(fontSizeSmall)+"px pixellari", fill: "#ffffff"};
+        styleFloatingText = {font: convertX(fontSizeFloatingtext)+"px pixellari", fill: "#ffffff"};
 		
 		// LEVELS
 		game.load.script("level_window", "level/windows.js");
@@ -40,7 +41,8 @@ var Preload = {
 		game.load.script("player_lobby", "js/class/player_lobby.js");		
 		game.load.script("interaction_box", "js/class/interactionbox.js");
 		game.load.script("projectile", "js/class/projectile.js");
-		game.load.script("level_creator", "js/class/level_creator.js");
+        game.load.script("level_creator", "js/class/level_creator.js");
+        game.load.script("floating_text", "js/class/floating_text.js");
 		
 		// STATES
 		game.load.script("main_menu", "js/states/main_menu.js");
@@ -77,7 +79,12 @@ var Preload = {
         game.load.audio('tackle', 'assets/audio/tackle.mp3');
         game.load.audio('click', 'assets/audio/button_click.mp3');
         game.load.audio('lobby', 'assets/audio/lobby_count.mp3');
-        
+        game.load.audio('hit 001', 'assets/audio/hit/hit 001.mp3');
+        game.load.audio('hit 002', 'assets/audio/hit/hit 002.mp3');
+        game.load.audio('hit 003', 'assets/audio/hit/hit 003.mp3');
+        game.load.audio('hit 004', 'assets/audio/hit/hit 004.mp3');
+        game.load.audio('hit 005', 'assets/audio/hit/hit 005.mp3');
+
         game.load.bitmapFont('pixel', 'assets/fonts/carrier_command.png', 'assets/fonts/carrier_command.xml');        
         game.load.atlasJSONHash("stickman", "assets/img/stickman/atlas.png", "assets/img/stickman/data.json");    
     },   

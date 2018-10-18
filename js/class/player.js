@@ -40,6 +40,7 @@ class Player {
 		this.jumpsCounts = 0;
 		this.id = id;
 		this.controls = controls[id];
+		this.floatingText = [];
 
 		this.damage = 10;
 		this.timerAtk = 0;	// temps depuis la dernier attaque du joueur
@@ -89,6 +90,9 @@ class Player {
 		this.footstep.stop();
 		this.tackle = game.sound.play('tackle');
 		this.tackle.stop();
+
+		this.hitSound = game.sound.play('hit 001');
+		this.hitSound.stop();
 	}
 
 	update(platform) {
@@ -114,6 +118,17 @@ class Player {
 		// on reset le double jump si on touche le sol
 		if (this.player.body.touching.down)
 			this.jumpsCounts = 0;
+
+		// ===
+		// UPDATE DES FLOATING TEXT
+		for (var i=0; i < this.floatingText.length; i++) {
+			this.floatingText[i].update();
+
+			// on supprime l'array si il est invisible
+			if (this.floatingText[i].text.alpha < 0.1)
+				this.floatingText.splice(i, 1);
+		}
+			
 
 		// ===
 		// GESTION DE L'ATTAQUE
@@ -250,11 +265,19 @@ class Player {
 	}
 
 	getDamage(damage) {
+
+		this.floatingText.push(new FloatingText(this.player.body.position.x + 50, this.player.body.position.y, "-" + damage));
 		this.hp -= damage;
 
 		var hpRelative = this.hp / hpMax * 100;
 		this.hpBar.setPercent(hpRelative);
 
+		var idSound = 'hit 00' + (Math.floor(Math.random() * 5) + 1) ;
+		
+		this.hitSound.stop();
+		this.hitSound = game.sound.play(idSound);
+		console.log("On joue le son " + idSound);
+		
 		// si il meurt, on rajoute sa mort aux stats
 		if (this.hp <= 0) {
 			var stickmanKilled = parseInt(localStorage.getItem("stickmanKilled")) + 1;
