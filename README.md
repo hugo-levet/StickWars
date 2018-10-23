@@ -17,22 +17,19 @@ Ressources utilisés :
 -\> Stickman: C'est fait par nous 🤘   
 
   
-**TODO :**  
--\> rendre le jeu plus fun  
--\> améliorer l'interface (https://www.pinterest.fr/armdb/game-ui-main-menu/?lp=true)  
+**TODO :**    
 -\> rajouter un nombre max de round  
 -\> particule de fumée derière les stickman qui courent  
--\> feedback double jump: effet de fumée
--\> feedback slide: son à refaire + easter egg de l'ancien 
--\> affordance de l'explorateur !
--\> stickman, déplacements et saut à rendre plus dynamique
-
-
+-\> feedback double jump: effet de fumée  
+-\> feedback slide: son à refaire + easter egg de l'ancien  
+-\> affordance de l'explorateur !  
+-\> stickman, déplacements et saut à rendre plus dynamique  
+  
   
 BUGS :  
 -\> LOBBY : Au premier saut(généré de base) le jeu plante si la touche *attaque* est appuyé  
 -\> LOBBY : Les kunaï sont québlo  
--\> LOBBY : Le sol des  joueurs 8(numpad) et O n'est pas considéré comme un sol et donc restent bloqués sur l'animation du saut
+-\> LOBBY : Le sol des  joueurs 8(numpad) et O n'est pas considéré comme un sol et donc restent bloqués sur l'animation du saut   
 -\> LOBBY : Si on se colle à un mur vertical, et ensuite qu'on tacle, on passe de l'autre côté du mur...  
 -\> GAME : On peut passer à travers les collisions du bas de la fenêtre (grâce aux collisions du tacle qui sont moins hautes)  
   
