@@ -82,8 +82,6 @@ var Preload = {
         game.load.audio('hit 001', 'assets/audio/hit/hit 001.mp3');
         game.load.audio('hit 002', 'assets/audio/hit/hit 002.mp3');
         game.load.audio('hit 003', 'assets/audio/hit/hit 003.mp3');
-        game.load.audio('hit 004', 'assets/audio/hit/hit 004.mp3');
-        game.load.audio('hit 005', 'assets/audio/hit/hit 005.mp3');
 
         game.load.bitmapFont('pixel', 'assets/fonts/carrier_command.png', 'assets/fonts/carrier_command.xml');        
         game.load.atlasJSONHash("stickman", "assets/img/stickman/atlas.png", "assets/img/stickman/data.json");    

@@ -1,8 +1,8 @@
 const maxJumps = 2;
-const plySpeed = 30;
+const plySpeed = 45;
 const plySlideSpeed = 5;
-const plyGravity = 1000;
-const jumpForce = 600;
+const plyGravity = 1200;
+const jumpForce = 700;
 const hpMax = 50;
 const attackSpeed = 0.82; // per second
 const attackSpeedProjectile = 1;
@@ -272,7 +272,7 @@ class Player {
 		var hpRelative = this.hp / hpMax * 100;
 		this.hpBar.setPercent(hpRelative);
 
-		var idSound = 'hit 00' + (Math.floor(Math.random() * 5) + 1) ;
+		var idSound = 'hit 00' + (Math.floor(Math.random() * 3) + 1) ;
 		
 		this.hitSound.stop();
 		this.hitSound = game.sound.play(idSound);

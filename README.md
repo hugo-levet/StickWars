@@ -18,12 +18,14 @@ Ressources utilisés :
 
   
 **TODO :**    
--\> rajouter un nombre max de round  
--\> particule de fumée derière les stickman qui courent  
--\> feedback double jump: effet de fumée  
--\> feedback slide: son à refaire + easter egg de l'ancien  
--\> affordance de l'explorateur !  
--\> stickman, déplacements et saut à rendre plus dynamique  
+-\> CODE: rajouter un nombre max de round  
+-\> GFX: particule de fumée derière les stickman qui courent  
+-\> GFX: feedback double jump: effet de fumée  
+-\> SOUND: feedback slide: son à refaire + easter egg de l'ancien  
+-\> SOUND: feedback lancer de kunai  
+-\> CODE + GD: indiquer rechargement de lancer de kunai  
+-\> GD: affordance de l'explorateur !  
+-\> GD: stickman, déplacements et saut à rendre plus dynamique  
   
   
 BUGS :  
