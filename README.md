@@ -19,13 +19,16 @@ Ressources utilisés :
   
 **TODO :**    
 -\> CODE: rajouter un nombre max de round  
+-\> CODE: bande noires pour le ratios
 -\> GFX: particule de fumée derière les stickman qui courent  
 -\> GFX: feedback double jump: effet de fumée  
+-\> GFX: update image des contrôles
 -\> SOUND: feedback slide: son à refaire + easter egg de l'ancien  
 -\> SOUND: feedback lancer de kunai  
 -\> CODE + GD: indiquer rechargement de lancer de kunai  
 -\> GD: affordance de l'explorateur !  
 -\> GD: stickman, déplacements et saut à rendre plus dynamique  
+-\> LD: ajouter d'autres niveaux  
   
   
 BUGS :  
