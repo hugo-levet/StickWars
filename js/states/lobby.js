@@ -1,4 +1,4 @@
-const timeLobby = 0.1;
+const timeLobby = 10;
 
 var Lobby = {
 
