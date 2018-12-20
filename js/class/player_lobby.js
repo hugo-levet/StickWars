@@ -5,7 +5,18 @@
 const joinSpeed = 8;
 
 class PlayerLobby {	
-	
+    
+    /**
+     * A instantier dans le lobby. 
+     * Gère les entrées du clavier pour créer un nouveau personnage dans le lobby.
+     * 
+     * @constructor
+     * @param {float} x - La position en abcisse du point d'apparition du personnage.
+     * @param {float} y - La position en ordonnée du point d'apparition du personnage.
+     * @param {PlayerMetaEnum} id - L'ID du joueur.
+     * @param {string} key - La touche pour rejoindre la partie.
+     * @param {string} spriteId - ?
+     */
 	constructor(x, y, id, key, spriteId) {
         
         this.x = x;
@@ -24,15 +35,24 @@ class PlayerLobby {
         this.radialProgressBar.lineStyle(32, 0xff0000);
     }
     
-    update(platform) {
-        
-        if (this.lobbyJoined) {
+    /**
+     * A appeler dans l'update du lobby: 
+     * Permet au joueur de rejoindre le lobby.
+     * Met à jour la position du personnage si il est dans le lobby.
+     * 
+     * @param {*} platform - Les plateformes du lobby pour les collisions avec le personnage.
+     */
+    update(platform) 
+    {
+        if (this.lobbyJoined) 
+        {
             this.player.update(platform);
             
             return;
         }
             
-        if (this.controls.up.isDown) {
+        if (this.controls.up.isDown) 
+        {
             this.angle += joinSpeed;
             
             // on charge le joueur

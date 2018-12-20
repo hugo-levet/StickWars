@@ -3,7 +3,15 @@ const projectileDamage = 10;
 
 class Projectile {		
     
-	// casterId est l'id du joueur qui a lancé le projectile
+	/**
+	 * Créer un projectile qui va avancer et infliger des dégâts à un personnage.
+	 * 
+	 * @constructor
+	 * @param {float} x - La position en abcisse du projectile.
+     * @param {float} y - La position en ordonnée du projectile.
+	 * @param {int} direction - -1 pour la gauche, 1 pour la droite
+	 * @param {PlayerMetaEnum} casterId  - ID du personnage qui a lancé le projectile.
+	 */
 	constructor(x, y, direction, casterId) {        
         this.sprite = game.add.sprite(x, y, "projectile"); 
 		this.sprite.anchor.setTo(0.5);
@@ -16,11 +24,16 @@ class Projectile {
 		this.direction = direction;
     }
 	
-	update() {
+	/**
+	 * A appeler dans l'update du game: routine du projecitle
+	 * On avance jusqu'à toucher une cible
+	 */
+	update() 
+	{
 		this.sprite.x += projectileSpeed * this.direction * game.time.elapsed;
 		
 		for (var i=0; i < player.length; i++) {			
-			// on saute le joueur si il est mort OU si le joueur est le lanceur du projectile
+			// on saute si le joueur  est mort OU si le joueur est le lanceur du projectile
 			if (player[i].hp <= 0 || player[i].id == this.casterId)
 				continue; 
 									

@@ -52,6 +52,7 @@ function convertY(y) {
     return y * height / 100;
 }
 
+// chargement des menus avec un son qui est joué
 function loadPlayMenu() {
     game.sound.play('click');
     

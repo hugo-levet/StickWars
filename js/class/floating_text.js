@@ -3,6 +3,13 @@ const floatingTextUpdateTime = 50;
 
 class FloatingText {		
     
+    /**
+     * Créer un texte qui va tomber et disparaitre petit à petit.
+     * @constructor
+     * @param {float} x - La position en abcisse du texte.
+     * @param {float} y - La position en ordonnée du texte.
+     * @param {string} text - Le texte à afficher.
+     */
 	constructor(x, y, text) {   
         
         this.offsetX = x;
@@ -11,19 +18,13 @@ class FloatingText {
 
         this.text = game.add.text(x, y, text, styleFloatingText);
         this.text.anchor.setTo(.5,.5);
-
-        /*this.textSprite = game.add.sprite(x, y, null);
-        this.textSprite.addChild(this.text);
-        game.physics.enable(this.textSprite, Phaser.Physics.ARCADE);
-
-        this.textSprite.body.bounce.y = 1;
-        this.textSprite.body.gravity.y = 2000;
-        this.textSprite.body.gravity.setTo(0, 1700);
-        this.textSprite.body.collideWorldBounds = true;
-        this.textSprite.body.velocity.setTo(400, 400);//*/
     }
 
-    update() {
+    /**
+     * Met à jour la position et l'alpha du text.
+     */
+    update() 
+    {
         var deltaTime = game.time.elapsed/1000;
         this.time += deltaTime;
         this.text.alpha -= 1.3 * deltaTime;  

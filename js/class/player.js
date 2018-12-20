@@ -27,6 +27,15 @@ var PlayerState = {
 
 class Player {
 
+	/**
+	 * Créer un personnage, avec ses attaques, ses animations, etc..
+	 * 
+	 * @constructor
+	 * @param {float} x - La position en abcisse de la boîte de collision.
+     * @param {float} y - La position en ordonnée de la boîte de collision.
+	 * @param {PlayerMetaEnum} id - L'ID du joueur.
+	 * @param {string} tint - La couleur du joueur.
+	 */
 	constructor(x, y, id, tint) {
 
 		// DÉCLARATION DES VARIABLES
@@ -95,6 +104,12 @@ class Player {
 		this.hitSound.stop();
 	}
 
+	 /**
+     * A appeler dans l'update du game, routine du personnage:
+	 * Gestion des entrées, animation, son, etc..
+     * 
+     * @param {*} platform - Les plateformes du lobby pour les collisions avec le personnage.
+     */
 	update(platform) {
 
 		var hitPlatform = game.physics.arcade.collide(this.player, platform);

@@ -40,7 +40,7 @@ var Game = {
 		if (game.input.keyboard.addKey(Phaser.Keyboard.ESC).isDown)
 			loadMainMenu();
 
-		for (var i=0; i < player.length; i++)
+		for (var i=0; i < player.flength; i++)
 			player[i].update(platforms);
 		
 		for (var i=0; i < projectiles.length; i++) {

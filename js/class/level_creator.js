@@ -2,24 +2,34 @@
 
 class LevelCreator {
 
-	constructor(data) {
+	 /**
+     * Créer le niveau à partir d'un fichier.
+     * @constructor
+	 * @param {*} data - Les données du niveau.
+     */
+	constructor(data) 
+	{
 		this.data = data;
 	}
 
-	create() {
+	/**
+	 * Construit le niveau.
+	 */
+	create() 
+	{
 		platforms = game.add.group();
 		platforms.enableBody = true;
 
 		console.log("Building level...");
 		var map = this.data;
 
-		for (var i=0; i < map.plateforms.length; i++) {
+		for (var i=0; i < map.plateforms.length; i++) 
+		{
 			console.log("level: building " + map.plateforms[i].sprite);
-
 			var sprite;
 
-			switch (map.plateforms[i].type) {
-
+			switch (map.plateforms[i].type) 
+			{
 				case PlateformsEnum.COLLIDER:
 					sprite = platforms.create(0, 0, map.plateforms[i].sprite);
 					break;
