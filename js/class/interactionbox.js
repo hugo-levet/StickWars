@@ -1,9 +1,11 @@
 
-
+/**
+ * Permet de créer des objets interactibles qui active une action.
+ * @class
+ */
 class InteractionBox {		
     
     /**
-     * Permet de créer des objets interactibles qui active une action.
      * @constructor
      * @param {float} x - La position en abcisse de la boîte de collision.
      * @param {float} y - La position en ordonnée de la boîte de collision.

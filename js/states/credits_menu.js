@@ -1,5 +1,14 @@
-var Credits = {
 
+ /**
+  * Etat credits: <br />
+  * Affiche les credits.
+  * @class Credits
+  */
+ var Credits = {
+
+    /**
+     * @constructor Credits
+     */
     create: function () {
         
         // RETOUR BUTTON

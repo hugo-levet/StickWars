@@ -1,11 +1,13 @@
 const projectileSpeed = 2;
 const projectileDamage = 10;
 
+/**
+ * Créer un projectile qui va avancer et infliger des dégâts à un personnage.
+ * @class
+ */
 class Projectile {		
     
 	/**
-	 * Créer un projectile qui va avancer et infliger des dégâts à un personnage.
-	 * 
 	 * @constructor
 	 * @param {float} x - La position en abcisse du projectile.
      * @param {float} y - La position en ordonnée du projectile.

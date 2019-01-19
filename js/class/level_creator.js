@@ -1,9 +1,12 @@
 
 
+/**
+ * Créer le niveau à partir d'un fichier.
+ * @class
+ */
 class LevelCreator {
 
 	 /**
-     * Créer le niveau à partir d'un fichier.
      * @constructor
 	 * @param {*} data - Les données du niveau.
      */

@@ -1,4 +1,32 @@
-const maxJumps = 2;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: class/player.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: class/player.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const maxJumps = 2;
 const plySpeed = 45;
 const plySlideSpeed = 5;
 const plyGravity = 1200;
@@ -117,7 +145,7 @@ class Player {
 		var hitPlatform = game.physics.arcade.collide(this.player, platform);
 		
 		// si le joueur est mort, alors on affiche une pierre tombale
-		if (this.hp <= 0) {						
+		if (this.hp &lt;= 0) {						
 			this.player.body.setSize(tombstoneBox.width, tombstoneBox.height, tombstoneBox.x, tombstoneBox.y);
 			this.player.animations.play("tomb_stone");				
 			
@@ -138,11 +166,11 @@ class Player {
 
 		// ===
 		// UPDATE DES FLOATING TEXT
-		for (var i=0; i < this.floatingText.length; i++) {
+		for (var i=0; i &lt; this.floatingText.length; i++) {
 			this.floatingText[i].update();
 
 			// on supprime l'array si il est invisible
-			if (this.floatingText[i].text.alpha < 0.1)
+			if (this.floatingText[i].text.alpha &lt; 0.1)
 				this.floatingText.splice(i, 1);
 		}
 			
@@ -160,7 +188,7 @@ class Player {
 		else if (this.controls.down.isDown) {
 			this.playerState = PlayerState.ATTACK;
 		}		
-		else if (this.controls.up.isDown && !this.isUpKeyReleased && this.jumpsCounts < maxJumps) {
+		else if (this.controls.up.isDown &amp;&amp; !this.isUpKeyReleased &amp;&amp; this.jumpsCounts &lt; maxJumps) {
 			this.playerState = PlayerState.JUMP;
 
 			this.isUpKeyReleased = true;
@@ -185,7 +213,7 @@ class Player {
 
 		// on ne met pas cette condition dans le paté en haut 
 		// pour qu'on puisse courir/sauter en tirant
-		if (this.controls.attack.isDown && this.timerProjectile >= attackSpeedProjectile) {
+		if (this.controls.attack.isDown &amp;&amp; this.timerProjectile >= attackSpeedProjectile) {
 			
 			this.timerProjectile = 0;
 			var proj = new Projectile(this.player.x, this.player.y - 30, this.player.scale.x, this.id);
@@ -251,7 +279,7 @@ class Player {
 			}
 
 			// ici on overwrite l'animation si le joueur est en train de sauter
-			if (this.jumpsCounts != 0 && !this.attackAnimPlaying)
+			if (this.jumpsCounts != 0 &amp;&amp; !this.attackAnimPlaying)
 				this.player.animations.play("jump");
 		}
 
@@ -260,7 +288,7 @@ class Player {
 		switch (this.playerState) {
 			case PlayerState.RUN:
 				// quand le joueur marche, on joue le son de bruit de pas
-				if (!this.footstep.isPlaying && this.player.body.touching.down)
+				if (!this.footstep.isPlaying &amp;&amp; this.player.body.touching.down)
 					this.footstep = game.sound.play('footstep');
 				break;
 
@@ -270,7 +298,7 @@ class Player {
 				break;
 
 			case PlayerState.ATTACK:
-				if (!this.tackle.isPlaying && this.player.body.touching.down)
+				if (!this.tackle.isPlaying &amp;&amp; this.player.body.touching.down)
 					this.tackle = game.sound.play('tackle');
 					this.footstep.stop();
 				break;
@@ -296,7 +324,7 @@ class Player {
 		console.log("On joue le son " + idSound);
 		
 		// si il meurt, on rajoute sa mort aux stats
-		if (this.hp <= 0) {
+		if (this.hp &lt;= 0) {
 			var stickmanKilled = parseInt(localStorage.getItem("stickmanKilled")) + 1;
 			localStorage.setItem("stickmanKilled", stickmanKilled);
 		}
@@ -315,20 +343,20 @@ class Player {
 		
 		// on regarde si il y a un joueur dans la box d'attaque
 		Loop1:
-		for (var i=0; i < player.length; i++) {
+		for (var i=0; i &lt; player.length; i++) {
 
 			// on ne check pas les collisions du joueur qui attaque
 			if (player[i].id == this.id)
 				continue;
 
 			// si le joueur a déjà été touché par l'attaque, on l'ignore
-			for (var j=0; j < this.idHit.length; j++)
+			for (var j=0; j &lt; this.idHit.length; j++)
 				if (player[i].id == this.idHit[j])
 					continue Loop1;
 
-			if (this.player.body.left < player[i].player.body.right &&
-				this.player.body.right > player[i].player.body.left &&
-				this.player.body.top < player[i].player.body.bottom &&
+			if (this.player.body.left &lt; player[i].player.body.right &amp;&amp;
+				this.player.body.right > player[i].player.body.left &amp;&amp;
+				this.player.body.top &lt; player[i].player.body.bottom &amp;&amp;
 				this.player.body.bottom > player[i].player.body.top) {
 					//console.log(player[i].id + " est dans le box! w/ " + player[i].id);
 					player[i].getDamage(this.damage);
@@ -337,11 +365,11 @@ class Player {
 		}
 
 		 // on regarde si il y a un actionner dans la box d'attaque
-		for (var i=0; i < interactionsBox.length; i++) {
+		for (var i=0; i &lt; interactionsBox.length; i++) {
 
-			if (this.player.body.left < interactionsBox[i].sprite.x + interactionsBox[i].sprite.width &&
-				this.player.body.right > interactionsBox[i].sprite.x &&
-				this.player.body.top < interactionsBox[i].sprite.y + interactionsBox[i].sprite.height &&
+			if (this.player.body.left &lt; interactionsBox[i].sprite.x + interactionsBox[i].sprite.width &amp;&amp;
+				this.player.body.right > interactionsBox[i].sprite.x &amp;&amp;
+				this.player.body.top &lt; interactionsBox[i].sprite.y + interactionsBox[i].sprite.height &amp;&amp;
 				this.player.body.bottom > interactionsBox[i].sprite.y) {
 
 					//console.log("Actionner est dans le box!");
@@ -350,3 +378,26 @@ class Player {
 		}
 	}
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BootStrap.html">BootStrap</a></li><li><a href="Credits.html">Credits</a></li><li><a href="FloatingText.html">FloatingText</a></li><li><a href="Game.html">Game</a></li><li><a href="InteractionBox.html">InteractionBox</a></li><li><a href="LevelCreator.html">LevelCreator</a></li><li><a href="Player.html">Player</a></li><li><a href="PlayerLobby.html">PlayerLobby</a></li><li><a href="PlayerMeta.html">PlayerMeta</a></li><li><a href="Projectile.html">Projectile</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Dec 21 2018 10:46:52 GMT+0100 (GMT+01:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

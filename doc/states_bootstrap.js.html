@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: states/bootstrap.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,38 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: states/bootstrap.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+/**
+ * Première classe appelée au chargement du jeu.&lt;br>
+ * on charge les sprites nécessaires pour la barre de chargement
+ * @class
+ */
+var BootStrap = {   
+    preload: function () {
+			game.load.image("logo", "assets/img/logo.png");
+			game.load.image("preload_bar", "assets/img/preload_bar.png");
+			game.load.image("bg_preload_bar", "assets/img/bg_preload_bar.png");
+    },   
+	
+	create: function () {
+		console.log("In boot state");
+		
+		game.state.add('Preload', Preload);
+		game.state.start('Preload');
+    }
+};
+</code></pre>
+        </article>
+    </section>
 
 
 

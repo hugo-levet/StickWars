@@ -1,10 +1,14 @@
 
 const floatingTextUpdateTime = 50;
 
+/**
+ * Créer un texte qui va tomber et disparaitre petit à petit.
+ * 
+ * @class
+ */
 class FloatingText {		
     
     /**
-     * Créer un texte qui va tomber et disparaitre petit à petit.
      * @constructor
      * @param {float} x - La position en abcisse du texte.
      * @param {float} y - La position en ordonnée du texte.

@@ -1,12 +1,11 @@
-//
-// Cette classe s'instantie dans le lobby
-// Gère les entrées du joueur dans le lobby
-
+/**
+ * Enregistre la progression globale du joueur comme le score, id.
+ * Et aussi, si le joueur à été activé dans le lobby.
+ * @class
+ */
 class PlayerMeta {	
     
     /**
-     * Enregistre la progression globale du joueur comme le score, id.
-     * Et aussi, si le joueur à été activé dans le lobby.
      * @constructor
      * @param {PlayerMetaEnum} id - L'ID du joueur.
      * @param {string} name - Le nom du joueur tel que "blue", "red", etc.

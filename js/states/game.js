@@ -1,6 +1,13 @@
-
+ /**
+  * Etat jeu: <br />
+  * Gère la routine du jeu comme les projectiles.
+  * @class Game
+  */
 var Game = {
 
+	/**
+	 * @constructor Game
+	 */
 	create: function () {
 		
 		var gameNumber = parseInt(localStorage.getItem("gameNumber"))+1;
